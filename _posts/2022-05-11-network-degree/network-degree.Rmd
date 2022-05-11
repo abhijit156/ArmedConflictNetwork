@@ -1,0 +1,41 @@
+---
+title: "Network Degree"
+description: |
+  A short description of the post.
+author:
+  - name: Abhijit Mahishi
+    url: {}
+date: 2022-05-11
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+graph.density(climate.ig)
+
+graph.density(climate.ig, loops=TRUE)
+
+igraph::degree(climate.ig)
+
+igraph::degree(climate.ig,mode="in", loops = FALSE)
+igraph::degree(climate.ig,mode="out", loops = FALSE)```
+
+climate.nodes<-climate.nodes %>%
+mutate(indegree=igraph::degree(climate.ig, mode="in",loops=FALSE),
+outdegree=igraph::degree(climate.ig, mode="out",loops=FALSE))
+
+hist(climate.nodes$indegree, main="Climate Influence: In-degree Distribution", xlab="Nominations Received")
+
+hist(climate.nodes$outdegree, main="Climate Influence: Out-degree
+Distribution ", xlab="Nominations made")

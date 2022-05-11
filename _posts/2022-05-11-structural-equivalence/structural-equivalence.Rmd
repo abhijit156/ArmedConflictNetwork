@@ -1,0 +1,30 @@
+---
+title: "Structural Equivalence"
+description: |
+  A short description of the post.
+author:
+  - name: Abhijit Mahishi
+    url: {}
+date: 2022-05-11
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+flomarr.se<-equiv.clust(flomarr.stat, equiv.fun="sedist", method="hamming",mode="graph")
+plot(flomarr.se,labels=flomarr.se$glabels)
+
+
+summary(gotmarr.se)
+```
+Partitions (more code and plots available)
+```{r}
+plot(flomarr.se,labels=flomarr.se$glabels)
+rect.hclust(flomarr.se$cluster,h=15)
+```
+
+

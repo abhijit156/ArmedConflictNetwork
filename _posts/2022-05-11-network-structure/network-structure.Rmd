@@ -1,0 +1,54 @@
+---
+title: "Network Structure"
+description: |
+  Implementing Assignment 2 on armed conflict dataset
+author:
+  - name: Abhijit Mahishi
+    url: {}
+date: 2022-05-10
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+```{r}
+library(igraph)
+library(stringr)
+library(tidyverse)
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+
+graph <- graph.data.frame(conflict)
+
+vcount(graph)
+ecount(graph)
+
+igraph::vertex_attr_names(graph)
+igraph::edge_attr_names(graph)
+igraph::vertex_attr_names(graph)
+igraph::edge_attr_names(graph)
+
+igraph::dyad.census(graph)
+igraph::triad.census(graph)
+
+transitivity(graph)
+```
+
+```{r}
+transitivity(climate.ig, type="global")
+##get average local clustering coefficient: igra
+transitivity(climate.ig, type="average")
+
+distances(gotbook.ig,"Petyr Baelish","Robb Stark")
+
+all_shortest_paths(gotbook.ig,"Bronn","Varys",weights=NA)$res
+
+average.path.length(gotbook.ig,directed=F)
+
+igraph::components(gotbook.ig)$no
+
+
