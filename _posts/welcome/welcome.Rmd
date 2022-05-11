@@ -1,26 +1,42 @@
 ---
-title: "Welcome to Abhijit Networks Project"
+title: "Introduction - Network analysis of armed conflict"
 description: |
-  Welcome to our new blog, Abhijit Networks Project. We hope you enjoy 
-  reading what we have to say!
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
+  - name: Abhijit Mahishi 
 date: 05-10-2022
 output:
   distill::distill_article:
     self_contained: false
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
+# Armed conflicts network analysis
+
+The objective of this project is to use network analysis methods to
+examine armed conflicts data. Conflict, from interpersonal disputes to
+armed conflicts between states, has always been an inherent part of
+human civilization at some level. This is especially relevant today, as
+recent world events serve as an extremely unpleasant reminder of the
+tragic destruction of human life and livelihood due to armed conflicts.
+This project aims to analyze historical data on armed and violent
+conflicts in the time period from 1946 - 2020.
+
+# Data source
+
+This project uses the Uppsala Conflict Data Program's (UCDP) Dyadic Dataset, a project within the UCDP at the Department of Peace and Conflict Research,
+Uppsala University. The UCDP Dyadic dataset builds on the UCDP/PRIO
+Armed Conflict dataset, by focusing on individual dyads within each
+conflict. For the purpose of data collection, state-based armed conflict is defined as: "a contested incompatibility that concerns government and/or territory where the use of armed force between two parties, of which at least one is the government of a state, results in at least 25 battle-related deaths in a calendar year"
+
+Data downloads - Pettersson, Therese (2021) UCDP Dyadic Dataset Codebook
+v 21.1 (<https://ucdp.uu.se/downloads/>)
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
 
 ```
-
-
-
