@@ -74,8 +74,22 @@ graph.nodes<-graph.nodes %>%
 mutate(indegree=igraph::degree(graph, mode="in",loops=FALSE),
 outdegree=igraph::degree(graph, mode="out",loops=FALSE))
 
+graph.nodes %>% 
+  arrange(desc(indegree)) 
+
+graph.nodes %>% 
+  arrange((indegree)) 
+
+graph.nodes %>% 
+  arrange((outdegree)) 
+
+graph.nodes %>% 
+  arrange(desc(outdegree)) 
 
 ```
+Due to the structure of our directed network data, the rebel groups are shown at the 'receiving' end of conflicts (in-degree = # of conflicts, out-degree = 0), while Governments are at the 'giving' end (in-degree = 0, out-degree = # of conflicts).
+Hence, on arranging the data for indegree, we find out that the rebel group 'CCP' is involved in most conflicts, while 'PBCP' is involved in the least number of conflicts.
+On arranging the data for outdegree, we find out that the 'Government of Myanmar' is involved in most conflicts (332), while 'Government of Hyderabad' is involved in the least number of conflicts (2). 
 
 # In-degree and out-degree histograms
 
@@ -90,4 +104,4 @@ hist(graph.nodes$indegree, main="Conflicts: In-degree Distribution", xlab="Numbe
 hist(graph.nodes$outdegree, main="Climate Influence: Out-degree Distribution ", xlab="Number of conflict episodes")
 ```
 
-Due to the structure of this network, the Governments involved in the conflict have outgoing edges, while rebel groups involved in conflict with the Government have incoming edges. Hence, all the outdegree numbers are from the Government side, which signifies the number of different rebel groups the particular Government had to fight - while all the indegree numbers refer to rebel groups, which signifies the number of Governments fought by the rebel group. Since the number of rebel groups is much higher than number of Governments, the histograms values for indegree and outdegree are skewed towards that of the rebel groups. For example, out-degrees are concentrated around 0 since all rebel groups have values only for in-degrees, and hence have 0 out-degree. The in-degree histogram shows more variation as it captures the in-degree of all rebel groups.
+Due to the structure of this network, the Governments involved in the conflict have outgoing edges, while rebel groups involved in conflict with the Government have incoming edges. Hence, all the outdegree numbers are from the Government side, which signifies the number of different rebel groups the particular Government fought - while all the indegree numbers refer to rebel groups, which signifies the number of Governments fought by the rebel group. Since the number of rebel groups is much higher than number of Governments, the histograms values for indegree and outdegree are skewed towards that of the rebel groups. For example, out-degrees are concentrated around 0 since all rebel groups have values only for in-degrees, and hence have 0 out-degree. The in-degree histogram shows more variation as it captures the in-degree of all rebel groups.
