@@ -1,0 +1,88 @@
+---
+title: "Networks_FinalProject"
+output:
+  html_document: default
+  pdf_document: default
+date: '2022-05-08'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(visNetwork)
+library(igraph)
+library(stringr)
+library(tidyverse)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+conflict <- read.csv("/Users/abhijit/Desktop/Spring 2022 Material/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+head((conflict))
+```
+TYPE 3
+REGION 3/4
+DEFINE AN EPISODE AS AN EDGE
+USE INTENSITY AS WEIGHTS (ALSO USE NUMBER OF YEARS/EPISODES AT GIVEN LEVEL AS WEIGHTS?)
+```{r}
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+```
+
+
+```{r}
+duration <- conflict_subset %>% group_by(conflict_id, dyad_id) %>% summarise(duration = max(year) - min(year), 
+                                                                    intensity = mean(intensity_level))
+
+duration['weights'] <- duration['duration'] * duration['intensity']
+duration$weights <- ifelse(duration$duration == 0, duration$intensity, duration$weights) 
+
+conflict_subset <- conflict_subset %>% left_join(duration, by = c('conflict_id','dyad_id'))
+
+conflict_subset$side_a <- gsub("Government of ","",as.character(conflict_subset$side_a))
+```
+
+## Including Plots
+```{r}
+country_labels = unique(conflict_subset$side_a)
+```
+
+
+```{r}
+graph <- graph.data.frame(conflict_subset)
+
+vn <- toVisNetworkData(graph)
+```
+
+
+
+```{r pressure, echo=FALSE}
+vn$nodes$color <- ifelse(vn$nodes$id %in% country_labels, "green","tomato")
+```
+
+
+```{r}
+vn$edges$title <- paste(vn$edges$territory_name, vn$edges$year, sep = " - ")
+vn$edges$color <- ifelse(vn$edges$incompatibility == 1, "lightcyan4",ifelse(vn$edges$incompatibility == 2,"orange","blue"))
+
+#vn$edges$weights <- rescale(vn$edges$weights, to = c(1, 5))
+```
+
+```{r}
+visNetwork(nodes = vn$nodes, edges = vn$edges, height = "1000px", width = "100%") %>%
+  visOptions(highlightNearest = TRUE) %>% 
+  visLegend(enabled = TRUE,position = 'right') %>%
+  visInteraction(multiselect = TRUE, navigationButtons=TRUE,dragNodes=TRUE,dragView=TRUE,zoomView=TRUE, hideEdgesOnZoom = TRUE, hideEdgesOnDrag = TRUE,hoverConnectedEdges = TRUE) %>%
+  visEdges(label = vn$edges$title, physics = FALSE,labelHighlightBold = TRUE, color = vn$edges$color) %>%
+  visNodes(shape = 'dot', label = vn$nodes$label, title = vn$nodes$id, labelHighlightBold = TRUE, borderWidth = 1.25, borderWidthSelected = 1.75)
+  
+  
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
