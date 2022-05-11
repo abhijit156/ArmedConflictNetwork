@@ -1,7 +1,7 @@
 ---
 title: "Network Structure"
 description: |
-  Implementing Assignment 2 on armed conflict dataset
+  Exploring structure of armed conflict dataset
 author:
   - name: Abhijit Mahishi
     url: {}
@@ -11,19 +11,53 @@ output:
     self_contained: false
 draft: false
 ---
+
 ```{r}
 library(igraph)
 library(stringr)
 library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
+
 ```
 
+# Assignment 2 tasks
+
+-   Describe network data size and attributes
+
+-   Analyze dyad and triad census
+
+-   Understand local/global transitivity of the network
+
+# Loading the dataset
+
+I have read in the dataset and subset it to only include observations and columns that will be important in **analyzing intrastate conflicts in the Asian subcontinent**.
+
+In the UCDP dataset, an intrastate conflict is defined as a conflict wherein one of the sides is the Government of a country and the other side is a rebel group or militant faction, without external support from any other country's Governments.
+
+The dataset is thus structured such that the first 2 columns are the 'from' nodes, which in this case are Governments of countries involved in the conflict, and 'to' nodes, which includes rebel groups and militant factions that the Governments had conflicts with, respectively. Numerical IDs of these variables can be dropped as they do not help in interpreting the analysis. Secondary parties in the conflicts can also be dropped, as intrastate conflicts do not involve any secondary power providing support to either side of the conflict.
+
+After carrying out basic pre-processing and subsetting of the data, I proceed to convert it into an edge list, to carry out my network based analysis.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-graph <- graph.data.frame(conflict)
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
 
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+
+```
+
+# Network structure and attributes
+
+The code used for understanding the network structure is as shown below
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
 vcount(graph)
 ecount(graph)
 
@@ -32,23 +66,89 @@ igraph::edge_attr_names(graph)
 igraph::vertex_attr_names(graph)
 igraph::edge_attr_names(graph)
 
-igraph::dyad.census(graph)
+```
+
+The edge list created from a the relevant subset of the conflict data results in a node count of 159 and edge count of 960. Each edge between a Government and a rebel group represents a conflict that caused at least 25 deaths in a calendar year (referred to as an 'episode' of conflict).
+
+Hence, the edge is labelled with the year of the conflict, as well as the territory of conflict, together constituting the 'episode'. This is an directed graph.
+
+# Dyad census and Triad census
+
+The code used for understanding the dyad and triad census is as shown below
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+igraph::dyad.census(graph) 
+
 igraph::triad.census(graph)
 
+is_directed(graph)
+is_weighted(graph)
+is_bipartite(graph)
+
+
+
+```
+
+Since it is a directed graph, there are no mutual edges, and all 960 edges are asymmetric. There are a total of 216976 null edges. The directed nature of the graph is also confirmed as shown above.
+
+# Transitivity and clustering
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
 transitivity(graph)
+
+```
+
+From the transitivity score of 0, it is clear that none of the connected triads are transitive, which is, none of the triads have all three links present between the nodes.
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+transitivity(graph, type="local",vids = V(graph)[c("Government of India","Government of China", "Government of Pakistan")])
+
+```
+
+On checking the local transitivity for 3 nodes (Government of India, Pakistan and China), it becomes clear that transitivity can not be computed for this network. The reason is that transitivity works only on undirected graphs. The package warning also mentions that the transitivity result is likely incorrect in case there are multiple edges between the same pair of vertices. Due to the structure of the conflict network, wherein there are very often multiple edges between the same 2 vertices denoting a new episode of the conflict, transitivity is not a useful metric for this network.
+
+# Path lengths
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+average.path.length(graph,directed=T)
+
+names(igraph::components(graph))
+igraph::components(graph)$no
+igraph::components(graph)$csize
+
+```
+
+After subsetting, this graph contains 12 components of varying sizes. The smallest component has a size of 2, and the largest component has 40 nodes.
+
+# Some network visualizations
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+m1 <- layout_nicely(graph)
+w1 <- E(graph)$names
+plot(graph, 
+        vertex.label.color = "blue", 
+        edge.color = 'black',
+        edge.width = w1,
+        layout = m1)
 ```
 
 ```{r}
-transitivity(climate.ig, type="global")
-##get average local clustering coefficient: igra
-transitivity(climate.ig, type="average")
+knitr::opts_chunk$set(echo = TRUE)
+vn <- toVisNetworkData(graph)
 
-distances(gotbook.ig,"Petyr Baelish","Robb Stark")
+visNetwork(nodes = vn$nodes, edges = vn$edges, height = "1000px", width = "100%") %>%
+  visOptions(highlightNearest = TRUE) %>% 
+  visLegend(enabled = TRUE,position = 'right') %>%
+  visInteraction(multiselect = TRUE, navigationButtons=TRUE,dragNodes=TRUE,dragView=TRUE,zoomView=TRUE, hideEdgesOnZoom = TRUE, hideEdgesOnDrag = TRUE,hoverConnectedEdges = TRUE) %>%
+  visEdges(label = vn$edges$title, physics = FALSE,labelHighlightBold = TRUE, color = vn$edges$color) %>%
+  visNodes(shape = 'dot', label = vn$nodes$label, title = vn$nodes$id, labelHighlightBold = TRUE, borderWidth = 1.25, borderWidthSelected = 1.75)
+  
 
-all_shortest_paths(gotbook.ig,"Bronn","Varys",weights=NA)$res
-
-average.path.length(gotbook.ig,directed=F)
-
-igraph::components(gotbook.ig)$no
-
-
+```
