@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Network Structure</title>
+
+  <meta property="description" itemprop="description" content="Exploring structure of armed conflict dataset"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-05-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-10"/>
+  <meta name="article:author" content="Abhijit Mahishi"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Network Structure"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Exploring structure of armed conflict dataset"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Network Structure"/>
+  <meta property="twitter:description" content="Exploring structure of armed conflict dataset"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Network Structure"]},{"type":"character","attributes":{},"value":["Exploring structure of armed conflict dataset\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Abhijit Mahishi"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["https://abhijit156.github.io/ArmedConflictNetwork/"]}},"value":[{"type":"NULL"}]}]}]},{"type":"character","attributes":{},"value":["2022-05-10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["network-structure_files/figure-html5/unnamed-chunk-7-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="network-structure_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="network-structure_files/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+  <link href="network-structure_files/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+  <script src="network-structure_files/vis-9.1.0/vis-network.min.js"></script>
+  <script src="network-structure_files/visNetwork-binding-2.1.0/visNetwork.js"></script>
+  <script src="network-structure_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="network-structure_files/popper-2.6.0/popper.min.js"></script>
+  <link href="network-structure_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="network-structure_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="network-structure_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="network-structure_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="network-structure_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="network-structure_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="network-structure_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Network Structure","description":"Exploring structure of armed conflict dataset","authors":[{"author":"Abhijit Mahishi","authorURL":{"https://abhijit156.github.io/ArmedConflictNetwork/":{}},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-10T00:00:00.000-04:00","citationText":"Mahishi, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Network Structure</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Exploring structure of armed conflict dataset</p></p>
+</div>
+
+<div class="d-byline">
+  Abhijit Mahishi true 
+  
+<br/>2022-05-10
+</div>
+
+<div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://igraph.org'>igraph</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://statnet.org/'>network</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://datastorm-open.github.io/visNetwork/'>visNetwork</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="assignment-2-tasks">Assignment 2 tasks</h1>
+<ul>
+<li><p>Describe network data size and attributes</p></li>
+<li><p>Analyze dyad and triad census</p></li>
+<li><p>Understand local/global transitivity of the network</p></li>
+</ul>
+<h1 id="loading-the-dataset">Loading the dataset</h1>
+<p>I have read in the dataset and subset it to only include observations
+and columns that will be important in <strong>analyzing intrastate
+conflicts in the Asian subcontinent</strong>.</p>
+<p>In the UCDP dataset, an intrastate conflict is defined as a conflict
+wherein one of the sides is the Government of a country and the other
+side is a rebel group or militant faction, without external support from
+any other country’s Governments.</p>
+<p>The dataset is thus structured such that the first 2 columns are the
+‘from’ nodes, which in this case are Governments of countries involved
+in the conflict, and ‘to’ nodes, which includes rebel groups and
+militant factions that the Governments had conflicts with, respectively.
+Numerical IDs of these variables can be dropped as they do not help in
+interpreting the analysis. Secondary parties in the conflicts can also
+be dropped, as intrastate conflicts do not involve any secondary power
+providing support to either side of the conflict.</p>
+<p>After carrying out basic pre-processing and subsetting of the data, I
+proceed to convert it into an edge list, to carry out my network based
+analysis.</p>
+<h1 id="network-structure-and-attributes">Network structure and
+attributes</h1>
+<p>The code used for understanding the network structure is as shown
+below</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/gorder.html'>vcount</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 159</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/gsize.html'>ecount</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 960</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/vertex_attr_names.html'>vertex_attr_names</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;name&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/edge_attr_names.html'>edge_attr_names</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;incompatibility&quot;  &quot;territory_name&quot;   &quot;year&quot;            
+ [4] &quot;intensity_level&quot;  &quot;type_of_conflict&quot; &quot;start_date&quot;      
+ [7] &quot;start_prec&quot;       &quot;start_date2&quot;      &quot;start_prec2&quot;     
+[10] &quot;dyad_id&quot;          &quot;conflict_id&quot;      &quot;location&quot;        </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/vertex_attr_names.html'>vertex_attr_names</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;name&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/edge_attr_names.html'>edge_attr_names</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;incompatibility&quot;  &quot;territory_name&quot;   &quot;year&quot;            
+ [4] &quot;intensity_level&quot;  &quot;type_of_conflict&quot; &quot;start_date&quot;      
+ [7] &quot;start_prec&quot;       &quot;start_date2&quot;      &quot;start_prec2&quot;     
+[10] &quot;dyad_id&quot;          &quot;conflict_id&quot;      &quot;location&quot;        </code></pre>
+</div>
+<p>The edge list created from a the relevant subset of the conflict data
+results in a node count of 159 and edge count of 960. Each edge between
+a Government and a rebel group represents a conflict that caused at
+least 25 deaths in a calendar year (referred to as an ‘episode’ of
+conflict).</p>
+<p>Hence, the edge is labelled with the year of the conflict, as well as
+the territory of conflict, together constituting the ‘episode’. This is
+an directed graph.</p>
+<h1 id="dyad-census-and-triad-census">Dyad census and Triad census</h1>
+<p>The code used for understanding the dyad and triad census is as shown
+below</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/dyad_census.html'>dyad.census</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>$mut
+[1] 0
+
+$asym
+[1] 960
+
+$null
+[1] 11601</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/triad_census.html'>triad.census</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] 635702   4804  15431   1413      9      0      0      0      0
+[10]      0      0      0      0      0      0      0</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/is_directed.html'>is_directed</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/is_weighted.html'>is_weighted</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_bipartite_graph.html'>is_bipartite</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] FALSE</code></pre>
+</div>
+<p>Since it is a directed graph, there are no mutual edges, and all 960
+edges are asymmetric. There are a total of 216976 null edges. The
+directed nature of the graph is also confirmed as shown above.</p>
+<h1 id="transitivity-and-clustering">Transitivity and clustering</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/transitivity.html'>transitivity</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0</code></pre>
+</div>
+<p>From the transitivity score of 0, it is clear that none of the
+connected triads are transitive, which is, none of the triads have all
+three links present between the nodes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/transitivity.html'>transitivity</a></span><span class='op'>(</span><span class='va'>graph</span>, type<span class='op'>=</span><span class='st'>"local"</span>,vids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Government of India"</span>,<span class='st'>"Government of China"</span>, <span class='st'>"Government of Pakistan"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0 0 0</code></pre>
+</div>
+<p>On checking the local transitivity for 3 nodes (Government of India,
+Pakistan and China), it becomes clear that transitivity can not be
+computed for this network. The reason is that transitivity works only on
+undirected graphs. The package warning also mentions that the
+transitivity result is likely incorrect in case there are multiple edges
+between the same pair of vertices. Due to the structure of the conflict
+network, wherein there are very often multiple edges between the same 2
+vertices denoting a new episode of the conflict, transitivity is not a
+useful metric for this network.</p>
+<h1 id="path-lengths">Path lengths</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/igraph/man/distances.html'>average.path.length</a></span><span class='op'>(</span><span class='va'>graph</span>,directed<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/components.html'>components</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;membership&quot; &quot;csize&quot;      &quot;no&quot;        </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/components.html'>components</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>no</span>
+</code></pre>
+</div>
+<pre><code>[1] 12</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/components.html'>components</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>csize</span>
+</code></pre>
+</div>
+<pre><code> [1] 40 41 33  4  6  8  4  2  3  3  5 10</code></pre>
+</div>
+<p>After subsetting, this graph contains 12 components of varying sizes.
+The smallest component has a size of 2, and the largest component has 40
+nodes.</p>
+<h1 id="some-network-visualizations">Some network visualizations</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='va'>m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/layout_nicely.html'>layout_nicely</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+<span class='va'>w1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/E.html'>E</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>names</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>graph</span>, 
+        vertex.label.color <span class='op'>=</span> <span class='st'>"blue"</span>, 
+        edge.color <span class='op'>=</span> <span class='st'>'black'</span>,
+        edge.width <span class='op'>=</span> <span class='va'>w1</span>,
+        layout <span class='op'>=</span> <span class='va'>m1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="network-structure_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>vn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visNetwork-igraph.html'>toVisNetworkData</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visNetwork.html'>visNetwork</a></span><span class='op'>(</span>nodes <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>nodes</span>, edges <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>edges</span>, height <span class='op'>=</span> <span class='st'>"1000px"</span>, width <span class='op'>=</span> <span class='st'>"100%"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visOptions.html'>visOptions</a></span><span class='op'>(</span>highlightNearest <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visLegend.html'>visLegend</a></span><span class='op'>(</span>enabled <span class='op'>=</span> <span class='cn'>TRUE</span>,position <span class='op'>=</span> <span class='st'>'right'</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visInteraction.html'>visInteraction</a></span><span class='op'>(</span>multiselect <span class='op'>=</span> <span class='cn'>TRUE</span>, navigationButtons<span class='op'>=</span><span class='cn'>TRUE</span>,dragNodes<span class='op'>=</span><span class='cn'>TRUE</span>,dragView<span class='op'>=</span><span class='cn'>TRUE</span>,zoomView<span class='op'>=</span><span class='cn'>TRUE</span>, hideEdgesOnZoom <span class='op'>=</span> <span class='cn'>TRUE</span>, hideEdgesOnDrag <span class='op'>=</span> <span class='cn'>TRUE</span>,hoverConnectedEdges <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visEdges.html'>visEdges</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>edges</span><span class='op'>$</span><span class='va'>title</span>, physics <span class='op'>=</span> <span class='cn'>FALSE</span>,labelHighlightBold <span class='op'>=</span> <span class='cn'>TRUE</span>, color <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>edges</span><span class='op'>$</span><span class='va'>color</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visNodes.html'>visNodes</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='st'>'dot'</span>, label <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>nodes</span><span class='op'>$</span><span class='va'>label</span>, title <span class='op'>=</span> <span class='va'>vn</span><span class='op'>$</span><span class='va'>nodes</span><span class='op'>$</span><span class='va'>id</span>, labelHighlightBold <span class='op'>=</span> <span class='cn'>TRUE</span>, borderWidth <span class='op'>=</span> <span class='fl'>1.25</span>, borderWidthSelected <span class='op'>=</span> <span class='fl'>1.75</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-d7985d48d72e11d4e800" style="width:100%;height:1000px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d7985d48d72e11d4e800">{"x":{"nodes":{"id":["Government of Pakistan","Government of Bangladesh","Government of Myanmar (Burma)","Government of Philippines","Government of India","Government of China","Government of Malaysia","Government of Tajikistan","Government of Hyderabad","Government of Cambodia (Kampuchea)","Government of Indonesia","Government of Thailand","Government of South Vietnam","Government of Laos","Government of Nepal","Government of Sri Lanka","Government of Afghanistan","Government of Papua New Guinea","Government of Uzbekistan","IMU","PBCP","NSCN-K","BIFM","NLFT-B","Lashkar-e-Islam","ULA","TTP - TA","UBA","CPI-ML-J","GNLA","SSPP","ETIM","PBCP-J","Sultanate of Sulu","Forces of Mullo Abdullo","CPI","NDFB-S","Jamaat-ul-Ahrar","PSLF","IS","UNLFW","Maute group","ARSA","al-Harakat al-Islamiyah","BIFM-K","Forces of Norodom Ranariddh","Military faction (Forces of Hun Sen)","BRAS","PLA","Huk","CPP","Military faction (forces of Honasan, Abenina & Zumel)","Taiwanese insurgents","KNUP","KNU","God's Army","DKBA 5","CPB","CPB-RF","PVO - \"White Band\" faction","ABSDF","APLP","Mujahid Party","ANLP","CPA","RPF","ALP","RSO","MFL-MUF","MPF","NMSP","BMA","CPI-ML","PWG","MCC","CPI-Maoist","PNDF","KIO","Tibet","Republic of South Moluccas","Military faction (navy)","CPT","Darul Islam","Permesta Movement","PRRI","FNL","NNC","NSCN-IM","KNPP","CPM","Pathet Lao","LRM","NSH","SSIA","SNUF","SSA","SSNLO","SURA","SSRA","TRC","MTA","RCSS","NC","CPN-M","CCO","OPM","MNF","KR","KPNLF","FUNCINPEC","MIM","MNLF","MILF","ASG","MNLF - NM","MNLF - HM","Mukti Bahini","JVP","JSS/SB","BLF","BLA","Baloch Ittehad","BRA","CNRT","PDPA","Jam'iyyat-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Wahdat","Military faction (forces of Shahnawaz Tanay)","Junbish-i Milli-yi Islami","Taleban","UIFSA","TNV","ATTF","NLFT","UNLF","KCP","PREPAK","Sikh insurgents","LTTE","TELO","EPRLF","Kashmir insurgents","ULFA","GAM","UTO","Forces of Khudoberdiyev","MQM","TTP","JIG","ABSU","NDFB","NDFB - RD","UWSA","Patani insurgents","PULF","MNDAA","LNUP"],"label":["Government of Pakistan","Government of Bangladesh","Government of Myanmar (Burma)","Government of Philippines","Government of India","Government of China","Government of Malaysia","Government of Tajikistan","Government of Hyderabad","Government of Cambodia (Kampuchea)","Government of Indonesia","Government of Thailand","Government of South Vietnam","Government of Laos","Government of Nepal","Government of Sri Lanka","Government of Afghanistan","Government of Papua New Guinea","Government of Uzbekistan","IMU","PBCP","NSCN-K","BIFM","NLFT-B","Lashkar-e-Islam","ULA","TTP - TA","UBA","CPI-ML-J","GNLA","SSPP","ETIM","PBCP-J","Sultanate of Sulu","Forces of Mullo Abdullo","CPI","NDFB-S","Jamaat-ul-Ahrar","PSLF","IS","UNLFW","Maute group","ARSA","al-Harakat al-Islamiyah","BIFM-K","Forces of Norodom Ranariddh","Military faction (Forces of Hun Sen)","BRAS","PLA","Huk","CPP","Military faction (forces of Honasan, Abenina & Zumel)","Taiwanese insurgents","KNUP","KNU","God's Army","DKBA 5","CPB","CPB-RF","PVO - \"White Band\" faction","ABSDF","APLP","Mujahid Party","ANLP","CPA","RPF","ALP","RSO","MFL-MUF","MPF","NMSP","BMA","CPI-ML","PWG","MCC","CPI-Maoist","PNDF","KIO","Tibet","Republic of South Moluccas","Military faction (navy)","CPT","Darul Islam","Permesta Movement","PRRI","FNL","NNC","NSCN-IM","KNPP","CPM","Pathet Lao","LRM","NSH","SSIA","SNUF","SSA","SSNLO","SURA","SSRA","TRC","MTA","RCSS","NC","CPN-M","CCO","OPM","MNF","KR","KPNLF","FUNCINPEC","MIM","MNLF","MILF","ASG","MNLF - NM","MNLF - HM","Mukti Bahini","JVP","JSS/SB","BLF","BLA","Baloch Ittehad","BRA","CNRT","PDPA","Jam'iyyat-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Wahdat","Military faction (forces of Shahnawaz Tanay)","Junbish-i Milli-yi Islami","Taleban","UIFSA","TNV","ATTF","NLFT","UNLF","KCP","PREPAK","Sikh insurgents","LTTE","TELO","EPRLF","Kashmir insurgents","ULFA","GAM","UTO","Forces of Khudoberdiyev","MQM","TTP","JIG","ABSU","NDFB","NDFB - RD","UWSA","Patani insurgents","PULF","MNDAA","LNUP"]},"edges":{"from":["Government of Pakistan","Government of Bangladesh","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of India","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Pakistan","Government of Pakistan","Government of India","Government of India","Government of India","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of China","Government of Bangladesh","Government of Bangladesh","Government of Malaysia","Government of Tajikistan","Government of Tajikistan","Government of Hyderabad","Government of Hyderabad","Government of India","Government of India","Government of Pakistan","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of India","Government of India","Government of India","Government of India","Government of Bangladesh","Government of Bangladesh","Government of Philippines","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Pakistan","Government of Pakistan","Government of China","Government of China","Government of China","Government of China","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of China","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of China","Government of China","Government of China","Government of Indonesia","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of South Vietnam","Government of South Vietnam","Government of South Vietnam","Government of South Vietnam","Government of South Vietnam","Government of South Vietnam","Government of South Vietnam","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Malaysia","Government of Malaysia","Government of Malaysia","Government of Laos","Government of Laos","Government of Laos","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Nepal","Government of Malaysia","Government of Malaysia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of India","Government of India","Government of India","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Cambodia (Kampuchea)","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Philippines","Government of Pakistan","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Bangladesh","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of Afghanistan","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of Sri Lanka","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Indonesia","Government of Papua New Guinea","Government of Papua New Guinea","Government of Papua New Guinea","Government of Papua New Guinea","Government of Papua New Guinea","Government of Papua New Guinea","Government of Tajikistan","Government of Tajikistan","Government of Tajikistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Pakistan","Government of Uzbekistan","Government of Uzbekistan","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of India","Government of Myanmar (Burma)","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of Thailand","Government of India","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Myanmar (Burma)","Government of Tajikistan","Government of Tajikistan"],"to":["IMU","PBCP","NSCN-K","NSCN-K","NSCN-K","NSCN-K","NSCN-K","NSCN-K","NSCN-K","BIFM","BIFM","BIFM","BIFM","BIFM","NLFT-B","Lashkar-e-Islam","Lashkar-e-Islam","Lashkar-e-Islam","Lashkar-e-Islam","Lashkar-e-Islam","ULA","ULA","ULA","TTP - TA","UBA","CPI-ML-J","GNLA","GNLA","SSPP","SSPP","SSPP","ETIM","PBCP-J","PBCP-J","Sultanate of Sulu","Forces of Mullo Abdullo","Forces of Mullo Abdullo","CPI","CPI","NDFB-S","NDFB-S","Jamaat-ul-Ahrar","PSLF","PSLF","PSLF","PSLF","PSLF","PSLF","IS","IS","IS","IS","UNLFW","UNLFW","UNLFW","UNLFW","IS","IS","Maute group","ARSA","ARSA","IS","IS","IS","IS","IS","al-Harakat al-Islamiyah","BIFM-K","Forces of Norodom Ranariddh","Forces of Norodom Ranariddh","Military faction (Forces of Hun Sen)","BRAS","BRAS","PLA","PLA","PLA","PLA","Huk","Huk","Huk","Huk","Huk","Huk","Huk","Huk","Huk","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","CPP","Military faction (forces of Honasan, Abenina & Zumel)","Military faction (forces of Honasan, Abenina & Zumel)","Military faction (forces of Honasan, Abenina & Zumel)","Taiwanese insurgents","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNUP","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","KNU","God's Army","DKBA 5","DKBA 5","DKBA 5","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB","CPB-RF","CPB-RF","CPB-RF","CPB-RF","PVO - \"White Band\" faction","PVO - \"White Band\" faction","PVO - \"White Band\" faction","PVO - \"White Band\" faction","PVO - \"White Band\" faction","PVO - \"White Band\" faction","ABSDF","ABSDF","ABSDF","ABSDF","APLP","APLP","APLP","APLP","APLP","APLP","APLP","APLP","APLP","APLP","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","Mujahid Party","ANLP","ANLP","ANLP","ANLP","ANLP","ANLP","ANLP","ANLP","ANLP","CPA","CPA","CPA","CPA","CPA","CPA","CPA","CPA","CPA","CPA","RPF","RPF","RPF","RPF","RPF","RPF","ALP","RSO","RSO","MFL-MUF","MFL-MUF","MFL-MUF","MPF","MPF","MPF","MPF","MPF","MPF","MPF","NMSP","NMSP","NMSP","NMSP","NMSP","NMSP","BMA","CPI","CPI","CPI","CPI","CPI-ML","CPI-ML","CPI-ML","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","PWG","MCC","MCC","MCC","MCC","MCC","MCC","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","CPI-Maoist","PNDF","PNDF","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","KIO","Tibet","Tibet","Tibet","Republic of South Moluccas","Military faction (navy)","CPT","CPT","CPT","CPT","CPT","CPT","CPT","CPT","CPT","Darul Islam","Darul Islam","Darul Islam","Darul Islam","Darul Islam","Permesta Movement","Permesta Movement","Permesta Movement","Permesta Movement","PRRI","PRRI","PRRI","PRRI","FNL","FNL","FNL","FNL","FNL","FNL","FNL","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NNC","NSCN-IM","NSCN-IM","NSCN-IM","NSCN-IM","NSCN-IM","NSCN-IM","NSCN-IM","KNPP","KNPP","KNPP","KNPP","KNPP","CPM","CPM","CPM","Pathet Lao","LRM","LRM","NSH","SSIA","SSIA","SNUF","SNUF","SSA","SSA","SSA","SSA","SSA","SSA","SSA","SSA","SSA","SSNLO","SSNLO","SURA","SURA","SURA","SURA","SURA","SURA","SURA","SURA","SURA","SURA","SSRA","TRC","MTA","MTA","MTA","MTA","MTA","MTA","MTA","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","RCSS","NC","NC","NC","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CPN-M","CCO","CCO","OPM","OPM","OPM","OPM","OPM","OPM","OPM","OPM","OPM","OPM","MNF","MNF","MNF","KR","KR","KR","KR","KR","KR","KR","KR","KR","KR","KR","KR","KPNLF","KPNLF","FUNCINPEC","MIM","MIM","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MNLF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","MILF","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","ASG","MNLF - NM","MNLF - NM","MNLF - NM","MNLF - HM","Mukti Bahini","JVP","JVP","JVP","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","JSS/SB","BLF","BLF","BLF","BLF","BLF","BLF","BLA","BLA","BLA","BLA","BLA","BLA","BLA","BLA","BLA","BLA","BLA","Baloch Ittehad","BRA","BRA","BRA","BRA","BRA","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","CNRT","PDPA","Jam'iyyat-i Islami-yi Afghanistan","Jam'iyyat-i Islami-yi Afghanistan","Jam'iyyat-i Islami-yi Afghanistan","Jam'iyyat-i Islami-yi Afghanistan","Jam'iyyat-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Wahdat","Hizb-i Wahdat","Hizb-i Wahdat","Hizb-i Wahdat","Hizb-i Wahdat","Hizb-i Wahdat","Military faction (forces of Shahnawaz Tanay)","Junbish-i Milli-yi Islami","Junbish-i Milli-yi Islami","Junbish-i Milli-yi Islami","Taleban","Taleban","UIFSA","UIFSA","UIFSA","UIFSA","UIFSA","TNV","TNV","TNV","TNV","TNV","TNV","TNV","TNV","TNV","TNV","ATTF","ATTF","NLFT","NLFT","NLFT","NLFT","NLFT","NLFT","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","PLA","UNLF","UNLF","UNLF","UNLF","UNLF","UNLF","UNLF","UNLF","UNLF","UNLF","KCP","KCP","PREPAK","PREPAK","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","Sikh insurgents","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","LTTE","TELO","TELO","EPRLF","EPRLF","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","Kashmir insurgents","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","ULFA","GAM","GAM","GAM","GAM","GAM","GAM","GAM","GAM","GAM","BRA","BRA","BRA","BRA","BRA","BRA","UTO","Forces of Khudoberdiyev","Forces of Khudoberdiyev","MQM","MQM","MQM","MQM","TTP","TTP","TTP","TTP","TTP","TTP","TTP","TTP","TTP","TTP","IMU","JIG","ABSU","ABSU","NDFB","NDFB","NDFB","NDFB","NDFB","NDFB","NDFB","NDFB","NDFB","NDFB - RD","NDFB - RD","UWSA","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","Patani insurgents","PULF","MNDAA","MNDAA","MNDAA","MNDAA","LNUP","LNUP","LNUP","LNUP","LNUP","LNUP","LNUP","LNUP","LNUP","LNUP","IMU","IMU"],"incompatibility":[2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,1,1,1,2,1,2,1,1,1,1,1,1,2,2,1,2,2,2,2,1,1,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2],"territory_name":["","","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Tripura","","","","","","Arakan","Arakan","Arakan","","Balochistan","","Garoland","Garoland","Shan","Shan","Shan","East Turkestan","","","Sabah","","","","","Bodoland","Bodoland","","","","","","","","Islamic State","Islamic State","Islamic State","Islamic State","Western South East Asia","Western South East Asia","Western South East Asia","Western South East Asia","Islamic State","Islamic State","Mindanao","Arakan","Arakan","Islamic State","Islamic State","Islamic State","Islamic State","Islamic State","Mindanao","Mindanao","","","","Balochistan","Balochistan","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","Taiwan","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","Karen","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Arakan","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","Mon","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Kachin","Tibet","Tibet","Tibet","South Moluccas","","","","","","","","","","","","","","","","","","","","","","","","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Nagaland","Karenni","Karenni","Karenni","Karenni","Karenni","","","","","","","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","Shan","","","","","","","","","","","","","","","North Borneo","North Borneo","West Papua","West Papua","West Papua","West Papua","West Papua","West Papua","West Papua","West Papua","West Papua","West Papua","Mizoram","Mizoram","Mizoram","","","","","","","","","","","","","","","","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","Mindanao","East Pakistan","","","","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Chittagong Hill Tracts","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","Balochistan","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","East Timor","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Tripura","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Manipur","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Punjab/Khalistan","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Eelam","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Kashmir","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Assam","Aceh","Aceh","Aceh","Aceh","Aceh","Aceh","Aceh","Aceh","Aceh","Bougainville","Bougainville","Bougainville","Bougainville","Bougainville","Bougainville","","","","","","","","","","","","","","","","","","","","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Bodoland","Wa","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Patani","Islamic State","Kokang","Kokang","Kokang","Kokang","Lahu","Lahu","Lahu","Lahu","Lahu","Lahu","Lahu","Lahu","Lahu","Lahu","",""],"year":[2014,2005,1991,1995,2000,2001,2005,2006,2007,2012,2013,2014,2015,2016,2004,2009,2010,2012,2013,2014,2018,2019,2020,2012,2016,2000,2012,2014,2011,2013,2015,2008,2005,2006,2013,2000,2010,1947,1948,2013,2014,2014,2013,2014,2015,2017,2018,2019,2016,2017,2018,2019,2015,2016,2017,2018,2016,2017,2016,2016,2017,2016,2017,2018,2019,2020,2016,2018,1997,1998,1997,2019,2020,1946,1947,1948,1949,1946,1947,1948,1949,1950,1951,1952,1953,1954,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1997,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1987,1989,1990,1947,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1994,1995,1997,1998,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2000,2010,2011,2013,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1948,1949,1950,1970,1948,1949,1950,1951,1952,1953,1990,1991,1992,1994,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1964,1965,1966,1967,1968,1969,1970,1971,1972,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1973,1974,1975,1976,1977,1978,1977,1991,1994,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1990,1996,1948,1949,1950,1951,1969,1970,1971,1991,1992,1993,1994,1996,1997,1998,1999,2000,2001,2002,2003,2004,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1949,1950,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,2011,2012,2013,2014,2015,2016,2017,2018,2019,1950,1956,1959,1950,1951,1974,1975,1976,1977,1978,1979,1980,1981,1982,1953,1958,1959,1960,1961,1958,1959,1960,1961,1958,1959,1960,1961,1955,1956,1957,1958,1959,1960,1961,1956,1957,1958,1959,1961,1962,1963,1964,1965,1966,1967,1968,1992,1993,1994,1995,1996,1997,2000,1957,1987,1992,1996,2005,1974,1975,1981,1959,1989,1990,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1972,1973,1969,1970,1969,1970,1976,1977,1978,1979,1980,1981,1982,1983,1976,1984,1985,1986,1987,1988,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2005,2006,2007,2008,2009,2010,2011,2013,1960,1961,1962,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,1963,1964,1965,1967,1968,1969,1976,1977,1978,1981,1984,2018,1966,1967,1968,1967,1968,1969,1990,1991,1992,1993,1994,1995,1996,1997,1998,1990,1991,1991,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1993,1990,1994,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2007,2008,2009,2011,2015,1993,1994,1995,1996,1997,1998,2000,2001,2002,2003,2004,2005,2006,2007,2009,2010,2011,2012,2013,2014,2015,2016,2018,2019,2020,2001,2005,2013,2007,1971,1971,1989,1990,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1974,1975,1976,1977,2012,2015,2004,2006,2007,2008,2009,2011,2012,2013,2014,2015,2016,2006,2008,2009,2012,2014,2015,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1992,1997,1998,1999,1978,1979,1990,1991,1992,1996,1990,1991,1992,1993,1994,1995,2002,2006,1990,1991,1990,1991,1992,1993,1994,1995,1990,1993,1994,1995,1995,1996,1996,1997,1998,1999,2000,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1992,1997,1997,1999,2000,2001,2002,2003,1982,1983,1984,1985,1986,1987,1988,1995,1996,1998,2000,2004,2006,1993,1994,1999,2000,2003,2004,2005,2006,2007,2009,2008,2009,2008,2009,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2003,2005,2006,2007,2008,2009,1984,1985,1985,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,1990,1991,1999,2000,2001,2002,2003,2004,2005,1990,1992,1993,1994,1995,1996,1998,1997,1998,1990,1994,1995,1996,2007,2008,2009,2010,2011,2012,2013,2014,2019,2020,1999,2004,1989,1990,1994,1996,1997,1998,1999,2001,2002,2003,2004,2009,2010,1997,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2008,2009,2014,2015,2017,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,2010,2011],"intensity_level":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,1,1,1,2,1,2,1,1,1,1,2,2,2,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,2,2,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,2,2,1,1,1,1,2,1,1,2,2,2,2,1,2,2,2,2,2,2,2,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type_of_conflict":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"start_date":["2013-05-12","1994-04-24","1991-12-31","1991-12-31","1991-12-31","1991-12-31","1991-12-31","1991-12-31","1991-12-31","2012-08-05","2012-08-05","2012-08-05","2012-08-05","2012-08-05","2003-11-22","2008-10-22","2008-10-22","2008-10-22","2008-10-22","2008-10-22","2015-03-29","2015-03-29","2015-03-29","2012-06-02","2012-10-08","1998-10-24","2010-06-27","2010-06-27","2006-11-22","2006-11-22","2006-11-22","1990-04-05","2004-01-15","2004-01-15","2013-03-01","2000-09-01","2000-09-01","1947-06-30","1947-06-30","2013-01-14","2013-01-14","2014-03-03","1994-05-02","1994-05-02","1994-05-02","1994-05-02","1994-05-02","1994-05-02","2016-02-12","2016-02-12","2016-02-12","2016-02-12","2015-04-19","2015-04-19","2015-04-19","2015-04-19","2015-11-04","2015-11-04","2016-02-22","2016-10-09","2016-10-09","2016-06-01","2016-06-01","2016-06-01","2016-06-01","2016-06-01","2016-01-19","2016-07-26","1997-07-08","1997-07-08","1997-07-05","2019-02-17","2019-02-17","1946-12-31","1946-12-31","1946-12-31","1946-12-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1987-01-27","1987-01-27","1987-01-27","1947-02-28","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1948-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","2000-01-27","2010-08-05","2010-08-05","2010-08-05","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-05-31","1948-02-29","1948-02-29","1948-02-29","1948-02-29","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1990-12-31","1990-12-31","1990-12-31","1990-12-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1948-07-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1977-06-01","1991-12-26","1991-12-26","1948-12-31","1948-12-31","1948-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1959-12-31","1959-12-31","1959-12-31","1959-12-31","1959-12-31","1959-12-31","1996-12-23","1948-05-01","1948-05-01","1948-05-01","1948-05-01","1969-05-27","1969-05-27","1969-05-27","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1987-07-29","1992-02-12","1992-02-12","1992-02-12","1992-02-12","1992-02-12","1992-02-12","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","2004-11-20","1949-12-31","1949-12-31","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1950-10-07","1950-10-07","1950-10-07","1950-08-05","1951-06-30","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1953-12-31","1953-12-31","1953-12-31","1953-12-31","1953-12-31","1958-04-02","1958-04-02","1958-04-02","1958-04-02","1958-03-07","1958-03-07","1958-03-07","1958-03-07","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1955-07-20","1982-08-24","1982-08-24","1982-08-24","1982-08-24","1982-08-24","1982-08-24","1982-08-24","1957-12-31","1957-12-31","1957-12-31","1957-12-31","1957-12-31","1957-12-31","1957-12-31","1957-12-31","1959-11-12","1989-08-25","1989-08-25","1959-11-22","1960-07-31","1960-07-31","1962-12-31","1962-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1976-08-31","1984-04-30","1985-12-31","1985-12-31","1985-12-31","1985-12-31","1985-12-31","1985-12-31","1985-12-31","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1996-09-28","1960-02-29","1960-02-29","1960-02-29","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1996-02-25","1963-12-31","1963-12-31","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1965-07-28","1966-09-01","1966-09-01","1966-09-01","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1967-04-30","1979-11-30","1979-11-30","1982-12-31","1970-08-20","1970-08-20","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1972-10-31","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1990-02-01","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","1993-05-03","2001-11-19","2001-11-19","2001-11-19","2007-04-13","1971-03-26","1971-04-05","1971-04-05","1971-04-05","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1973-05-18","1973-05-18","1973-05-18","1973-05-18","1973-05-18","1973-05-18","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2004-06-25","2006-01-12","2007-08-25","2007-08-25","2007-08-25","2007-08-25","2007-08-25","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1978-04-27","1975-07-02","1975-07-02","1975-07-02","1975-07-02","1975-07-02","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-12-31","1980-12-31","1989-07-12","1989-07-12","1989-07-12","1989-07-12","1989-07-12","1989-07-12","1990-03-06","1993-03-08","1993-03-08","1993-03-08","1995-02-18","1995-02-18","1996-10-11","1996-10-11","1996-10-11","1996-10-11","1996-10-11","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1979-07-09","1992-10-04","1992-10-04","1992-10-11","1992-10-11","1992-10-11","1992-10-11","1992-10-11","1992-10-11","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1979-04-26","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1993-08-29","1985-11-12","1985-11-12","1980-07-23","1980-07-23","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1981-09-20","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1975-07-27","1978-05-06","1978-05-06","1985-05-04","1985-05-04","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1984-02-06","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-05-02","1989-04-06","1989-04-06","1989-04-06","1989-04-06","1989-04-06","1989-04-06","1992-05-05","1997-06-17","1997-06-17","1990-02-11","1990-02-11","1990-02-11","1990-02-11","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","2007-07-04","1999-02-16","2004-03-29","1989-02-16","1989-02-16","1992-10-08","1992-10-08","1992-10-08","1992-10-08","1992-10-08","1992-10-08","1992-10-08","1992-10-08","1992-10-08","2009-01-03","2009-01-03","1997-03-16","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","1965-12-31","2000-06-20","2009-08-27","2009-08-27","2009-08-27","2009-08-27","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","1973-01-11","2005-01-31","2005-01-31"],"start_prec":[1,1,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,7,7,7,7,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,1,1,3,3,3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,6,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,6,6,6,6,6,5,5,5,1,1,1,1,3,3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,1,1,1,1,1,1,1,1,1,1,1,7,7,1,1,1,1,1,1,1,1,1,1,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,6,6,6,6,3,3,3,3,3,3,3,3,5,5,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,1,1],"start_date2":["2014-06-15","2005-07-09","1991-12-31","1995-04-17","2000-02-28","2000-02-28","2005-01-31","2005-01-31","2005-01-31","2012-08-08","2012-08-08","2012-08-08","2012-08-08","2012-08-08","2004-12-28","2009-07-01","2009-07-01","2012-02-18","2012-02-18","2012-02-18","2018-12-16","2018-12-16","2018-12-16","2012-06-04","2016-04-09","2000-08-25","2012-11-15","2014-11-20","2011-03-21","2013-02-22","2015-10-31","2008-08-10","2005-10-26","2005-10-26","2013-03-02","2000-09-06","2010-09-19","1947-06-30","1947-06-30","2013-12-11","2013-12-11","2014-03-14","2013-11-15","2013-11-15","2013-11-15","2017-04-29","2017-04-29","2017-04-29","2016-10-24","2016-10-24","2016-10-24","2016-10-24","2015-06-04","2015-06-04","2015-06-04","2015-06-04","2016-08-29","2016-08-29","2016-02-25","2016-10-12","2016-10-12","2016-06-01","2016-06-01","2016-06-01","2016-06-01","2016-06-01","2016-04-09","2018-07-06","1997-08-20","1997-08-20","1997-07-06","2019-05-11","2019-05-11","1946-12-31","1946-12-31","1946-12-31","1946-12-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1946-07-31","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1969-09-30","1997-11-23","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1999-06-06","1987-08-29","1989-12-02","1989-12-02","1947-02-28","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1949-01-15","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1966-12-31","1994-12-31","1994-12-31","1997-02-23","1997-02-23","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-11-02","2000-12-31","2010-11-28","2010-11-28","2013-04-29","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-02-29","1948-02-29","1948-02-29","1970-12-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1990-12-31","1990-12-31","1990-12-31","1994-12-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-01-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1948-08-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1973-12-31","1977-06-01","1991-12-29","1994-05-15","1949-02-28","1949-02-28","1949-02-28","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1952-12-31","1959-12-31","1959-12-31","1959-12-31","1959-12-31","1959-12-31","1990-02-13","1996-12-23","1948-09-18","1948-09-18","1948-09-18","1948-09-18","1969-12-31","1969-12-31","1969-12-31","1991-07-16","1991-07-16","1991-07-16","1991-07-16","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1996-04-03","1999-09-18","1999-09-18","1999-09-18","1999-09-18","1999-09-18","1999-09-18","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","2005-01-30","1949-12-31","1949-12-31","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","1961-02-28","2011-06-27","2011-06-27","2011-06-27","2011-06-27","2011-06-27","2011-06-27","2011-06-27","2011-06-27","2011-06-27","1950-10-07","1956-05-31","1959-03-10","1950-08-05","1951-06-30","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1974-10-31","1953-12-31","1958-12-31","1958-12-31","1958-12-31","1958-12-31","1958-05-07","1958-05-07","1958-05-07","1958-05-07","1958-04-17","1958-04-17","1958-04-17","1958-04-17","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1955-04-30","1956-12-31","1956-12-31","1956-12-31","1956-12-31","1961-12-31","1961-12-31","1961-12-31","1961-12-31","1961-12-31","1961-12-31","1961-12-31","1961-12-31","1992-08-05","1992-08-05","1992-08-05","1992-08-05","1992-08-05","1992-08-05","2000-09-13","1957-12-31","1987-12-31","1992-09-22","1996-03-06","2005-01-16","1974-01-15","1974-01-15","1981-12-31","1959-11-12","1989-08-25","1989-08-25","1959-11-22","1960-12-31","1960-12-31","1962-12-31","1962-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1964-12-31","1972-12-31","1972-12-31","1969-12-31","1969-12-31","1969-12-31","1969-12-31","1976-12-31","1976-12-31","1976-12-31","1976-12-31","1976-12-31","1976-12-31","1976-12-31","1976-12-31","1976-08-31","1984-04-30","1985-12-31","1985-12-31","1985-12-31","1985-12-31","1993-07-16","1993-07-16","1993-07-16","1996-12-31","1996-12-31","1996-12-31","1996-12-31","1996-12-31","1996-12-31","1996-12-31","2005-12-27","2005-12-27","2005-12-27","2005-12-27","2005-12-27","2005-12-27","2005-12-27","2013-08-22","1960-02-29","1960-02-29","1960-02-29","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1996-08-23","1963-12-31","1963-12-31","1965-07-28","1967-12-31","1967-12-31","1967-12-31","1976-12-31","1976-12-31","1976-12-31","1981-12-31","1984-12-31","2018-12-02","1966-09-01","1966-09-01","1966-09-01","1967-05-31","1967-05-31","1967-05-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-11-30","1979-11-30","1991-05-01","1970-08-20","1970-08-20","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1972-12-31","1993-02-09","1990-02-02","1994-10-16","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","1996-04-06","2007-03-06","2007-03-06","2007-03-06","2011-10-18","2015-01-25","1993-05-07","1993-05-07","1993-05-07","1993-05-07","1993-05-07","1993-05-07","2000-04-23","2000-04-23","2000-04-23","2000-04-23","2000-04-23","2000-04-23","2000-04-23","2000-04-23","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2009-05-11","2001-11-19","2005-02-16","2013-09-13","2007-05-08","1971-03-26","1971-04-30","1989-02-13","1989-02-13","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1975-02-28","1974-12-31","1974-12-31","1974-12-31","1974-12-31","2012-12-23","2015-04-13","2004-08-01","2006-05-11","2006-05-11","2006-05-11","2006-05-11","2011-10-23","2011-10-23","2011-10-23","2011-10-23","2011-10-23","2011-10-23","2006-07-05","2008-07-20","2008-07-20","2012-03-01","2014-06-05","2014-06-05","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1975-12-07","1992-12-15","1997-05-31","1997-05-31","1997-05-31","1978-04-27","1979-03-20","1979-03-20","1979-03-20","1979-03-20","1996-10-05","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","1980-03-31","2002-09-05","2006-08-24","1980-12-31","1980-12-31","1989-12-31","1989-12-31","1989-12-31","1989-12-31","1989-12-31","1989-12-31","1990-03-06","1993-09-26","1993-09-26","1993-09-26","1995-03-11","1995-03-11","1996-10-12","1996-10-12","1996-10-12","1996-10-12","1996-10-12","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1979-12-31","1992-10-12","1997-11-07","1997-06-10","1999-11-22","1999-11-22","1999-11-22","1999-11-22","1999-11-22","1982-07-31","1982-07-31","1982-07-31","1982-07-31","1982-07-31","1982-07-31","1982-07-31","1995-12-31","1995-12-31","1998-12-31","2000-11-22","2004-12-10","2006-05-17","1993-12-31","1993-12-31","1999-10-03","1999-10-03","2003-10-23","2003-10-23","2003-10-23","2003-10-23","2003-10-23","2009-11-23","2008-10-08","2008-10-08","2008-09-30","2008-09-30","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1983-12-31","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","1984-09-01","2003-06-14","2005-12-02","2005-12-02","2005-12-02","2005-12-02","2005-12-02","1984-11-20","1984-11-20","1985-05-04","1989-11-17","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-02-12","1990-11-30","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1994-12-31","1990-06-06","1990-06-06","1999-06-01","1999-06-01","1999-06-01","1999-06-01","1999-06-01","1999-06-01","1999-06-01","1990-02-07","1992-08-02","1992-08-02","1992-08-02","1992-08-02","1992-08-02","1998-03-24","1997-08-30","1997-08-30","1990-02-11","1994-05-03","1994-05-03","1994-05-03","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","2007-07-15","1999-03-30","2004-03-30","1989-03-16","1989-03-16","1994-07-23","1996-10-28","1996-10-28","1996-10-28","1996-10-28","2001-08-04","2001-08-04","2001-08-04","2001-08-04","2009-06-12","2009-06-12","1997-03-16","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2003-10-27","2008-12-22","2009-08-29","2014-12-22","2014-12-22","2017-03-06","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","1973-02-28","2010-09-09","2010-09-09"],"start_prec2":[1,1,3,3,3,3,3,3,3,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,3,1,3,1,1,1,1,3,1,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,7,7,7,7,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,3,5,3,3,3,5,5,5,5,5,5,5,5,5,5,5,5,3,5,2,2,2,2,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,6,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,5,1,1,1,4,4,4,4,4,4,4,4,4,5,5,5,5,5,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,6,5,1,2,1,2,2,5,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,5,5,5,5,3,3,3,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,4,4,4,1,1,1,1,1,1,1,1,1,1,1,7,7,1,5,5,5,5,5,5,5,5,2,2,2,2,3,3,3,5,5,5,5,5,5,5,5,5,3,3,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,1,3,2,1,1,2,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,2,2,2,1,3,3,3,3,3,3,1,1,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,3,3,3,3,3,3,3,5,5,5,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,5,5,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,2,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,5,5,1,4,4,4,4,4,4,4,4,4,4,2,2],"dyad_id":[10961,10985,11018,11018,11018,11018,11018,11018,11018,11246,11246,11246,11246,11246,11299,11336,11336,11336,11336,11336,11387,11387,11387,11497,11521,11932,11971,11971,11972,11972,11972,11990,11991,11991,12139,12300,12300,12618,12618,14102,14102,14227,14273,14273,14273,14273,14273,14273,14319,14319,14319,14319,14685,14685,14685,14685,14718,14718,14913,15069,15069,15473,15473,15473,15473,15473,15474,15475,15800,15800,15801,16177,16177,403,403,403,403,410,410,410,410,410,410,410,410,410,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,411,412,412,412,421,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,427,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,428,429,430,430,430,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,431,432,432,432,432,433,433,433,433,433,433,434,434,434,434,435,435,435,435,435,435,435,435,435,435,436,436,436,436,436,436,436,436,436,436,436,436,436,436,437,437,437,437,437,437,437,437,437,438,438,438,438,438,438,438,438,438,438,439,439,439,439,439,439,440,442,442,443,443,443,444,444,444,444,444,444,444,445,445,445,445,445,445,446,449,449,449,449,450,450,450,451,451,451,451,451,451,451,451,451,451,451,451,451,452,452,452,452,452,452,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,460,460,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,461,483,483,483,484,487,488,488,488,488,488,488,488,488,488,492,492,492,492,492,493,493,493,493,494,494,494,494,505,505,505,505,505,505,505,507,507,507,507,507,507,507,507,507,507,507,507,508,508,508,508,508,508,508,511,511,511,511,511,534,534,534,535,537,537,541,542,542,543,543,544,544,544,544,544,544,544,544,544,545,545,546,546,546,546,546,546,546,546,546,546,547,548,549,549,549,549,549,549,549,550,550,550,550,550,550,550,550,550,550,550,550,550,550,550,561,561,561,562,562,562,562,562,562,562,562,562,562,562,578,578,628,628,628,628,628,628,628,628,628,628,638,638,638,644,644,644,644,644,644,644,644,644,644,644,644,646,646,647,655,655,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,656,657,657,657,657,657,657,657,657,657,657,657,657,657,657,657,657,657,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,658,659,659,659,660,673,674,674,674,705,705,705,705,705,705,705,705,705,705,705,705,705,705,705,705,705,708,708,708,708,708,708,709,709,709,709,709,709,709,709,709,709,709,710,711,711,711,711,711,720,720,720,720,720,720,720,720,720,720,720,720,720,720,720,720,720,720,723,724,724,724,724,724,726,726,726,726,726,726,726,726,727,727,732,732,732,732,732,732,733,734,734,734,735,735,736,736,736,736,736,738,738,738,738,738,738,738,738,738,738,739,739,740,740,740,740,740,740,768,768,768,768,768,768,768,768,768,768,768,768,768,769,769,769,769,769,769,769,769,769,769,770,770,771,771,775,775,775,775,775,775,775,775,775,775,775,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,776,777,777,778,778,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,792,793,793,793,793,793,793,793,793,793,793,793,793,793,793,793,793,793,793,794,794,794,794,794,794,794,794,794,797,797,797,797,797,797,842,843,843,855,855,855,855,857,857,857,857,857,857,857,857,857,857,871,872,884,884,885,885,885,885,885,885,885,885,885,886,886,887,888,888,888,888,888,888,888,888,888,888,888,888,888,888,888,888,888,888,901,906,906,906,906,907,907,907,907,907,907,907,907,907,907,908,908],"conflict_id":[404,11350,11475,11475,11475,11475,11475,11475,11475,308,308,308,308,308,335,404,404,404,404,404,223,223,223,404,325,227,11342,11342,264,264,264,11349,11350,11350,11487,395,395,11884,11884,421,421,404,222,222,222,222,222,222,13936,13936,13936,13936,13653,13653,13653,13653,13674,13674,308,223,223,14275,14275,14275,14275,14275,308,308,300,300,300,325,325,202,202,202,202,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,217,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,224,224,224,224,224,224,224,224,224,224,224,224,224,224,224,224,224,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,236,236,236,237,240,240,240,240,240,240,240,240,240,240,243,243,243,243,243,243,243,243,243,243,243,243,243,249,249,249,249,249,249,249,251,251,251,251,251,251,251,251,251,251,251,251,251,251,251,251,251,251,251,253,253,253,253,253,261,261,261,262,262,262,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264,269,269,269,269,269,269,269,269,269,269,269,269,269,269,280,280,291,291,291,291,291,291,291,291,291,291,296,296,296,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,308,312,313,313,313,322,322,322,322,322,322,322,322,322,322,322,322,322,322,322,322,322,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325,330,330,330,330,330,330,330,330,330,330,330,330,330,330,330,330,330,330,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,347,351,351,351,351,351,351,351,351,351,351,351,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,352,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,364,365,365,365,365,365,365,365,365,365,365,365,365,365,365,365,365,365,365,366,366,366,366,366,366,366,366,366,369,369,369,369,369,369,395,395,395,404,404,404,404,404,404,404,404,404,404,404,404,404,404,415,415,421,421,421,421,421,421,421,421,421,421,421,421,421,422,423,423,423,423,423,423,423,423,423,423,423,423,423,423,423,423,423,423,434,439,439,439,439,440,440,440,440,440,440,440,440,440,440,395,395],"location":["Pakistan","Bangladesh","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Philippines","Philippines","Philippines","Philippines","Philippines","India","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Pakistan","Pakistan","India","India","India","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","China","Bangladesh","Bangladesh","Malaysia","Tajikistan","Tajikistan","Hyderabad","Hyderabad","India","India","Pakistan","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Pakistan","Pakistan","Pakistan","Pakistan","India","India","India","India","Bangladesh","Bangladesh","Philippines","Myanmar (Burma)","Myanmar (Burma)","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Pakistan","Pakistan","China","China","China","China","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","China","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","China","China","China","Indonesia","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","South Vietnam","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Malaysia","Malaysia","Malaysia","Laos","Laos","Laos","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Nepal","Malaysia","Malaysia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","India","India","India","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Cambodia (Kampuchea)","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Philippines","Pakistan","Sri Lanka","Sri Lanka","Sri Lanka","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Bangladesh","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","Afghanistan","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","Sri Lanka","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","India","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Indonesia","Papua New Guinea","Papua New Guinea","Papua New Guinea","Papua New Guinea","Papua New Guinea","Papua New Guinea","Tajikistan","Tajikistan","Tajikistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Pakistan","Uzbekistan","Uzbekistan","India","India","India","India","India","India","India","India","India","India","India","India","India","Myanmar (Burma)","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","Thailand","India","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Myanmar (Burma)","Tajikistan","Tajikistan"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","title":["Government of Pakistan","Government of Bangladesh","Government of Myanmar (Burma)","Government of Philippines","Government of India","Government of China","Government of Malaysia","Government of Tajikistan","Government of Hyderabad","Government of Cambodia (Kampuchea)","Government of Indonesia","Government of Thailand","Government of South Vietnam","Government of Laos","Government of Nepal","Government of Sri Lanka","Government of Afghanistan","Government of Papua New Guinea","Government of Uzbekistan","IMU","PBCP","NSCN-K","BIFM","NLFT-B","Lashkar-e-Islam","ULA","TTP - TA","UBA","CPI-ML-J","GNLA","SSPP","ETIM","PBCP-J","Sultanate of Sulu","Forces of Mullo Abdullo","CPI","NDFB-S","Jamaat-ul-Ahrar","PSLF","IS","UNLFW","Maute group","ARSA","al-Harakat al-Islamiyah","BIFM-K","Forces of Norodom Ranariddh","Military faction (Forces of Hun Sen)","BRAS","PLA","Huk","CPP","Military faction (forces of Honasan, Abenina & Zumel)","Taiwanese insurgents","KNUP","KNU","God's Army","DKBA 5","CPB","CPB-RF","PVO - \"White Band\" faction","ABSDF","APLP","Mujahid Party","ANLP","CPA","RPF","ALP","RSO","MFL-MUF","MPF","NMSP","BMA","CPI-ML","PWG","MCC","CPI-Maoist","PNDF","KIO","Tibet","Republic of South Moluccas","Military faction (navy)","CPT","Darul Islam","Permesta Movement","PRRI","FNL","NNC","NSCN-IM","KNPP","CPM","Pathet Lao","LRM","NSH","SSIA","SNUF","SSA","SSNLO","SURA","SSRA","TRC","MTA","RCSS","NC","CPN-M","CCO","OPM","MNF","KR","KPNLF","FUNCINPEC","MIM","MNLF","MILF","ASG","MNLF - NM","MNLF - HM","Mukti Bahini","JVP","JSS/SB","BLF","BLA","Baloch Ittehad","BRA","CNRT","PDPA","Jam'iyyat-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Wahdat","Military faction (forces of Shahnawaz Tanay)","Junbish-i Milli-yi Islami","Taleban","UIFSA","TNV","ATTF","NLFT","UNLF","KCP","PREPAK","Sikh insurgents","LTTE","TELO","EPRLF","Kashmir insurgents","ULFA","GAM","UTO","Forces of Khudoberdiyev","MQM","TTP","JIG","ABSU","NDFB","NDFB - RD","UWSA","Patani insurgents","PULF","MNDAA","LNUP"],"label":["Government of Pakistan","Government of Bangladesh","Government of Myanmar (Burma)","Government of Philippines","Government of India","Government of China","Government of Malaysia","Government of Tajikistan","Government of Hyderabad","Government of Cambodia (Kampuchea)","Government of Indonesia","Government of Thailand","Government of South Vietnam","Government of Laos","Government of Nepal","Government of Sri Lanka","Government of Afghanistan","Government of Papua New Guinea","Government of Uzbekistan","IMU","PBCP","NSCN-K","BIFM","NLFT-B","Lashkar-e-Islam","ULA","TTP - TA","UBA","CPI-ML-J","GNLA","SSPP","ETIM","PBCP-J","Sultanate of Sulu","Forces of Mullo Abdullo","CPI","NDFB-S","Jamaat-ul-Ahrar","PSLF","IS","UNLFW","Maute group","ARSA","al-Harakat al-Islamiyah","BIFM-K","Forces of Norodom Ranariddh","Military faction (Forces of Hun Sen)","BRAS","PLA","Huk","CPP","Military faction (forces of Honasan, Abenina & Zumel)","Taiwanese insurgents","KNUP","KNU","God's Army","DKBA 5","CPB","CPB-RF","PVO - \"White Band\" faction","ABSDF","APLP","Mujahid Party","ANLP","CPA","RPF","ALP","RSO","MFL-MUF","MPF","NMSP","BMA","CPI-ML","PWG","MCC","CPI-Maoist","PNDF","KIO","Tibet","Republic of South Moluccas","Military faction (navy)","CPT","Darul Islam","Permesta Movement","PRRI","FNL","NNC","NSCN-IM","KNPP","CPM","Pathet Lao","LRM","NSH","SSIA","SNUF","SSA","SSNLO","SURA","SSRA","TRC","MTA","RCSS","NC","CPN-M","CCO","OPM","MNF","KR","KPNLF","FUNCINPEC","MIM","MNLF","MILF","ASG","MNLF - NM","MNLF - HM","Mukti Bahini","JVP","JSS/SB","BLF","BLA","Baloch Ittehad","BRA","CNRT","PDPA","Jam'iyyat-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan","Hizb-i Islami-yi Afghanistan - Khalis faction","Hizb-i Wahdat","Military faction (forces of Shahnawaz Tanay)","Junbish-i Milli-yi Islami","Taleban","UIFSA","TNV","ATTF","NLFT","UNLF","KCP","PREPAK","Sikh insurgents","LTTE","TELO","EPRLF","Kashmir insurgents","ULFA","GAM","UTO","Forces of Khudoberdiyev","MQM","TTP","JIG","ABSU","NDFB","NDFB - RD","UWSA","Patani insurgents","PULF","MNDAA","LNUP"],"borderWidth":1.25,"borderWidthSelected":1.75,"labelHighlightBold":true},"manipulation":{"enabled":false},"interaction":{"dragNodes":true,"dragView":true,"hideEdgesOnDrag":true,"hideEdgesOnZoom":true,"hoverConnectedEdges":true,"multiselect":true,"navigationButtons":true,"zoomView":true,"zoomSpeed":1},"edges":{"physics":false,"labelHighlightBold":true}},"groups":null,"width":"100%","height":"1000px","idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":true,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

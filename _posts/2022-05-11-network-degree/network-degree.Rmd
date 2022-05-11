@@ -1,41 +1,93 @@
 ---
 title: "Network Degree"
 description: |
-  A short description of the post.
+    Exploring network degree of armed conflict dataset
 author:
   - name: Abhijit Mahishi
-    url: {}
+    url: {https://abhijit156.github.io/}
 date: 2022-05-11
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+draft: false
 ---
 
+# Assignment 3 description
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+-   Identify network format
 
-Distill is a publication format for scientific and technical writing, native to the web.
+-   Describe and identify nodes and edges
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+-   Provide statistics related to centrality and degree
+
+-   Interpret network density and centralization measures
 
 ```{r}
-graph.density(climate.ig)
+knitr::opts_chunk$set(echo = FALSE)
 
-graph.density(climate.ig, loops=TRUE)
+library(igraph)
+library(stringr)
+library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
 
-igraph::degree(climate.ig)
+```
 
-igraph::degree(climate.ig,mode="in", loops = FALSE)
-igraph::degree(climate.ig,mode="out", loops = FALSE)```
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
 
-climate.nodes<-climate.nodes %>%
-mutate(indegree=igraph::degree(climate.ig, mode="in",loops=FALSE),
-outdegree=igraph::degree(climate.ig, mode="out",loops=FALSE))
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-hist(climate.nodes$indegree, main="Climate Influence: In-degree Distribution", xlab="Nominations Received")
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
 
-hist(climate.nodes$outdegree, main="Climate Influence: Out-degree
-Distribution ", xlab="Nominations made")
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+```
+
+# Checking density of network
+
+The code for checking the density of our network is as shown. The argument 'loops' is set to false because it is not possible for a Government or party to be involved in conflict with itself
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+graph.density(graph, loops=FALSE)
+
+```
+
+The graph density value indicates that \~3.8% of all possible ties in the network are completed.
+
+# Degree
+
+Now, the objective is to find the degree of each node. The degree of a node indicates its centrality or popularity in the network. In this case, a high degree would signify the country being involved in a higher number of conflicts.
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+graph.nodes<-data.frame(name=V(graph)$name,
+degree=igraph::degree(graph))
+
+graph.nodes<-graph.nodes %>%
+mutate(indegree=igraph::degree(graph, mode="in",loops=FALSE),
+outdegree=igraph::degree(graph, mode="out",loops=FALSE))
+
+
+```
+
+# In-degree and out-degree histograms
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+hist(graph.nodes$indegree, main="Conflicts: In-degree Distribution", xlab="Number of conflict episodes")
+
+```
+
+```{r}
+hist(graph.nodes$outdegree, main="Climate Influence: Out-degree Distribution ", xlab="Number of conflict episodes")
+```
+
+Due to the structure of this network, the Governments involved in the conflict have outgoing edges, while rebel groups involved in conflict with the Government have incoming edges. Hence, all the outdegree numbers are from the Government side, which signifies the number of different rebel groups the particular Government had to fight - while all the indegree numbers refer to rebel groups, which signifies the number of Governments fought by the rebel group. Since the number of rebel groups is much higher than number of Governments, the histograms values for indegree and outdegree are skewed towards that of the rebel groups. For example, out-degrees are concentrated around 0 since all rebel groups have values only for in-degrees, and hence have 0 out-degree. The in-degree histogram shows more variation as it captures the in-degree of all rebel groups.

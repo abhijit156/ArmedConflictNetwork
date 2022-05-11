@@ -14,7 +14,7 @@ draft: true
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 flomarr.se<-equiv.clust(flomarr.stat, equiv.fun="sedist", method="hamming",mode="graph")
 plot(flomarr.se,labels=flomarr.se$glabels)
 
