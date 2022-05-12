@@ -1,57 +1,78 @@
 ---
 title: "Network Status"
 description: |
-  A short description of the post.
+  Exploring network status of armed conflict dataset
 author:
   - name: Abhijit Mahishi
-    url: {}
+    url: {https://abhijit156.github.io/}
 date: 2022-05-11
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+draft: false
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
+
 library(igraph)
 library(stringr)
 library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
+library(corrr)
+
 ```
 
 Distill is a publication format for scientific and technical writing, native to the web.
 
 Learn more about using Distill at <https://rstudio.github.io/distill>.
-
 ```{r}
-temp<-centr_eigen(imf2014.ig,directed=T)
-length(temp$vector)
+knitr::opts_chunk$set(echo = FALSE)
 
-head(power_centrality(imf2014.ig))
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-gotlike.nodes$bonpow<-power_centrality(gotlike.ig)
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+```
+
+# Calculating Eigen centrality and Bonacich Power centrality
+```{r}
+temp<-igraph::centr_eigen(graph,directed=T)
+graph.nodes$eigen = temp$vector
+
+head(power_centrality(graph))
+
+graph.nodes$bonpow<-power_centrality(graph)
 #arrange descending and return top 5 nodes
-arrange(gotlike.nodes, desc(bonpow)) %>%
+arrange(graph.nodes, desc(bonpow)) %>%
 slice(1:5)
 ```
+Since the graph is directed and acyclic, the eigenvector values are always 0. Thus, calculating node-level Bonacich Power centrality. As expected, the Bonacich power centrality of countries like Myanmar, India, Philippines with high outdegree is the highest.
+
 Derived 
 ```{r}
-mat2014<-as.matrix(as_adjacency_matrix(imf2014.ig, attr="weight"))
-imf2014.nodes$rc<-diag(mat2014sq)/rowSums(mat2014sq)
-imf2014.nodes$rc<-ifelse(is.nan(imf2014.nodes$rc),0,imf2014.nodes$rc)
-imf2014.nodes$eigen.rc<-imf2014.nodes$eigen*imf2014.nodes$rc
+mat<-as.matrix(as_adjacency_matrix(graph))
+matsq <- t(mat) %*% mat
+graph.nodes$rc<-diag(matsq)/rowSums(matsq)
+graph.nodes$rc<-ifelse(is.nan(graph.nodes$rc),0,graph.nodes$rc)
+graph.nodes$eigen.rc<-graph.nodes$eigen*graph.nodes$rc
 
 #Calculate the proportion of derived centrality.
-imf2014.nodes$dc<-1-diag(mat2014sq)/rowSums(mat2014sq)
+graph.nodes$dc<-1-diag(matsq)/rowSums(matsq)
 #replace missing values with 0
-imf2014.nodes$dc<-ifelse(is.nan(imf2014.nodes$dc),1,imf2014.nodes$dc)
+graph.nodes$dc<-ifelse(is.nan(graph.nodes$dc),1,graph.nodes$dc)
 #Calculate received eigenvalue centrality
-imf2014.nodes$eigen.dc<-imf2014.nodes$eigen*imf2014.nodes$dc
+graph.nodes$eigen.dc<-graph.nodes$eigen*graph.nodes$dc
 ```
 Plotting
 ```{r}
-imf2014.nodes%>%
+graph.nodes%>%
 select(-name) %>%
 gather() %>%
 ggplot(aes(value)) +
@@ -63,8 +84,8 @@ facet_wrap(~key, scales = "free")
 ```
 Correlations
 ```{r}
-temp<-imf2014.nodes %>%
-select(totdegree,indegree,outdegree,eigen,eigen.rc,eigen.dc, starts_with("bon"))%>% correlate() %>% rearrange()
+temp<-graph.nodes %>%
+select(degree,indegree,outdegree, starts_with("bon"))%>% correlate() %>% rearrange()
 rplot(temp)
 ```
-
+The plot confirms a high correlation between a node's degree and bonacich power as observed earlier in the analysis.

@@ -4,21 +4,103 @@ description: |
   A short description of the post.
 author:
   - name: Abhijit Mahishi
-    url: {}
+    url: {https://abhijit156.github.io/}
 date: 2022-05-11
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+draft: false
 ---
 
-
-```{r setup, include=FALSE}
+```{r}
 knitr::opts_chunk$set(echo = FALSE)
+
+library(igraph)
+library(stringr)
+library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
+library(corrr)
+library(sna)
+
 ```
 
 Distill is a publication format for scientific and technical writing, native to the web.
 
 Learn more about using Distill at <https://rstudio.github.io/distill>.
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
+
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+```
+# Graph nodes dataset 
+```{r}
+graph.nodes<-data.frame(name=V(graph)$name,
+degree=igraph::degree(graph))
+
+graph.nodes<-graph.nodes %>%
+mutate(indegree=igraph::degree(graph, mode="in",loops=FALSE),
+outdegree=igraph::degree(graph, mode="out",loops=FALSE))
+
+temp<-igraph::centr_eigen(graph,directed=T)
+graph.nodes$eigen = temp$vector
+
+head(power_centrality(graph))
+
+graph.nodes$bonpow<-power_centrality(graph)
+
+mat<-as.matrix(as_adjacency_matrix(graph))
+matsq <- t(mat) %*% mat
+graph.nodes$rc<-diag(matsq)/rowSums(matsq)
+graph.nodes$rc<-ifelse(is.nan(graph.nodes$rc),0,graph.nodes$rc)
+graph.nodes$eigen.rc<-graph.nodes$eigen*graph.nodes$rc
+
+#Calculate the proportion of derived centrality.
+graph.nodes$dc<-1-diag(matsq)/rowSums(matsq)
+#replace missing values with 0
+graph.nodes$dc<-ifelse(is.nan(graph.nodes$dc),1,graph.nodes$dc)
+#Calculate received eigenvalue centrality
+graph.nodes$eigen.dc<-graph.nodes$eigen*graph.nodes$dc
+
+```
+
+
+
+# Closeness Centrality 
+```{r}
+head(igraph::closeness(graph))
+
+centr_clo(graph)$centralization
+
+```
+Closeness centrality is the sum of geodesic distances between a node and all other nodes in the network. Since this network is a disconnected graph, the closeness centrality is not well-defined. Similarly, the network centralization is not well-defined due to the graph being disconnected. 
+
+```{r}
+igraph::betweenness(graph, directed=TRUE)
+
+centr_betw(graph,directed=T)$centralization
+
+constraint(graph)
+
+graph.nodes$constraint<-constraint(graph)
+#find the nodes with highest and lowest constraint
+arrange(graph.nodes, constraint)%>%slice(1:5)
+```
+The network constraint is 1 for all rebel groups suggesting high redundancy of connections, since most rebel groups only have one (or multiple) connections to a country, while countries have lower network constraint scores, since they have multiple connections with a larger number of rebel groups. 
+
+```{r}
+net<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
+
+tempo <-as.data.frame(brokerage(net, cl = get.vertex.attribute(net,"iel"))$z.nli)
+
+head(brokerage(net, cl = get.vertex.attribute(net,"iel"))$z.nli)
+```
 
 
