@@ -1,6 +1,6 @@
 ---
 title: "Network Status"
-description: |
+description: 
   Exploring network status of armed conflict dataset
 author:
   - name: Abhijit Mahishi

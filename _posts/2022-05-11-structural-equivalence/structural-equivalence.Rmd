@@ -1,7 +1,7 @@
 ---
 title: "Structural Equivalence"
 description: |
-  A short description of the post.
+  Exploring network structural equivalence of armed conflict dataset
 author:
   - name: Abhijit Mahishi
     url: {https://abhijit156.github.io/}
