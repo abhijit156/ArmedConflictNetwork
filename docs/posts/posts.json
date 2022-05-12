@@ -55,6 +55,25 @@
     "input_file": "structural-equivalence.knit.md"
   },
   {
+    "path": "posts/2022-05-11-network-status/",
+    "title": "Network Status",
+    "description": "Exploring network status of armed conflict dataset",
+    "author": [
+      {
+        "name": "Abhijit Mahishi",
+        "url": {
+          "https://abhijit156.github.io/": {}
+        }
+      }
+    ],
+    "date": "2022-05-11",
+    "categories": [],
+    "contents": "\n\n\nknitr::opts_chunk$set(echo = FALSE)\n\nlibrary(igraph)\nlibrary(stringr)\nlibrary(tidyverse)\nlibrary(network)\nlibrary(ggplot2)\nlibrary(visNetwork)\nlibrary(corrr)\n\n\n\nDistill is a publication format for scientific and technical writing,\nnative to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\nCalculating\nEigen centrality and Bonacich Power centrality\n\n       Government of Pakistan      Government of Bangladesh \n                    1.5865403                     0.6585639 \nGovernment of Myanmar (Burma)     Government of Philippines \n                    9.9383281                     4.2806654 \n          Government of India           Government of China \n                    5.7774016                     0.2694125 \n\nSince the graph is directed and acyclic, the eigenvector values are\nalways 0. Thus, calculating node-level Bonacich Power centrality. As\nexpected, the Bonacich power centrality of countries like Myanmar,\nIndia, Philippines with high outdegree is the highest.\nDerived\n\n\n\nPlotting\n\n\n\nCorrelations\n\n\n\nThe plot confirms a high correlation between a node’s degree and\nbonacich power as observed earlier in the analysis.\n\n\n\n",
+    "preview": "posts/2022-05-11-network-status/network-status_files/figure-html5/unnamed-chunk-5-1.png",
+    "last_modified": "2022-05-12T09:02:05-04:00",
+    "input_file": "network-status.knit.md"
+  },
+  {
     "path": "posts/2022-05-11-network-structure/",
     "title": "Network Structure",
     "description": "Exploring structure of armed conflict dataset",

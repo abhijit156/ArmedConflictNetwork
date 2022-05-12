@@ -42,16 +42,23 @@ graph <- graph.data.frame(conflict_subset)
 ```
 
 # Calculating Eigen centrality and Bonacich Power centrality
+
 ```{r}
+graph.nodes<-data.frame(name=V(graph)$name,
+degree=igraph::degree(graph))
+
+graph.nodes<-graph.nodes %>%
+mutate(indegree=igraph::degree(graph, mode="in",loops=FALSE),
+outdegree=igraph::degree(graph, mode="out",loops=FALSE))
+
 temp<-igraph::centr_eigen(graph,directed=T)
 graph.nodes$eigen = temp$vector
 
 head(power_centrality(graph))
 
 graph.nodes$bonpow<-power_centrality(graph)
-#arrange descending and return top 5 nodes
-arrange(graph.nodes, desc(bonpow)) %>%
-slice(1:5)
+
+
 ```
 Since the graph is directed and acyclic, the eigenvector values are always 0. Thus, calculating node-level Bonacich Power centrality. As expected, the Bonacich power centrality of countries like Myanmar, India, Philippines with high outdegree is the highest.
 
