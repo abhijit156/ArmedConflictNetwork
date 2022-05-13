@@ -37,12 +37,74 @@ library(corrr)
 library(sna)
 ```
 
+# Implementing for Asian region
 ```{r}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 
 conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
+conflict_subset <- conflict %>% filter((region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+conflict_subset$side_a <- gsub("Government of ","",as.character(conflict_subset$side_a))
+
+graph <- graph.data.frame(conflict_subset)
+```
+
+# Creating matrix to analyze structural equivalence
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+cs <- as.matrix(conflict_subset)
+#create igraph object from data
+ig <- graph_from_data_frame(cs, directed = TRUE)
+# add edge attribute weight i.e transfer fee
+ig <- set_edge_attr(ig, "weight", value = conflict_subset$intensity_level)
+
+#check summary of the igraph object
+summary(ig)
+
+net <- intergraph::asNetwork(ig) 
+net
+```
+
+# Plotting structural equivalence graphs
+
+```{r}
+matr<- as.matrix(as_adjacency_matrix(ig, attr = "weight"))
+transfer.se<-equiv.clust(matr, equiv.fun="sedist", cluster.method="average", method="hamming",mode="digraph")
+plot(transfer.se,labels=transfer.se$glabels)
+rect.hclust(transfer.se$cluster, k = 3) 
+
+plot_dendrogram(cluster_leading_eigen(as.undirected(ig)), mode = igraph_opt("dend.plot.type")) 
+
+
+```
+
+# Block modeling
+```{r}
+g_mat <- as.matrix(get.adjacency(simplify(ig)))
+g_eq <- equiv.clust(g_mat, mode = "graph")
+plot(g_eq)
+
+g_block <- blockmodel(g_mat, g_eq, h= 5, mode="graph")
+plot(g_block, cex=0.1)
+
+gplot(g_mat, vertex.col = g_block$block.membership, gmode="graph")
+
+gplot(g_block$block.model, gmode="graph", label=rownames(g_block$block.model), edge.lwd = g_block$block.model*10)
+
+plot(density(g_block$block.membership))
+
+```
+# Implementing for the African region
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+
+conflict_subset <- conflict %>% filter((region == 4))
 
 conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
 conflict_subset$side_a <- gsub("Government of ","",as.character(conflict_subset$side_a))

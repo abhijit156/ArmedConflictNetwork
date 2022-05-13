@@ -2128,7 +2128,9 @@ attributes are stored</p>
 <h1 id="closeness-centrality">Closeness Centrality</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/closeness.html'>closeness</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/closeness.html'>closeness</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>        Ethiopia             Mali DR Congo (Zaire)           Turkey 
@@ -2148,7 +2150,9 @@ network centralization is not well-defined due to the graph being
 disconnected.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#print(igraph::betweenness(graph, directed=TRUE))</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='co'>#print(igraph::betweenness(graph, directed=TRUE))</span>
 
 <span class='fu'>centr_betw</span><span class='op'>(</span><span class='va'>graph</span>,directed<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span><span class='op'>$</span><span class='va'>centralization</span>
 </code></pre>
@@ -3545,27 +3549,8 @@ Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph.nodes</span><span class='op'>$</span><span class='va'>constraint</span><span class='op'>&lt;-</span><span class='fu'>constraint</span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
 <span class='co'>#find the nodes with highest and lowest constraint</span>
-<span class='fu'>arrange</span><span class='op'>(</span><span class='va'>graph.nodes</span>, <span class='va'>constraint</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>                             name degree indegree outdegree eigen
-Chad                         Chad     65        0        65     0
-DR Congo (Zaire) DR Congo (Zaire)     56        0        56     0
-IS                             IS    105      105         0     0
-Myanmar (Burma)   Myanmar (Burma)    332        0       332     0
-India                       India    220        0       220     0
-                    bonpow       rc eigen.rc       dc eigen.dc
-Chad              3.000811 0.000000        0 1.000000        0
-DR Congo (Zaire)  2.585314 0.000000        0 1.000000        0
-IS                0.000000 0.129503        0 0.870497        0
-Myanmar (Burma)  15.327219 0.000000        0 1.000000        0
-India            10.156591 0.000000        0 1.000000        0
-                 constraint
-Chad             0.04946746
-DR Congo (Zaire) 0.05803571
-IS               0.06358277
-Myanmar (Burma)  0.06671868
-India            0.06933884</code></pre>
 </div>
 <p>The network constraint is 1 for all rebel groups suggesting high
 redundancy of connections, since most rebel groups only have one (or
@@ -3574,7 +3559,9 @@ constraint scores, since they have multiple connections with a larger
 number of rebel groups.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>net</span><span class='op'>&lt;-</span> <span class='fu'>as.network</span><span class='op'>(</span><span class='va'>conflict_subset</span>, matrix.type <span class='op'>=</span> <span class='st'>"edgelist"</span>, multiple <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='va'>net</span><span class='op'>&lt;-</span> <span class='fu'>as.network</span><span class='op'>(</span><span class='va'>conflict_subset</span>, matrix.type <span class='op'>=</span> <span class='st'>"edgelist"</span>, multiple <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
 
 <span class='va'>tempo</span> <span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'>brokerage</span><span class='op'>(</span><span class='va'>net</span>, cl <span class='op'>=</span> <span class='fu'>get.vertex.attribute</span><span class='op'>(</span><span class='va'>net</span>,<span class='st'>"iel"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>z.nli</span><span class='op'>)</span>
 
@@ -3589,7 +3576,777 @@ Turkey            NA NaN   NA   NA NaN -1.434153
 Kenya             NA NaN   NA   NA NaN -1.434153
 Ivory Coast       NA NaN   NA   NA NaN -1.434153</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre
+<h1 id="nodes-with-ascending-order-of-constraint">20 Nodes with
+ascending order of constraint</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+
+<span class='fu'>arrange</span><span class='op'>(</span><span class='va'>graph.nodes</span>, <span class='va'>constraint</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                             name degree indegree
+Chad                                         Chad     65        0
+DR Congo (Zaire)                 DR Congo (Zaire)     56        0
+IS                                             IS    105      105
+Myanmar (Burma)                   Myanmar (Burma)    332        0
+India                                       India    220        0
+Afghanistan                           Afghanistan    135        0
+Mali                                         Mali     32        0
+Israel                                     Israel    128        0
+France                                     France     55        0
+Ethiopia                                 Ethiopia    148        0
+Sudan                                       Sudan     80        0
+Pakistan                                 Pakistan     57        0
+Lebanon                                   Lebanon     18        0
+Somalia                                   Somalia     45        0
+Russia (Soviet Union)       Russia (Soviet Union)     45        0
+Iraq                                         Iraq     88        0
+Uganda                                     Uganda     70        0
+Egypt                                       Egypt     24        0
+Central African Republic Central African Republic     13        0
+Indonesia                               Indonesia     56        0
+                         outdegree eigen     bonpow       rc eigen.rc
+Chad                            65     0  3.0008109 0.000000        0
+DR Congo (Zaire)                56     0  2.5853140 0.000000        0
+IS                               0     0  0.0000000 0.129503        0
+Myanmar (Burma)                332     0 15.3272190 0.000000        0
+India                          220     0 10.1565909 0.000000        0
+Afghanistan                    135     0  6.2324535 0.000000        0
+Mali                            32     0  1.4773223 0.000000        0
+Israel                         128     0  5.9092892 0.000000        0
+France                          55     0  2.5391477 0.000000        0
+Ethiopia                       148     0  6.8326157 0.000000        0
+Sudan                           80     0  3.6933058 0.000000        0
+Pakistan                        57     0  2.6314804 0.000000        0
+Lebanon                         18     0  0.8309938 0.000000        0
+Somalia                         45     0  2.0774845 0.000000        0
+Russia (Soviet Union)           45     0  2.0774845 0.000000        0
+Iraq                            88     0  4.0626364 0.000000        0
+Uganda                          70     0  3.2316426 0.000000        0
+Egypt                           24     0  1.1079917 0.000000        0
+Central African Republic        13     0  0.6001622 0.000000        0
+Indonesia                       56     0  2.5853140 0.000000        0
+                               dc eigen.dc constraint
+Chad                     1.000000        0 0.04946746
+DR Congo (Zaire)         1.000000        0 0.05803571
+IS                       0.870497        0 0.06358277
+Myanmar (Burma)          1.000000        0 0.06671868
+India                    1.000000        0 0.06933884
+Afghanistan              1.000000        0 0.09914952
+Mali                     1.000000        0 0.10742188
+Israel                   1.000000        0 0.11145020
+France                   1.000000        0 0.11603306
+Ethiopia                 1.000000        0 0.11678232
+Sudan                    1.000000        0 0.13593750
+Pakistan                 1.000000        0 0.13696522
+Lebanon                  1.000000        0 0.15432099
+Somalia                  1.000000        0 0.15456790
+Russia (Soviet Union)    1.000000        0 0.15456790
+Iraq                     1.000000        0 0.17536157
+Uganda                   1.000000        0 0.17918367
+Egypt                    1.000000        0 0.18055556
+Central African Republic 1.000000        0 0.18343195
+Indonesia                1.000000        0 0.18494898</code></pre>
+</div>
+<h1 id="nodes-with-ascending-order-of-degree-indegree-outdegree">20
+Nodes with ascending order of degree, indegree, outdegree</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>graph.nodes</span><span class='op'>)</span>, <span class='va'>degree</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                   name degree indegree outdegree
+Jordan                           Jordan      1        0         1
+Albania                         Albania      1        0         1
+Costa Rica                   Costa Rica      1        0         1
+Hungary                         Hungary      1        0         1
+Honduras                       Honduras      1        0         1
+Gabon                             Gabon      1        0         1
+Dominican Republic   Dominican Republic      1        0         1
+Madagascar                   Madagascar      1        0         1
+Uruguay                         Uruguay      1        0         1
+Chile                             Chile      1        0         1
+Cyprus                           Cyprus      1        0         1
+Saudi Arabia               Saudi Arabia      1        0         1
+Gambia                           Gambia      1        0         1
+Grenada                         Grenada      1        0         1
+Suriname                       Suriname      1        0         1
+Togo                               Togo      1        0         1
+Trinidad and Tobago Trinidad and Tobago      1        0         1
+Moldova                         Moldova      1        0         1
+Ecuador                         Ecuador      1        0         1
+Lesotho                         Lesotho      1        0         1
+                    eigen     bonpow rc eigen.rc dc eigen.dc
+Jordan                  0 0.04616632  0        0  1        0
+Albania                 0 0.04616632  0        0  1        0
+Costa Rica              0 0.04616632  0        0  1        0
+Hungary                 0 0.04616632  0        0  1        0
+Honduras                0 0.04616632  0        0  1        0
+Gabon                   0 0.04616632  0        0  1        0
+Dominican Republic      0 0.04616632  0        0  1        0
+Madagascar              0 0.04616632  0        0  1        0
+Uruguay                 0 0.04616632  0        0  1        0
+Chile                   0 0.04616632  0        0  1        0
+Cyprus                  0 0.04616632  0        0  1        0
+Saudi Arabia            0 0.04616632  0        0  1        0
+Gambia                  0 0.04616632  0        0  1        0
+Grenada                 0 0.04616632  0        0  1        0
+Suriname                0 0.04616632  0        0  1        0
+Togo                    0 0.04616632  0        0  1        0
+Trinidad and Tobago     0 0.04616632  0        0  1        0
+Moldova                 0 0.04616632  0        0  1        0
+Ecuador                 0 0.04616632  0        0  1        0
+Lesotho                 0 0.04616632  0        0  1        0
+                    constraint
+Jordan                       1
+Albania                      1
+Costa Rica                   1
+Hungary                      1
+Honduras                     1
+Gabon                        1
+Dominican Republic           1
+Madagascar                   1
+Uruguay                      1
+Chile                        1
+Cyprus                       1
+Saudi Arabia                 1
+Gambia                       1
+Grenada                      1
+Suriname                     1
+Togo                         1
+Trinidad and Tobago          1
+Moldova                      1
+Ecuador                      1
+Lesotho                      1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#arrange(desc(graph.nodes), degree)%&gt;%slice(1:20)</span>
+<span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>graph.nodes</span><span class='op'>)</span>, <span class='va'>indegree</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                   name degree indegree outdegree
+Ethiopia                       Ethiopia    148        0       148
+Mali                               Mali     32        0        32
+DR Congo (Zaire)       DR Congo (Zaire)     56        0        56
+Turkey                           Turkey     45        0        45
+Kenya                             Kenya      7        0         7
+Ivory Coast                 Ivory Coast      7        0         7
+Yemen (North Yemen) Yemen (North Yemen)     36        0        36
+Libya                             Libya     16        0        16
+Pakistan                       Pakistan     57        0        57
+Bangladesh                   Bangladesh     22        0        22
+Myanmar (Burma)         Myanmar (Burma)    332        0       332
+Afghanistan                 Afghanistan    135        0       135
+Philippines                 Philippines    144        0       144
+India                             India    220        0       220
+Somalia                         Somalia     45        0        45
+Burundi                         Burundi     33        0        33
+South Sudan                 South Sudan     13        0        13
+Syria                             Syria     29        0        29
+Egypt                             Egypt     24        0        24
+Sudan                             Sudan     80        0        80
+                    eigen     bonpow rc eigen.rc dc eigen.dc
+Ethiopia                0  6.8326157  0        0  1        0
+Mali                    0  1.4773223  0        0  1        0
+DR Congo (Zaire)        0  2.5853140  0        0  1        0
+Turkey                  0  2.0774845  0        0  1        0
+Kenya                   0  0.3231643  0        0  1        0
+Ivory Coast             0  0.3231643  0        0  1        0
+Yemen (North Yemen)     0  1.6619876  0        0  1        0
+Libya                   0  0.7386612  0        0  1        0
+Pakistan                0  2.6314804  0        0  1        0
+Bangladesh              0  1.0156591  0        0  1        0
+Myanmar (Burma)         0 15.3272190  0        0  1        0
+Afghanistan             0  6.2324535  0        0  1        0
+Philippines             0  6.6479504  0        0  1        0
+India                   0 10.1565909  0        0  1        0
+Somalia                 0  2.0774845  0        0  1        0
+Burundi                 0  1.5234886  0        0  1        0
+South Sudan             0  0.6001622  0        0  1        0
+Syria                   0  1.3388233  0        0  1        0
+Egypt                   0  1.1079917  0        0  1        0
+Sudan                   0  3.6933058  0        0  1        0
+                    constraint
+Ethiopia            0.11678232
+Mali                0.10742188
+DR Congo (Zaire)    0.05803571
+Turkey              0.65037037
+Kenya               0.75510204
+Ivory Coast         0.22448980
+Yemen (North Yemen) 0.19135802
+Libya               0.21875000
+Pakistan            0.13696522
+Bangladesh          0.61570248
+Myanmar (Burma)     0.06671868
+Afghanistan         0.09914952
+Philippines         0.19396219
+India               0.06933884
+Somalia             0.15456790
+Burundi             0.19008264
+South Sudan         0.27810651
+Syria               0.23900119
+Egypt               0.18055556
+Sudan               0.13593750</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#arrange(desc(graph.nodes), indegree)%&gt;%slice(1:20)</span>
+<span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>graph.nodes</span><span class='op'>)</span>, <span class='va'>outdegree</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                                                                                                                     name
+IGLF                                                                                                                                 IGLF
+FPLA                                                                                                                                 FPLA
+APCLS                                                                                                                               APCLS
+TAK                                                                                                                                   TAK
+Al-Shabaab                                                                                                                     Al-Shabaab
+FDSI-CI                                                                                                                           FDSI-CI
+Ansarallah                                                                                                                     Ansarallah
+Forces of Muammar Gaddafi                                                                                       Forces of Muammar Gaddafi
+IMU                                                                                                                                   IMU
+PBCP                                                                                                                                 PBCP
+NSCN-K                                                                                                                             NSCN-K
+Government of United Kingdom, Government of United States of America Government of United Kingdom, Government of United States of America
+BIFM                                                                                                                                 BIFM
+NLFT-B                                                                                                                             NLFT-B
+Lashkar-e-Islam                                                                                                           Lashkar-e-Islam
+CNPSC                                                                                                                               CNPSC
+ULA                                                                                                                                   ULA
+TTP - TA                                                                                                                         TTP - TA
+UBA                                                                                                                                   UBA
+Republic of Somaliland                                                                                             Republic of Somaliland
+                                                                     degree
+IGLF                                                                      1
+FPLA                                                                      1
+APCLS                                                                     3
+TAK                                                                       1
+Al-Shabaab                                                               19
+FDSI-CI                                                                   1
+Ansarallah                                                                2
+Forces of Muammar Gaddafi                                                 1
+IMU                                                                       5
+PBCP                                                                      1
+NSCN-K                                                                    7
+Government of United Kingdom, Government of United States of America      1
+BIFM                                                                      5
+NLFT-B                                                                    1
+Lashkar-e-Islam                                                           5
+CNPSC                                                                     7
+ULA                                                                       3
+TTP - TA                                                                  1
+UBA                                                                       1
+Republic of Somaliland                                                    1
+                                                                     indegree
+IGLF                                                                        1
+FPLA                                                                        1
+APCLS                                                                       3
+TAK                                                                         1
+Al-Shabaab                                                                 19
+FDSI-CI                                                                     1
+Ansarallah                                                                  2
+Forces of Muammar Gaddafi                                                   1
+IMU                                                                         5
+PBCP                                                                        1
+NSCN-K                                                                      7
+Government of United Kingdom, Government of United States of America        1
+BIFM                                                                        5
+NLFT-B                                                                      1
+Lashkar-e-Islam                                                             5
+CNPSC                                                                       7
+ULA                                                                         3
+TTP - TA                                                                    1
+UBA                                                                         1
+Republic of Somaliland                                                      1
+                                                                     outdegree
+IGLF                                                                         0
+FPLA                                                                         0
+APCLS                                                                        0
+TAK                                                                          0
+Al-Shabaab                                                                   0
+FDSI-CI                                                                      0
+Ansarallah                                                                   0
+Forces of Muammar Gaddafi                                                    0
+IMU                                                                          0
+PBCP                                                                         0
+NSCN-K                                                                       0
+Government of United Kingdom, Government of United States of America         0
+BIFM                                                                         0
+NLFT-B                                                                       0
+Lashkar-e-Islam                                                              0
+CNPSC                                                                        0
+ULA                                                                          0
+TTP - TA                                                                     0
+UBA                                                                          0
+Republic of Somaliland                                                       0
+                                                                     eigen
+IGLF                                                                     0
+FPLA                                                                     0
+APCLS                                                                    0
+TAK                                                                      0
+Al-Shabaab                                                               0
+FDSI-CI                                                                  0
+Ansarallah                                                               0
+Forces of Muammar Gaddafi                                                0
+IMU                                                                      0
+PBCP                                                                     0
+NSCN-K                                                                   0
+Government of United Kingdom, Government of United States of America     0
+BIFM                                                                     0
+NLFT-B                                                                   0
+Lashkar-e-Islam                                                          0
+CNPSC                                                                    0
+ULA                                                                      0
+TTP - TA                                                                 0
+UBA                                                                      0
+Republic of Somaliland                                                   0
+                                                                     bonpow
+IGLF                                                                      0
+FPLA                                                                      0
+APCLS                                                                     0
+TAK                                                                       0
+Al-Shabaab                                                                0
+FDSI-CI                                                                   0
+Ansarallah                                                                0
+Forces of Muammar Gaddafi                                                 0
+IMU                                                                       0
+PBCP                                                                      0
+NSCN-K                                                                    0
+Government of United Kingdom, Government of United States of America      0
+BIFM                                                                      0
+NLFT-B                                                                    0
+Lashkar-e-Islam                                                           0
+CNPSC                                                                     0
+ULA                                                                       0
+TTP - TA                                                                  0
+UBA                                                                       0
+Republic of Somaliland                                                    0
+                                                                              rc
+IGLF                                                                 0.006756757
+FPLA                                                                 0.031250000
+APCLS                                                                0.053571429
+TAK                                                                  0.022222222
+Al-Shabaab                                                           0.326953748
+FDSI-CI                                                              0.142857143
+Ansarallah                                                           0.055555556
+Forces of Muammar Gaddafi                                            0.062500000
+IMU                                                                  0.101123596
+PBCP                                                                 0.045454545
+NSCN-K                                                               0.021084337
+Government of United Kingdom, Government of United States of America 0.007407407
+BIFM                                                                 0.034722222
+NLFT-B                                                               0.004545455
+Lashkar-e-Islam                                                      0.087719298
+CNPSC                                                                0.125000000
+ULA                                                                  0.009036145
+TTP - TA                                                             0.017543860
+UBA                                                                  0.017543860
+Republic of Somaliland                                               0.022222222
+                                                                     eigen.rc
+IGLF                                                                        0
+FPLA                                                                        0
+APCLS                                                                       0
+TAK                                                                         0
+Al-Shabaab                                                                  0
+FDSI-CI                                                                     0
+Ansarallah                                                                  0
+Forces of Muammar Gaddafi                                                   0
+IMU                                                                         0
+PBCP                                                                        0
+NSCN-K                                                                      0
+Government of United Kingdom, Government of United States of America        0
+BIFM                                                                        0
+NLFT-B                                                                      0
+Lashkar-e-Islam                                                             0
+CNPSC                                                                       0
+ULA                                                                         0
+TTP - TA                                                                    0
+UBA                                                                         0
+Republic of Somaliland                                                      0
+                                                                            dc
+IGLF                                                                 0.9932432
+FPLA                                                                 0.9687500
+APCLS                                                                0.9464286
+TAK                                                                  0.9777778
+Al-Shabaab                                                           0.6730463
+FDSI-CI                                                              0.8571429
+Ansarallah                                                           0.9444444
+Forces of Muammar Gaddafi                                            0.9375000
+IMU                                                                  0.8988764
+PBCP                                                                 0.9545455
+NSCN-K                                                               0.9789157
+Government of United Kingdom, Government of United States of America 0.9925926
+BIFM                                                                 0.9652778
+NLFT-B                                                               0.9954545
+Lashkar-e-Islam                                                      0.9122807
+CNPSC                                                                0.8750000
+ULA                                                                  0.9909639
+TTP - TA                                                             0.9824561
+UBA                                                                  0.9824561
+Republic of Somaliland                                               0.9777778
+                                                                     eigen.dc
+IGLF                                                                        0
+FPLA                                                                        0
+APCLS                                                                       0
+TAK                                                                         0
+Al-Shabaab                                                                  0
+FDSI-CI                                                                     0
+Ansarallah                                                                  0
+Forces of Muammar Gaddafi                                                   0
+IMU                                                                         0
+PBCP                                                                        0
+NSCN-K                                                                      0
+Government of United Kingdom, Government of United States of America        0
+BIFM                                                                        0
+NLFT-B                                                                      0
+Lashkar-e-Islam                                                             0
+CNPSC                                                                       0
+ULA                                                                         0
+TTP - TA                                                                    0
+UBA                                                                         0
+Republic of Somaliland                                                      0
+                                                                     constraint
+IGLF                                                                   1.000000
+FPLA                                                                   1.000000
+APCLS                                                                  1.000000
+TAK                                                                    1.000000
+Al-Shabaab                                                             0.567867
+FDSI-CI                                                                1.000000
+Ansarallah                                                             1.000000
+Forces of Muammar Gaddafi                                              1.000000
+IMU                                                                    0.360000
+PBCP                                                                   1.000000
+NSCN-K                                                                 1.000000
+Government of United Kingdom, Government of United States of America   1.000000
+BIFM                                                                   1.000000
+NLFT-B                                                                 1.000000
+Lashkar-e-Islam                                                        1.000000
+CNPSC                                                                  1.000000
+ULA                                                                    1.000000
+TTP - TA                                                               1.000000
+UBA                                                                    1.000000
+Republic of Somaliland                                                 1.000000</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#arrange(desc(graph.nodes), outdegree)%&gt;%slice(1:20)</span>
+</code></pre>
+</div>
+</div>
+<h1
+id="nodes-with-ascending-order-of-derived-and-reflected-centrality">20
+Nodes with ascending order of Derived and Reflected centrality</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+
+<span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>graph.nodes</span><span class='op'>)</span>, <span class='va'>rc</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                   name degree indegree outdegree
+Ethiopia                       Ethiopia    148        0       148
+Mali                               Mali     32        0        32
+DR Congo (Zaire)       DR Congo (Zaire)     56        0        56
+Turkey                           Turkey     45        0        45
+Kenya                             Kenya      7        0         7
+Ivory Coast                 Ivory Coast      7        0         7
+Yemen (North Yemen) Yemen (North Yemen)     36        0        36
+Libya                             Libya     16        0        16
+Pakistan                       Pakistan     57        0        57
+Bangladesh                   Bangladesh     22        0        22
+Myanmar (Burma)         Myanmar (Burma)    332        0       332
+Afghanistan                 Afghanistan    135        0       135
+Philippines                 Philippines    144        0       144
+India                             India    220        0       220
+Somalia                         Somalia     45        0        45
+Burundi                         Burundi     33        0        33
+South Sudan                 South Sudan     13        0        13
+Syria                             Syria     29        0        29
+Egypt                             Egypt     24        0        24
+Sudan                             Sudan     80        0        80
+                    eigen     bonpow rc eigen.rc dc eigen.dc
+Ethiopia                0  6.8326157  0        0  1        0
+Mali                    0  1.4773223  0        0  1        0
+DR Congo (Zaire)        0  2.5853140  0        0  1        0
+Turkey                  0  2.0774845  0        0  1        0
+Kenya                   0  0.3231643  0        0  1        0
+Ivory Coast             0  0.3231643  0        0  1        0
+Yemen (North Yemen)     0  1.6619876  0        0  1        0
+Libya                   0  0.7386612  0        0  1        0
+Pakistan                0  2.6314804  0        0  1        0
+Bangladesh              0  1.0156591  0        0  1        0
+Myanmar (Burma)         0 15.3272190  0        0  1        0
+Afghanistan             0  6.2324535  0        0  1        0
+Philippines             0  6.6479504  0        0  1        0
+India                   0 10.1565909  0        0  1        0
+Somalia                 0  2.0774845  0        0  1        0
+Burundi                 0  1.5234886  0        0  1        0
+South Sudan             0  0.6001622  0        0  1        0
+Syria                   0  1.3388233  0        0  1        0
+Egypt                   0  1.1079917  0        0  1        0
+Sudan                   0  3.6933058  0        0  1        0
+                    constraint
+Ethiopia            0.11678232
+Mali                0.10742188
+DR Congo (Zaire)    0.05803571
+Turkey              0.65037037
+Kenya               0.75510204
+Ivory Coast         0.22448980
+Yemen (North Yemen) 0.19135802
+Libya               0.21875000
+Pakistan            0.13696522
+Bangladesh          0.61570248
+Myanmar (Burma)     0.06671868
+Afghanistan         0.09914952
+Philippines         0.19396219
+India               0.06933884
+Somalia             0.15456790
+Burundi             0.19008264
+South Sudan         0.27810651
+Syria               0.23900119
+Egypt               0.18055556
+Sudan               0.13593750</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#arrange(desc(graph.nodes), rc)%&gt;%slice(1:20)</span>
+<span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>graph.nodes</span><span class='op'>)</span>, <span class='va'>dc</span><span class='op'>)</span><span class='op'>%&gt;%</span><span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                                                                                                                                         name
+DSE                                                                                                                                                       DSE
+Indonesian People&#39;s Army                                                                                                             Indonesian People&#39;s Army
+Government of South Korea                                                                                                           Government of South Korea
+Government of Nicaragua                                                                                                               Government of Nicaragua
+Military faction (forces loyal to Léon M&#39;Ba)                                                                     Military faction (forces loyal to Léon M&#39;Ba)
+Military faction (constitutionalists)                                                                                   Military faction (constitutionalists)
+RFDG                                                                                                                                                     RFDG
+Monima                                                                                                                                                 Monima
+MLN/Tupamaros                                                                                                                                   MLN/Tupamaros
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman) Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)
+Government of Turkey                                                                                                                     Government of Turkey
+JSM                                                                                                                                                       JSM
+NRC                                                                                                                                                       NRC
+SLA                                                                                                                                                       SLA
+MTD                                                                                                                                                       MTD
+MFDC                                                                                                                                                     MFDC
+Jamaat al-Muslimeen                                                                                                                       Jamaat al-Muslimeen
+PMR                                                                                                                                                       PMR
+Government of Peru                                                                                                                         Government of Peru
+Military Junta for the Consolidation of Democracy, Peace and Justice                     Military Junta for the Consolidation of Democracy, Peace and Justice
+                                                                               degree
+DSE                                                                                 4
+Indonesian People&#39;s Army                                                            4
+Government of South Korea                                                           5
+Government of Nicaragua                                                             1
+Military faction (forces loyal to Léon M&#39;Ba)                                        1
+Military faction (constitutionalists)                                               1
+RFDG                                                                                2
+Monima                                                                              1
+MLN/Tupamaros                                                                       1
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)      1
+Government of Turkey                                                                1
+JSM                                                                                 1
+NRC                                                                                 1
+SLA                                                                                 1
+MTD                                                                                 1
+MFDC                                                                               10
+Jamaat al-Muslimeen                                                                 1
+PMR                                                                                 1
+Government of Peru                                                                  1
+Military Junta for the Consolidation of Democracy, Peace and Justice                2
+                                                                               indegree
+DSE                                                                                   4
+Indonesian People&#39;s Army                                                              4
+Government of South Korea                                                             5
+Government of Nicaragua                                                               1
+Military faction (forces loyal to Léon M&#39;Ba)                                          1
+Military faction (constitutionalists)                                                 1
+RFDG                                                                                  2
+Monima                                                                                1
+MLN/Tupamaros                                                                         1
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)        1
+Government of Turkey                                                                  1
+JSM                                                                                   1
+NRC                                                                                   1
+SLA                                                                                   1
+MTD                                                                                   1
+MFDC                                                                                 10
+Jamaat al-Muslimeen                                                                   1
+PMR                                                                                   1
+Government of Peru                                                                    1
+Military Junta for the Consolidation of Democracy, Peace and Justice                  2
+                                                                               outdegree
+DSE                                                                                    0
+Indonesian People&#39;s Army                                                               0
+Government of South Korea                                                              0
+Government of Nicaragua                                                                0
+Military faction (forces loyal to Léon M&#39;Ba)                                           0
+Military faction (constitutionalists)                                                  0
+RFDG                                                                                   0
+Monima                                                                                 0
+MLN/Tupamaros                                                                          0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)         0
+Government of Turkey                                                                   0
+JSM                                                                                    0
+NRC                                                                                    0
+SLA                                                                                    0
+MTD                                                                                    0
+MFDC                                                                                   0
+Jamaat al-Muslimeen                                                                    0
+PMR                                                                                    0
+Government of Peru                                                                     0
+Military Junta for the Consolidation of Democracy, Peace and Justice                   0
+                                                                               eigen
+DSE                                                                                0
+Indonesian People&#39;s Army                                                           0
+Government of South Korea                                                          0
+Government of Nicaragua                                                            0
+Military faction (forces loyal to Léon M&#39;Ba)                                       0
+Military faction (constitutionalists)                                              0
+RFDG                                                                               0
+Monima                                                                             0
+MLN/Tupamaros                                                                      0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)     0
+Government of Turkey                                                               0
+JSM                                                                                0
+NRC                                                                                0
+SLA                                                                                0
+MTD                                                                                0
+MFDC                                                                               0
+Jamaat al-Muslimeen                                                                0
+PMR                                                                                0
+Government of Peru                                                                 0
+Military Junta for the Consolidation of Democracy, Peace and Justice               0
+                                                                               bonpow
+DSE                                                                                 0
+Indonesian People&#39;s Army                                                            0
+Government of South Korea                                                           0
+Government of Nicaragua                                                             0
+Military faction (forces loyal to Léon M&#39;Ba)                                        0
+Military faction (constitutionalists)                                               0
+RFDG                                                                                0
+Monima                                                                              0
+MLN/Tupamaros                                                                       0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)      0
+Government of Turkey                                                                0
+JSM                                                                                 0
+NRC                                                                                 0
+SLA                                                                                 0
+MTD                                                                                 0
+MFDC                                                                                0
+Jamaat al-Muslimeen                                                                 0
+PMR                                                                                 0
+Government of Peru                                                                  0
+Military Junta for the Consolidation of Democracy, Peace and Justice                0
+                                                                               rc
+DSE                                                                             1
+Indonesian People&#39;s Army                                                        1
+Government of South Korea                                                       1
+Government of Nicaragua                                                         1
+Military faction (forces loyal to Léon M&#39;Ba)                                    1
+Military faction (constitutionalists)                                           1
+RFDG                                                                            1
+Monima                                                                          1
+MLN/Tupamaros                                                                   1
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)  1
+Government of Turkey                                                            1
+JSM                                                                             1
+NRC                                                                             1
+SLA                                                                             1
+MTD                                                                             1
+MFDC                                                                            1
+Jamaat al-Muslimeen                                                             1
+PMR                                                                             1
+Government of Peru                                                              1
+Military Junta for the Consolidation of Democracy, Peace and Justice            1
+                                                                               eigen.rc
+DSE                                                                                   0
+Indonesian People&#39;s Army                                                              0
+Government of South Korea                                                             0
+Government of Nicaragua                                                               0
+Military faction (forces loyal to Léon M&#39;Ba)                                          0
+Military faction (constitutionalists)                                                 0
+RFDG                                                                                  0
+Monima                                                                                0
+MLN/Tupamaros                                                                         0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)        0
+Government of Turkey                                                                  0
+JSM                                                                                   0
+NRC                                                                                   0
+SLA                                                                                   0
+MTD                                                                                   0
+MFDC                                                                                  0
+Jamaat al-Muslimeen                                                                   0
+PMR                                                                                   0
+Government of Peru                                                                    0
+Military Junta for the Consolidation of Democracy, Peace and Justice                  0
+                                                                               dc
+DSE                                                                             0
+Indonesian People&#39;s Army                                                        0
+Government of South Korea                                                       0
+Government of Nicaragua                                                         0
+Military faction (forces loyal to Léon M&#39;Ba)                                    0
+Military faction (constitutionalists)                                           0
+RFDG                                                                            0
+Monima                                                                          0
+MLN/Tupamaros                                                                   0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)  0
+Government of Turkey                                                            0
+JSM                                                                             0
+NRC                                                                             0
+SLA                                                                             0
+MTD                                                                             0
+MFDC                                                                            0
+Jamaat al-Muslimeen                                                             0
+PMR                                                                             0
+Government of Peru                                                              0
+Military Junta for the Consolidation of Democracy, Peace and Justice            0
+                                                                               eigen.dc
+DSE                                                                                   0
+Indonesian People&#39;s Army                                                              0
+Government of South Korea                                                             0
+Government of Nicaragua                                                               0
+Military faction (forces loyal to Léon M&#39;Ba)                                          0
+Military faction (constitutionalists)                                                 0
+RFDG                                                                                  0
+Monima                                                                                0
+MLN/Tupamaros                                                                         0
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)        0
+Government of Turkey                                                                  0
+JSM                                                                                   0
+NRC                                                                                   0
+SLA                                                                                   0
+MTD                                                                                   0
+MFDC                                                                                  0
+Jamaat al-Muslimeen                                                                   0
+PMR                                                                                   0
+Government of Peru                                                                    0
+Military Junta for the Consolidation of Democracy, Peace and Justice                  0
+                                                                               constraint
+DSE                                                                                     1
+Indonesian People&#39;s Army                                                                1
+Government of South Korea                                                               1
+Government of Nicaragua                                                                 1
+Military faction (forces loyal to Léon M&#39;Ba)                                            1
+Military faction (constitutionalists)                                                   1
+RFDG                                                                                    1
+Monima                                                                                  1
+MLN/Tupamaros                                                                           1
+Military faction (forces of Augusto Pinochet, Toribio Merino and Leigh Guzman)          1
+Government of Turkey                                                                    1
+JSM                                                                                     1
+NRC                                                                                     1
+SLA                                                                                     1
+MTD                                                                                     1
+MFDC                                                                                    1
+Jamaat al-Muslimeen                                                                     1
+PMR                                                                                     1
+Government of Peru                                                                      1
+Military Junta for the Consolidation of Democracy, Peace and Justice                    1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#arrange(desc(graph.nodes), dc)%&gt;%slice(1:20)</span>
+</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb13"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

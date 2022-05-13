@@ -18,7 +18,7 @@ The objective of this project is to use network analysis methods to
 examine armed conflicts data. Conflict, from interpersonal disputes to
 armed conflicts between states, has always been an inherent part of
 human civilization at some level. This is especially relevant today, as
-recent world events serve as an extremely unpleasant reminder of the
+recent world events serve as an unpleasant reminder of the
 tragic destruction of human life and livelihood due to armed conflicts.
 This project aims to analyze historical data on armed and violent
 conflicts in the time period from 1946 - 2020.

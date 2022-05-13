@@ -90,6 +90,8 @@ graph.nodes$eigen.dc<-graph.nodes$eigen*graph.nodes$dc
 
 # Closeness Centrality 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 head(igraph::closeness(graph))
 
 centr_clo(graph)$centralization
@@ -98,6 +100,8 @@ centr_clo(graph)$centralization
 Closeness centrality is the sum of geodesic distances between a node and all other nodes in the network. Since this network is a disconnected graph, the closeness centrality is not well-defined. Similarly, the network centralization is not well-defined due to the graph being disconnected. 
 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 #print(igraph::betweenness(graph, directed=TRUE))
 
 centr_betw(graph,directed=T)$centralization
@@ -106,11 +110,12 @@ constraint(graph)
 
 graph.nodes$constraint<-constraint(graph)
 #find the nodes with highest and lowest constraint
-arrange(graph.nodes, constraint)%>%slice(1:5)
 ```
 The network constraint is 1 for all rebel groups suggesting high redundancy of connections, since most rebel groups only have one (or multiple) connections to a country, while countries have lower network constraint scores, since they have multiple connections with a larger number of rebel groups. 
 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 net<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
 
 tempo <-as.data.frame(brokerage(net, cl = get.vertex.attribute(net,"iel"))$z.nli)
@@ -118,4 +123,32 @@ tempo <-as.data.frame(brokerage(net, cl = get.vertex.attribute(net,"iel"))$z.nli
 head(brokerage(net, cl = get.vertex.attribute(net,"iel"))$z.nli)
 ```
 
+# 20 Nodes with ascending order of constraint
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
 
+
+arrange(graph.nodes, constraint)%>%slice(1:20)
+```
+# 20 Nodes with ascending order of degree, indegree, outdegree
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+arrange((graph.nodes), degree)%>%slice(1:20)
+#arrange(desc(graph.nodes), degree)%>%slice(1:20)
+arrange((graph.nodes), indegree)%>%slice(1:20)
+#arrange(desc(graph.nodes), indegree)%>%slice(1:20)
+arrange((graph.nodes), outdegree)%>%slice(1:20)
+#arrange(desc(graph.nodes), outdegree)%>%slice(1:20)
+```
+# 20 Nodes with ascending order of Derived and Reflected centrality
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+arrange((graph.nodes), rc)%>%slice(1:20)
+#arrange(desc(graph.nodes), rc)%>%slice(1:20)
+arrange((graph.nodes), dc)%>%slice(1:20)
+#arrange(desc(graph.nodes), dc)%>%slice(1:20)
+```
