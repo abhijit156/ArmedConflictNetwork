@@ -113,7 +113,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Network Degree"]},{"type":"character","attributes":{},"value":["Exploring network degree of armed conflict dataset"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Abhijit Mahishi"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-05-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Network Degree"]},{"type":"character","attributes":{},"value":["Exploring network degree of armed conflict dataset"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Abhijit Mahishi"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["https://abhijit156.github.io/"]}},"value":[{"type":"NULL"}]}]}]},{"type":"character","attributes":{},"value":["2022-05-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2066,7 +2066,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Network Degree","description":"Exploring network degree of armed conflict dataset","authors":[{"author":"Abhijit Mahishi","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-11T00:00:00.000-04:00","citationText":"Mahishi, 2022"}
+{"title":"Network Degree","description":"Exploring network degree of armed conflict dataset","authors":[{"author":"Abhijit Mahishi","authorURL":{"https://abhijit156.github.io/":{}},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-11T00:00:00.000-04:00","citationText":"Mahishi, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2110,17 +2110,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><p>Interpret network density and centralization measures</p></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://igraph.org'>igraph</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://statnet.org/'>network</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://datastorm-open.github.io/visNetwork/'>visNetwork</a></span><span class='op'>)</span>
-</code></pre>
-</div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 
@@ -2143,15 +2133,1963 @@ number of conflicts.</p>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='va'>graph.nodes</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/V.html'>V</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>name</span>,
+<span class='va'>graph.nodes</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'>V</span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>name</span>,
 degree<span class='op'>=</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/degree.html'>degree</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>graph.nodes</span><span class='op'>&lt;-</span><span class='va'>graph.nodes</span> <span class='op'><a href='https://rdrr.io/pkg/igraph/man/pipe.html'>%&gt;%</a></span>
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>indegree<span class='op'>=</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/degree.html'>degree</a></span><span class='op'>(</span><span class='va'>graph</span>, mode<span class='op'>=</span><span class='st'>"in"</span>,loops<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>,
+<span class='va'>graph.nodes</span><span class='op'>&lt;-</span><span class='va'>graph.nodes</span> <span class='op'>%&gt;%</span>
+<span class='fu'>mutate</span><span class='op'>(</span>indegree<span class='op'>=</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/degree.html'>degree</a></span><span class='op'>(</span><span class='va'>graph</span>, mode<span class='op'>=</span><span class='st'>"in"</span>,loops<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>,
 outdegree<span class='op'>=</span><span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/degree.html'>degree</a></span><span class='op'>(</span><span class='va'>graph</span>, mode<span class='op'>=</span><span class='st'>"out"</span>,loops<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>graph.nodes</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>indegree</span><span class='op'>)</span><span class='op'>)</span> 
 </code></pre>
 </div>
+<pre><code>                                                                                                       name
+CPP                                                                                                     CPP
+KNU                                                                                                     KNU
+CPB                                                                                                     CPB
+KIO                                                                                                     KIO
+Kashmir insurgents                                                                       Kashmir insurgents
+KNUP                                                                                                   KNUP
+ASG                                                                                                     ASG
+LTTE                                                                                                   LTTE
+MNLF                                                                                                   MNLF
+CNRT                                                                                                   CNRT
+ULFA                                                                                                   ULFA
+Patani insurgents                                                                         Patani insurgents
+PLA                                                                                                     PLA
+MILF                                                                                                   MILF
+JSS/SB                                                                                               JSS/SB
+CPI-Maoist                                                                                       CPI-Maoist
+RCSS                                                                                                   RCSS
+Mujahid Party                                                                                 Mujahid Party
+PWG                                                                                                     PWG
+NNC                                                                                                     NNC
+KR                                                                                                       KR
+IS                                                                                                       IS
+CPN-M                                                                                                 CPN-M
+BLA                                                                                                     BLA
+BRA                                                                                                     BRA
+Sikh insurgents                                                                             Sikh insurgents
+APLP                                                                                                   APLP
+CPA                                                                                                     CPA
+SURA                                                                                                   SURA
+OPM                                                                                                     OPM
+TNV                                                                                                     TNV
+UNLF                                                                                                   UNLF
+TTP                                                                                                     TTP
+LNUP                                                                                                   LNUP
+Huk                                                                                                     Huk
+ANLP                                                                                                   ANLP
+CPT                                                                                                     CPT
+SSA                                                                                                     SSA
+GAM                                                                                                     GAM
+NDFB                                                                                                   NDFB
+Hizb-i Islami-yi Afghanistan                                                   Hizb-i Islami-yi Afghanistan
+NSCN-K                                                                                               NSCN-K
+MPF                                                                                                     MPF
+FNL                                                                                                     FNL
+NSCN-IM                                                                                             NSCN-IM
+MTA                                                                                                     MTA
+CPI                                                                                                     CPI
+PSLF                                                                                                   PSLF
+PVO - &quot;White Band&quot; faction                                                       PVO - &quot;White Band&quot; faction
+RPF                                                                                                     RPF
+NMSP                                                                                                   NMSP
+MCC                                                                                                     MCC
+BLF                                                                                                     BLF
+Hizb-i Wahdat                                                                                 Hizb-i Wahdat
+NLFT                                                                                                   NLFT
+BIFM                                                                                                   BIFM
+Lashkar-e-Islam                                                                             Lashkar-e-Islam
+Darul Islam                                                                                     Darul Islam
+KNPP                                                                                                   KNPP
+Jam&#39;iyyat-i Islami-yi Afghanistan                                         Jam&#39;iyyat-i Islami-yi Afghanistan
+UIFSA                                                                                                 UIFSA
+IMU                                                                                                     IMU
+UNLFW                                                                                                 UNLFW
+CPB-RF                                                                                               CPB-RF
+ABSDF                                                                                                 ABSDF
+Permesta Movement                                                                         Permesta Movement
+PRRI                                                                                                   PRRI
+MQM                                                                                                     MQM
+MNDAA                                                                                                 MNDAA
+ULA                                                                                                     ULA
+SSPP                                                                                                   SSPP
+Military faction (forces of Honasan, Abenina &amp; Zumel) Military faction (forces of Honasan, Abenina &amp; Zumel)
+DKBA 5                                                                                               DKBA 5
+MFL-MUF                                                                                             MFL-MUF
+CPI-ML                                                                                               CPI-ML
+Tibet                                                                                                 Tibet
+CPM                                                                                                     CPM
+NC                                                                                                       NC
+MNF                                                                                                     MNF
+MNLF - NM                                                                                         MNLF - NM
+JVP                                                                                                     JVP
+Junbish-i Milli-yi Islami                                                         Junbish-i Milli-yi Islami
+GNLA                                                                                                   GNLA
+PBCP-J                                                                                               PBCP-J
+Forces of Mullo Abdullo                                                             Forces of Mullo Abdullo
+NDFB-S                                                                                               NDFB-S
+ARSA                                                                                                   ARSA
+Forces of Norodom Ranariddh                                                     Forces of Norodom Ranariddh
+BRAS                                                                                                   BRAS
+RSO                                                                                                     RSO
+PNDF                                                                                                   PNDF
+LRM                                                                                                     LRM
+SSIA                                                                                                   SSIA
+SNUF                                                                                                   SNUF
+SSNLO                                                                                                 SSNLO
+CCO                                                                                                     CCO
+KPNLF                                                                                                 KPNLF
+MIM                                                                                                     MIM
+Hizb-i Islami-yi Afghanistan - Khalis faction                 Hizb-i Islami-yi Afghanistan - Khalis faction
+Taleban                                                                                             Taleban
+ATTF                                                                                                   ATTF
+KCP                                                                                                     KCP
+PREPAK                                                                                               PREPAK
+TELO                                                                                                   TELO
+EPRLF                                                                                                 EPRLF
+Forces of Khudoberdiyev                                                             Forces of Khudoberdiyev
+ABSU                                                                                                   ABSU
+NDFB - RD                                                                                         NDFB - RD
+PBCP                                                                                                   PBCP
+NLFT-B                                                                                               NLFT-B
+TTP - TA                                                                                           TTP - TA
+UBA                                                                                                     UBA
+CPI-ML-J                                                                                           CPI-ML-J
+ETIM                                                                                                   ETIM
+Sultanate of Sulu                                                                         Sultanate of Sulu
+Jamaat-ul-Ahrar                                                                             Jamaat-ul-Ahrar
+Maute group                                                                                     Maute group
+al-Harakat al-Islamiyah                                                             al-Harakat al-Islamiyah
+BIFM-K                                                                                               BIFM-K
+Military faction (Forces of Hun Sen)                                   Military faction (Forces of Hun Sen)
+Taiwanese insurgents                                                                   Taiwanese insurgents
+God&#39;s Army                                                                                       God&#39;s Army
+ALP                                                                                                     ALP
+BMA                                                                                                     BMA
+Republic of South Moluccas                                                       Republic of South Moluccas
+Military faction (navy)                                                             Military faction (navy)
+Pathet Lao                                                                                       Pathet Lao
+NSH                                                                                                     NSH
+SSRA                                                                                                   SSRA
+TRC                                                                                                     TRC
+FUNCINPEC                                                                                         FUNCINPEC
+MNLF - HM                                                                                         MNLF - HM
+Mukti Bahini                                                                                   Mukti Bahini
+Baloch Ittehad                                                                               Baloch Ittehad
+PDPA                                                                                                   PDPA
+Military faction (forces of Shahnawaz Tanay)                   Military faction (forces of Shahnawaz Tanay)
+UTO                                                                                                     UTO
+JIG                                                                                                     JIG
+UWSA                                                                                                   UWSA
+PULF                                                                                                   PULF
+Government of Pakistan                                                               Government of Pakistan
+Government of Bangladesh                                                           Government of Bangladesh
+Government of Myanmar (Burma)                                                 Government of Myanmar (Burma)
+Government of Philippines                                                         Government of Philippines
+Government of India                                                                     Government of India
+Government of China                                                                     Government of China
+Government of Malaysia                                                               Government of Malaysia
+Government of Tajikistan                                                           Government of Tajikistan
+Government of Hyderabad                                                             Government of Hyderabad
+Government of Cambodia (Kampuchea)                                       Government of Cambodia (Kampuchea)
+Government of Indonesia                                                             Government of Indonesia
+Government of Thailand                                                               Government of Thailand
+Government of South Vietnam                                                     Government of South Vietnam
+Government of Laos                                                                       Government of Laos
+Government of Nepal                                                                     Government of Nepal
+Government of Sri Lanka                                                             Government of Sri Lanka
+Government of Afghanistan                                                         Government of Afghanistan
+Government of Papua New Guinea                                               Government of Papua New Guinea
+Government of Uzbekistan                                                           Government of Uzbekistan
+                                                      degree indegree
+CPP                                                       50       50
+KNU                                                       43       43
+CPB                                                       41       41
+KIO                                                       41       41
+Kashmir insurgents                                        31       31
+KNUP                                                      27       27
+ASG                                                       25       25
+LTTE                                                      24       24
+MNLF                                                      20       20
+CNRT                                                      18       18
+ULFA                                                      18       18
+Patani insurgents                                         18       18
+PLA                                                       17       17
+MILF                                                      17       17
+JSS/SB                                                    17       17
+CPI-Maoist                                                16       16
+RCSS                                                      15       15
+Mujahid Party                                             14       14
+PWG                                                       13       13
+NNC                                                       12       12
+KR                                                        12       12
+IS                                                        11       11
+CPN-M                                                     11       11
+BLA                                                       11       11
+BRA                                                       11       11
+Sikh insurgents                                           11       11
+APLP                                                      10       10
+CPA                                                       10       10
+SURA                                                      10       10
+OPM                                                       10       10
+TNV                                                       10       10
+UNLF                                                      10       10
+TTP                                                       10       10
+LNUP                                                      10       10
+Huk                                                        9        9
+ANLP                                                       9        9
+CPT                                                        9        9
+SSA                                                        9        9
+GAM                                                        9        9
+NDFB                                                       9        9
+Hizb-i Islami-yi Afghanistan                               8        8
+NSCN-K                                                     7        7
+MPF                                                        7        7
+FNL                                                        7        7
+NSCN-IM                                                    7        7
+MTA                                                        7        7
+CPI                                                        6        6
+PSLF                                                       6        6
+PVO - &quot;White Band&quot; faction                                 6        6
+RPF                                                        6        6
+NMSP                                                       6        6
+MCC                                                        6        6
+BLF                                                        6        6
+Hizb-i Wahdat                                              6        6
+NLFT                                                       6        6
+BIFM                                                       5        5
+Lashkar-e-Islam                                            5        5
+Darul Islam                                                5        5
+KNPP                                                       5        5
+Jam&#39;iyyat-i Islami-yi Afghanistan                          5        5
+UIFSA                                                      5        5
+IMU                                                        4        4
+UNLFW                                                      4        4
+CPB-RF                                                     4        4
+ABSDF                                                      4        4
+Permesta Movement                                          4        4
+PRRI                                                       4        4
+MQM                                                        4        4
+MNDAA                                                      4        4
+ULA                                                        3        3
+SSPP                                                       3        3
+Military faction (forces of Honasan, Abenina &amp; Zumel)      3        3
+DKBA 5                                                     3        3
+MFL-MUF                                                    3        3
+CPI-ML                                                     3        3
+Tibet                                                      3        3
+CPM                                                        3        3
+NC                                                         3        3
+MNF                                                        3        3
+MNLF - NM                                                  3        3
+JVP                                                        3        3
+Junbish-i Milli-yi Islami                                  3        3
+GNLA                                                       2        2
+PBCP-J                                                     2        2
+Forces of Mullo Abdullo                                    2        2
+NDFB-S                                                     2        2
+ARSA                                                       2        2
+Forces of Norodom Ranariddh                                2        2
+BRAS                                                       2        2
+RSO                                                        2        2
+PNDF                                                       2        2
+LRM                                                        2        2
+SSIA                                                       2        2
+SNUF                                                       2        2
+SSNLO                                                      2        2
+CCO                                                        2        2
+KPNLF                                                      2        2
+MIM                                                        2        2
+Hizb-i Islami-yi Afghanistan - Khalis faction              2        2
+Taleban                                                    2        2
+ATTF                                                       2        2
+KCP                                                        2        2
+PREPAK                                                     2        2
+TELO                                                       2        2
+EPRLF                                                      2        2
+Forces of Khudoberdiyev                                    2        2
+ABSU                                                       2        2
+NDFB - RD                                                  2        2
+PBCP                                                       1        1
+NLFT-B                                                     1        1
+TTP - TA                                                   1        1
+UBA                                                        1        1
+CPI-ML-J                                                   1        1
+ETIM                                                       1        1
+Sultanate of Sulu                                          1        1
+Jamaat-ul-Ahrar                                            1        1
+Maute group                                                1        1
+al-Harakat al-Islamiyah                                    1        1
+BIFM-K                                                     1        1
+Military faction (Forces of Hun Sen)                       1        1
+Taiwanese insurgents                                       1        1
+God&#39;s Army                                                 1        1
+ALP                                                        1        1
+BMA                                                        1        1
+Republic of South Moluccas                                 1        1
+Military faction (navy)                                    1        1
+Pathet Lao                                                 1        1
+NSH                                                        1        1
+SSRA                                                       1        1
+TRC                                                        1        1
+FUNCINPEC                                                  1        1
+MNLF - HM                                                  1        1
+Mukti Bahini                                               1        1
+Baloch Ittehad                                             1        1
+PDPA                                                       1        1
+Military faction (forces of Shahnawaz Tanay)               1        1
+UTO                                                        1        1
+JIG                                                        1        1
+UWSA                                                       1        1
+PULF                                                       1        1
+Government of Pakistan                                    53        0
+Government of Bangladesh                                  22        0
+Government of Myanmar (Burma)                            332        0
+Government of Philippines                                143        0
+Government of India                                      193        0
+Government of China                                        9        0
+Government of Malaysia                                     6        0
+Government of Tajikistan                                   7        0
+Government of Hyderabad                                    2        0
+Government of Cambodia (Kampuchea)                        18        0
+Government of Indonesia                                   51        0
+Government of Thailand                                    28        0
+Government of South Vietnam                                7        0
+Government of Laos                                         3        0
+Government of Nepal                                       14        0
+Government of Sri Lanka                                   31        0
+Government of Afghanistan                                 33        0
+Government of Papua New Guinea                             6        0
+Government of Uzbekistan                                   2        0
+                                                      outdegree
+CPP                                                           0
+KNU                                                           0
+CPB                                                           0
+KIO                                                           0
+Kashmir insurgents                                            0
+KNUP                                                          0
+ASG                                                           0
+LTTE                                                          0
+MNLF                                                          0
+CNRT                                                          0
+ULFA                                                          0
+Patani insurgents                                             0
+PLA                                                           0
+MILF                                                          0
+JSS/SB                                                        0
+CPI-Maoist                                                    0
+RCSS                                                          0
+Mujahid Party                                                 0
+PWG                                                           0
+NNC                                                           0
+KR                                                            0
+IS                                                            0
+CPN-M                                                         0
+BLA                                                           0
+BRA                                                           0
+Sikh insurgents                                               0
+APLP                                                          0
+CPA                                                           0
+SURA                                                          0
+OPM                                                           0
+TNV                                                           0
+UNLF                                                          0
+TTP                                                           0
+LNUP                                                          0
+Huk                                                           0
+ANLP                                                          0
+CPT                                                           0
+SSA                                                           0
+GAM                                                           0
+NDFB                                                          0
+Hizb-i Islami-yi Afghanistan                                  0
+NSCN-K                                                        0
+MPF                                                           0
+FNL                                                           0
+NSCN-IM                                                       0
+MTA                                                           0
+CPI                                                           0
+PSLF                                                          0
+PVO - &quot;White Band&quot; faction                                    0
+RPF                                                           0
+NMSP                                                          0
+MCC                                                           0
+BLF                                                           0
+Hizb-i Wahdat                                                 0
+NLFT                                                          0
+BIFM                                                          0
+Lashkar-e-Islam                                               0
+Darul Islam                                                   0
+KNPP                                                          0
+Jam&#39;iyyat-i Islami-yi Afghanistan                             0
+UIFSA                                                         0
+IMU                                                           0
+UNLFW                                                         0
+CPB-RF                                                        0
+ABSDF                                                         0
+Permesta Movement                                             0
+PRRI                                                          0
+MQM                                                           0
+MNDAA                                                         0
+ULA                                                           0
+SSPP                                                          0
+Military faction (forces of Honasan, Abenina &amp; Zumel)         0
+DKBA 5                                                        0
+MFL-MUF                                                       0
+CPI-ML                                                        0
+Tibet                                                         0
+CPM                                                           0
+NC                                                            0
+MNF                                                           0
+MNLF - NM                                                     0
+JVP                                                           0
+Junbish-i Milli-yi Islami                                     0
+GNLA                                                          0
+PBCP-J                                                        0
+Forces of Mullo Abdullo                                       0
+NDFB-S                                                        0
+ARSA                                                          0
+Forces of Norodom Ranariddh                                   0
+BRAS                                                          0
+RSO                                                           0
+PNDF                                                          0
+LRM                                                           0
+SSIA                                                          0
+SNUF                                                          0
+SSNLO                                                         0
+CCO                                                           0
+KPNLF                                                         0
+MIM                                                           0
+Hizb-i Islami-yi Afghanistan - Khalis faction                 0
+Taleban                                                       0
+ATTF                                                          0
+KCP                                                           0
+PREPAK                                                        0
+TELO                                                          0
+EPRLF                                                         0
+Forces of Khudoberdiyev                                       0
+ABSU                                                          0
+NDFB - RD                                                     0
+PBCP                                                          0
+NLFT-B                                                        0
+TTP - TA                                                      0
+UBA                                                           0
+CPI-ML-J                                                      0
+ETIM                                                          0
+Sultanate of Sulu                                             0
+Jamaat-ul-Ahrar                                               0
+Maute group                                                   0
+al-Harakat al-Islamiyah                                       0
+BIFM-K                                                        0
+Military faction (Forces of Hun Sen)                          0
+Taiwanese insurgents                                          0
+God&#39;s Army                                                    0
+ALP                                                           0
+BMA                                                           0
+Republic of South Moluccas                                    0
+Military faction (navy)                                       0
+Pathet Lao                                                    0
+NSH                                                           0
+SSRA                                                          0
+TRC                                                           0
+FUNCINPEC                                                     0
+MNLF - HM                                                     0
+Mukti Bahini                                                  0
+Baloch Ittehad                                                0
+PDPA                                                          0
+Military faction (forces of Shahnawaz Tanay)                  0
+UTO                                                           0
+JIG                                                           0
+UWSA                                                          0
+PULF                                                          0
+Government of Pakistan                                       53
+Government of Bangladesh                                     22
+Government of Myanmar (Burma)                               332
+Government of Philippines                                   143
+Government of India                                         193
+Government of China                                           9
+Government of Malaysia                                        6
+Government of Tajikistan                                      7
+Government of Hyderabad                                       2
+Government of Cambodia (Kampuchea)                           18
+Government of Indonesia                                      51
+Government of Thailand                                       28
+Government of South Vietnam                                   7
+Government of Laos                                            3
+Government of Nepal                                          14
+Government of Sri Lanka                                      31
+Government of Afghanistan                                    33
+Government of Papua New Guinea                                6
+Government of Uzbekistan                                      2</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph.nodes</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>indegree</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
 </div>
+<pre><code>                                                                                                       name
+Government of Pakistan                                                               Government of Pakistan
+Government of Bangladesh                                                           Government of Bangladesh
+Government of Myanmar (Burma)                                                 Government of Myanmar (Burma)
+Government of Philippines                                                         Government of Philippines
+Government of India                                                                     Government of India
+Government of China                                                                     Government of China
+Government of Malaysia                                                               Government of Malaysia
+Government of Tajikistan                                                           Government of Tajikistan
+Government of Hyderabad                                                             Government of Hyderabad
+Government of Cambodia (Kampuchea)                                       Government of Cambodia (Kampuchea)
+Government of Indonesia                                                             Government of Indonesia
+Government of Thailand                                                               Government of Thailand
+Government of South Vietnam                                                     Government of South Vietnam
+Government of Laos                                                                       Government of Laos
+Government of Nepal                                                                     Government of Nepal
+Government of Sri Lanka                                                             Government of Sri Lanka
+Government of Afghanistan                                                         Government of Afghanistan
+Government of Papua New Guinea                                               Government of Papua New Guinea
+Government of Uzbekistan                                                           Government of Uzbekistan
+PBCP                                                                                                   PBCP
+NLFT-B                                                                                               NLFT-B
+TTP - TA                                                                                           TTP - TA
+UBA                                                                                                     UBA
+CPI-ML-J                                                                                           CPI-ML-J
+ETIM                                                                                                   ETIM
+Sultanate of Sulu                                                                         Sultanate of Sulu
+Jamaat-ul-Ahrar                                                                             Jamaat-ul-Ahrar
+Maute group                                                                                     Maute group
+al-Harakat al-Islamiyah                                                             al-Harakat al-Islamiyah
+BIFM-K                                                                                               BIFM-K
+Military faction (Forces of Hun Sen)                                   Military faction (Forces of Hun Sen)
+Taiwanese insurgents                                                                   Taiwanese insurgents
+God&#39;s Army                                                                                       God&#39;s Army
+ALP                                                                                                     ALP
+BMA                                                                                                     BMA
+Republic of South Moluccas                                                       Republic of South Moluccas
+Military faction (navy)                                                             Military faction (navy)
+Pathet Lao                                                                                       Pathet Lao
+NSH                                                                                                     NSH
+SSRA                                                                                                   SSRA
+TRC                                                                                                     TRC
+FUNCINPEC                                                                                         FUNCINPEC
+MNLF - HM                                                                                         MNLF - HM
+Mukti Bahini                                                                                   Mukti Bahini
+Baloch Ittehad                                                                               Baloch Ittehad
+PDPA                                                                                                   PDPA
+Military faction (forces of Shahnawaz Tanay)                   Military faction (forces of Shahnawaz Tanay)
+UTO                                                                                                     UTO
+JIG                                                                                                     JIG
+UWSA                                                                                                   UWSA
+PULF                                                                                                   PULF
+GNLA                                                                                                   GNLA
+PBCP-J                                                                                               PBCP-J
+Forces of Mullo Abdullo                                                             Forces of Mullo Abdullo
+NDFB-S                                                                                               NDFB-S
+ARSA                                                                                                   ARSA
+Forces of Norodom Ranariddh                                                     Forces of Norodom Ranariddh
+BRAS                                                                                                   BRAS
+RSO                                                                                                     RSO
+PNDF                                                                                                   PNDF
+LRM                                                                                                     LRM
+SSIA                                                                                                   SSIA
+SNUF                                                                                                   SNUF
+SSNLO                                                                                                 SSNLO
+CCO                                                                                                     CCO
+KPNLF                                                                                                 KPNLF
+MIM                                                                                                     MIM
+Hizb-i Islami-yi Afghanistan - Khalis faction                 Hizb-i Islami-yi Afghanistan - Khalis faction
+Taleban                                                                                             Taleban
+ATTF                                                                                                   ATTF
+KCP                                                                                                     KCP
+PREPAK                                                                                               PREPAK
+TELO                                                                                                   TELO
+EPRLF                                                                                                 EPRLF
+Forces of Khudoberdiyev                                                             Forces of Khudoberdiyev
+ABSU                                                                                                   ABSU
+NDFB - RD                                                                                         NDFB - RD
+ULA                                                                                                     ULA
+SSPP                                                                                                   SSPP
+Military faction (forces of Honasan, Abenina &amp; Zumel) Military faction (forces of Honasan, Abenina &amp; Zumel)
+DKBA 5                                                                                               DKBA 5
+MFL-MUF                                                                                             MFL-MUF
+CPI-ML                                                                                               CPI-ML
+Tibet                                                                                                 Tibet
+CPM                                                                                                     CPM
+NC                                                                                                       NC
+MNF                                                                                                     MNF
+MNLF - NM                                                                                         MNLF - NM
+JVP                                                                                                     JVP
+Junbish-i Milli-yi Islami                                                         Junbish-i Milli-yi Islami
+IMU                                                                                                     IMU
+UNLFW                                                                                                 UNLFW
+CPB-RF                                                                                               CPB-RF
+ABSDF                                                                                                 ABSDF
+Permesta Movement                                                                         Permesta Movement
+PRRI                                                                                                   PRRI
+MQM                                                                                                     MQM
+MNDAA                                                                                                 MNDAA
+BIFM                                                                                                   BIFM
+Lashkar-e-Islam                                                                             Lashkar-e-Islam
+Darul Islam                                                                                     Darul Islam
+KNPP                                                                                                   KNPP
+Jam&#39;iyyat-i Islami-yi Afghanistan                                         Jam&#39;iyyat-i Islami-yi Afghanistan
+UIFSA                                                                                                 UIFSA
+CPI                                                                                                     CPI
+PSLF                                                                                                   PSLF
+PVO - &quot;White Band&quot; faction                                                       PVO - &quot;White Band&quot; faction
+RPF                                                                                                     RPF
+NMSP                                                                                                   NMSP
+MCC                                                                                                     MCC
+BLF                                                                                                     BLF
+Hizb-i Wahdat                                                                                 Hizb-i Wahdat
+NLFT                                                                                                   NLFT
+NSCN-K                                                                                               NSCN-K
+MPF                                                                                                     MPF
+FNL                                                                                                     FNL
+NSCN-IM                                                                                             NSCN-IM
+MTA                                                                                                     MTA
+Hizb-i Islami-yi Afghanistan                                                   Hizb-i Islami-yi Afghanistan
+Huk                                                                                                     Huk
+ANLP                                                                                                   ANLP
+CPT                                                                                                     CPT
+SSA                                                                                                     SSA
+GAM                                                                                                     GAM
+NDFB                                                                                                   NDFB
+APLP                                                                                                   APLP
+CPA                                                                                                     CPA
+SURA                                                                                                   SURA
+OPM                                                                                                     OPM
+TNV                                                                                                     TNV
+UNLF                                                                                                   UNLF
+TTP                                                                                                     TTP
+LNUP                                                                                                   LNUP
+IS                                                                                                       IS
+CPN-M                                                                                                 CPN-M
+BLA                                                                                                     BLA
+BRA                                                                                                     BRA
+Sikh insurgents                                                                             Sikh insurgents
+NNC                                                                                                     NNC
+KR                                                                                                       KR
+PWG                                                                                                     PWG
+Mujahid Party                                                                                 Mujahid Party
+RCSS                                                                                                   RCSS
+CPI-Maoist                                                                                       CPI-Maoist
+PLA                                                                                                     PLA
+MILF                                                                                                   MILF
+JSS/SB                                                                                               JSS/SB
+CNRT                                                                                                   CNRT
+ULFA                                                                                                   ULFA
+Patani insurgents                                                                         Patani insurgents
+MNLF                                                                                                   MNLF
+LTTE                                                                                                   LTTE
+ASG                                                                                                     ASG
+KNUP                                                                                                   KNUP
+Kashmir insurgents                                                                       Kashmir insurgents
+CPB                                                                                                     CPB
+KIO                                                                                                     KIO
+KNU                                                                                                     KNU
+CPP                                                                                                     CPP
+                                                      degree indegree
+Government of Pakistan                                    53        0
+Government of Bangladesh                                  22        0
+Government of Myanmar (Burma)                            332        0
+Government of Philippines                                143        0
+Government of India                                      193        0
+Government of China                                        9        0
+Government of Malaysia                                     6        0
+Government of Tajikistan                                   7        0
+Government of Hyderabad                                    2        0
+Government of Cambodia (Kampuchea)                        18        0
+Government of Indonesia                                   51        0
+Government of Thailand                                    28        0
+Government of South Vietnam                                7        0
+Government of Laos                                         3        0
+Government of Nepal                                       14        0
+Government of Sri Lanka                                   31        0
+Government of Afghanistan                                 33        0
+Government of Papua New Guinea                             6        0
+Government of Uzbekistan                                   2        0
+PBCP                                                       1        1
+NLFT-B                                                     1        1
+TTP - TA                                                   1        1
+UBA                                                        1        1
+CPI-ML-J                                                   1        1
+ETIM                                                       1        1
+Sultanate of Sulu                                          1        1
+Jamaat-ul-Ahrar                                            1        1
+Maute group                                                1        1
+al-Harakat al-Islamiyah                                    1        1
+BIFM-K                                                     1        1
+Military faction (Forces of Hun Sen)                       1        1
+Taiwanese insurgents                                       1        1
+God&#39;s Army                                                 1        1
+ALP                                                        1        1
+BMA                                                        1        1
+Republic of South Moluccas                                 1        1
+Military faction (navy)                                    1        1
+Pathet Lao                                                 1        1
+NSH                                                        1        1
+SSRA                                                       1        1
+TRC                                                        1        1
+FUNCINPEC                                                  1        1
+MNLF - HM                                                  1        1
+Mukti Bahini                                               1        1
+Baloch Ittehad                                             1        1
+PDPA                                                       1        1
+Military faction (forces of Shahnawaz Tanay)               1        1
+UTO                                                        1        1
+JIG                                                        1        1
+UWSA                                                       1        1
+PULF                                                       1        1
+GNLA                                                       2        2
+PBCP-J                                                     2        2
+Forces of Mullo Abdullo                                    2        2
+NDFB-S                                                     2        2
+ARSA                                                       2        2
+Forces of Norodom Ranariddh                                2        2
+BRAS                                                       2        2
+RSO                                                        2        2
+PNDF                                                       2        2
+LRM                                                        2        2
+SSIA                                                       2        2
+SNUF                                                       2        2
+SSNLO                                                      2        2
+CCO                                                        2        2
+KPNLF                                                      2        2
+MIM                                                        2        2
+Hizb-i Islami-yi Afghanistan - Khalis faction              2        2
+Taleban                                                    2        2
+ATTF                                                       2        2
+KCP                                                        2        2
+PREPAK                                                     2        2
+TELO                                                       2        2
+EPRLF                                                      2        2
+Forces of Khudoberdiyev                                    2        2
+ABSU                                                       2        2
+NDFB - RD                                                  2        2
+ULA                                                        3        3
+SSPP                                                       3        3
+Military faction (forces of Honasan, Abenina &amp; Zumel)      3        3
+DKBA 5                                                     3        3
+MFL-MUF                                                    3        3
+CPI-ML                                                     3        3
+Tibet                                                      3        3
+CPM                                                        3        3
+NC                                                         3        3
+MNF                                                        3        3
+MNLF - NM                                                  3        3
+JVP                                                        3        3
+Junbish-i Milli-yi Islami                                  3        3
+IMU                                                        4        4
+UNLFW                                                      4        4
+CPB-RF                                                     4        4
+ABSDF                                                      4        4
+Permesta Movement                                          4        4
+PRRI                                                       4        4
+MQM                                                        4        4
+MNDAA                                                      4        4
+BIFM                                                       5        5
+Lashkar-e-Islam                                            5        5
+Darul Islam                                                5        5
+KNPP                                                       5        5
+Jam&#39;iyyat-i Islami-yi Afghanistan                          5        5
+UIFSA                                                      5        5
+CPI                                                        6        6
+PSLF                                                       6        6
+PVO - &quot;White Band&quot; faction                                 6        6
+RPF                                                        6        6
+NMSP                                                       6        6
+MCC                                                        6        6
+BLF                                                        6        6
+Hizb-i Wahdat                                              6        6
+NLFT                                                       6        6
+NSCN-K                                                     7        7
+MPF                                                        7        7
+FNL                                                        7        7
+NSCN-IM                                                    7        7
+MTA                                                        7        7
+Hizb-i Islami-yi Afghanistan                               8        8
+Huk                                                        9        9
+ANLP                                                       9        9
+CPT                                                        9        9
+SSA                                                        9        9
+GAM                                                        9        9
+NDFB                                                       9        9
+APLP                                                      10       10
+CPA                                                       10       10
+SURA                                                      10       10
+OPM                                                       10       10
+TNV                                                       10       10
+UNLF                                                      10       10
+TTP                                                       10       10
+LNUP                                                      10       10
+IS                                                        11       11
+CPN-M                                                     11       11
+BLA                                                       11       11
+BRA                                                       11       11
+Sikh insurgents                                           11       11
+NNC                                                       12       12
+KR                                                        12       12
+PWG                                                       13       13
+Mujahid Party                                             14       14
+RCSS                                                      15       15
+CPI-Maoist                                                16       16
+PLA                                                       17       17
+MILF                                                      17       17
+JSS/SB                                                    17       17
+CNRT                                                      18       18
+ULFA                                                      18       18
+Patani insurgents                                         18       18
+MNLF                                                      20       20
+LTTE                                                      24       24
+ASG                                                       25       25
+KNUP                                                      27       27
+Kashmir insurgents                                        31       31
+CPB                                                       41       41
+KIO                                                       41       41
+KNU                                                       43       43
+CPP                                                       50       50
+                                                      outdegree
+Government of Pakistan                                       53
+Government of Bangladesh                                     22
+Government of Myanmar (Burma)                               332
+Government of Philippines                                   143
+Government of India                                         193
+Government of China                                           9
+Government of Malaysia                                        6
+Government of Tajikistan                                      7
+Government of Hyderabad                                       2
+Government of Cambodia (Kampuchea)                           18
+Government of Indonesia                                      51
+Government of Thailand                                       28
+Government of South Vietnam                                   7
+Government of Laos                                            3
+Government of Nepal                                          14
+Government of Sri Lanka                                      31
+Government of Afghanistan                                    33
+Government of Papua New Guinea                                6
+Government of Uzbekistan                                      2
+PBCP                                                          0
+NLFT-B                                                        0
+TTP - TA                                                      0
+UBA                                                           0
+CPI-ML-J                                                      0
+ETIM                                                          0
+Sultanate of Sulu                                             0
+Jamaat-ul-Ahrar                                               0
+Maute group                                                   0
+al-Harakat al-Islamiyah                                       0
+BIFM-K                                                        0
+Military faction (Forces of Hun Sen)                          0
+Taiwanese insurgents                                          0
+God&#39;s Army                                                    0
+ALP                                                           0
+BMA                                                           0
+Republic of South Moluccas                                    0
+Military faction (navy)                                       0
+Pathet Lao                                                    0
+NSH                                                           0
+SSRA                                                          0
+TRC                                                           0
+FUNCINPEC                                                     0
+MNLF - HM                                                     0
+Mukti Bahini                                                  0
+Baloch Ittehad                                                0
+PDPA                                                          0
+Military faction (forces of Shahnawaz Tanay)                  0
+UTO                                                           0
+JIG                                                           0
+UWSA                                                          0
+PULF                                                          0
+GNLA                                                          0
+PBCP-J                                                        0
+Forces of Mullo Abdullo                                       0
+NDFB-S                                                        0
+ARSA                                                          0
+Forces of Norodom Ranariddh                                   0
+BRAS                                                          0
+RSO                                                           0
+PNDF                                                          0
+LRM                                                           0
+SSIA                                                          0
+SNUF                                                          0
+SSNLO                                                         0
+CCO                                                           0
+KPNLF                                                         0
+MIM                                                           0
+Hizb-i Islami-yi Afghanistan - Khalis faction                 0
+Taleban                                                       0
+ATTF                                                          0
+KCP                                                           0
+PREPAK                                                        0
+TELO                                                          0
+EPRLF                                                         0
+Forces of Khudoberdiyev                                       0
+ABSU                                                          0
+NDFB - RD                                                     0
+ULA                                                           0
+SSPP                                                          0
+Military faction (forces of Honasan, Abenina &amp; Zumel)         0
+DKBA 5                                                        0
+MFL-MUF                                                       0
+CPI-ML                                                        0
+Tibet                                                         0
+CPM                                                           0
+NC                                                            0
+MNF                                                           0
+MNLF - NM                                                     0
+JVP                                                           0
+Junbish-i Milli-yi Islami                                     0
+IMU                                                           0
+UNLFW                                                         0
+CPB-RF                                                        0
+ABSDF                                                         0
+Permesta Movement                                             0
+PRRI                                                          0
+MQM                                                           0
+MNDAA                                                         0
+BIFM                                                          0
+Lashkar-e-Islam                                               0
+Darul Islam                                                   0
+KNPP                                                          0
+Jam&#39;iyyat-i Islami-yi Afghanistan                             0
+UIFSA                                                         0
+CPI                                                           0
+PSLF                                                          0
+PVO - &quot;White Band&quot; faction                                    0
+RPF                                                           0
+NMSP                                                          0
+MCC                                                           0
+BLF                                                           0
+Hizb-i Wahdat                                                 0
+NLFT                                                          0
+NSCN-K                                                        0
+MPF                                                           0
+FNL                                                           0
+NSCN-IM                                                       0
+MTA                                                           0
+Hizb-i Islami-yi Afghanistan                                  0
+Huk                                                           0
+ANLP                                                          0
+CPT                                                           0
+SSA                                                           0
+GAM                                                           0
+NDFB                                                          0
+APLP                                                          0
+CPA                                                           0
+SURA                                                          0
+OPM                                                           0
+TNV                                                           0
+UNLF                                                          0
+TTP                                                           0
+LNUP                                                          0
+IS                                                            0
+CPN-M                                                         0
+BLA                                                           0
+BRA                                                           0
+Sikh insurgents                                               0
+NNC                                                           0
+KR                                                            0
+PWG                                                           0
+Mujahid Party                                                 0
+RCSS                                                          0
+CPI-Maoist                                                    0
+PLA                                                           0
+MILF                                                          0
+JSS/SB                                                        0
+CNRT                                                          0
+ULFA                                                          0
+Patani insurgents                                             0
+MNLF                                                          0
+LTTE                                                          0
+ASG                                                           0
+KNUP                                                          0
+Kashmir insurgents                                            0
+CPB                                                           0
+KIO                                                           0
+KNU                                                           0
+CPP                                                           0</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph.nodes</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>(</span><span class='va'>outdegree</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>                                                                                                       name
+IMU                                                                                                     IMU
+PBCP                                                                                                   PBCP
+NSCN-K                                                                                               NSCN-K
+BIFM                                                                                                   BIFM
+NLFT-B                                                                                               NLFT-B
+Lashkar-e-Islam                                                                             Lashkar-e-Islam
+ULA                                                                                                     ULA
+TTP - TA                                                                                           TTP - TA
+UBA                                                                                                     UBA
+CPI-ML-J                                                                                           CPI-ML-J
+GNLA                                                                                                   GNLA
+SSPP                                                                                                   SSPP
+ETIM                                                                                                   ETIM
+PBCP-J                                                                                               PBCP-J
+Sultanate of Sulu                                                                         Sultanate of Sulu
+Forces of Mullo Abdullo                                                             Forces of Mullo Abdullo
+CPI                                                                                                     CPI
+NDFB-S                                                                                               NDFB-S
+Jamaat-ul-Ahrar                                                                             Jamaat-ul-Ahrar
+PSLF                                                                                                   PSLF
+IS                                                                                                       IS
+UNLFW                                                                                                 UNLFW
+Maute group                                                                                     Maute group
+ARSA                                                                                                   ARSA
+al-Harakat al-Islamiyah                                                             al-Harakat al-Islamiyah
+BIFM-K                                                                                               BIFM-K
+Forces of Norodom Ranariddh                                                     Forces of Norodom Ranariddh
+Military faction (Forces of Hun Sen)                                   Military faction (Forces of Hun Sen)
+BRAS                                                                                                   BRAS
+PLA                                                                                                     PLA
+Huk                                                                                                     Huk
+CPP                                                                                                     CPP
+Military faction (forces of Honasan, Abenina &amp; Zumel) Military faction (forces of Honasan, Abenina &amp; Zumel)
+Taiwanese insurgents                                                                   Taiwanese insurgents
+KNUP                                                                                                   KNUP
+KNU                                                                                                     KNU
+God&#39;s Army                                                                                       God&#39;s Army
+DKBA 5                                                                                               DKBA 5
+CPB                                                                                                     CPB
+CPB-RF                                                                                               CPB-RF
+PVO - &quot;White Band&quot; faction                                                       PVO - &quot;White Band&quot; faction
+ABSDF                                                                                                 ABSDF
+APLP                                                                                                   APLP
+Mujahid Party                                                                                 Mujahid Party
+ANLP                                                                                                   ANLP
+CPA                                                                                                     CPA
+RPF                                                                                                     RPF
+ALP                                                                                                     ALP
+RSO                                                                                                     RSO
+MFL-MUF                                                                                             MFL-MUF
+MPF                                                                                                     MPF
+NMSP                                                                                                   NMSP
+BMA                                                                                                     BMA
+CPI-ML                                                                                               CPI-ML
+PWG                                                                                                     PWG
+MCC                                                                                                     MCC
+CPI-Maoist                                                                                       CPI-Maoist
+PNDF                                                                                                   PNDF
+KIO                                                                                                     KIO
+Tibet                                                                                                 Tibet
+Republic of South Moluccas                                                       Republic of South Moluccas
+Military faction (navy)                                                             Military faction (navy)
+CPT                                                                                                     CPT
+Darul Islam                                                                                     Darul Islam
+Permesta Movement                                                                         Permesta Movement
+PRRI                                                                                                   PRRI
+FNL                                                                                                     FNL
+NNC                                                                                                     NNC
+NSCN-IM                                                                                             NSCN-IM
+KNPP                                                                                                   KNPP
+CPM                                                                                                     CPM
+Pathet Lao                                                                                       Pathet Lao
+LRM                                                                                                     LRM
+NSH                                                                                                     NSH
+SSIA                                                                                                   SSIA
+SNUF                                                                                                   SNUF
+SSA                                                                                                     SSA
+SSNLO                                                                                                 SSNLO
+SURA                                                                                                   SURA
+SSRA                                                                                                   SSRA
+TRC                                                                                                     TRC
+MTA                                                                                                     MTA
+RCSS                                                                                                   RCSS
+NC                                                                                                       NC
+CPN-M                                                                                                 CPN-M
+CCO                                                                                                     CCO
+OPM                                                                                                     OPM
+MNF                                                                                                     MNF
+KR                                                                                                       KR
+KPNLF                                                                                                 KPNLF
+FUNCINPEC                                                                                         FUNCINPEC
+MIM                                                                                                     MIM
+MNLF                                                                                                   MNLF
+MILF                                                                                                   MILF
+ASG                                                                                                     ASG
+MNLF - NM                                                                                         MNLF - NM
+MNLF - HM                                                                                         MNLF - HM
+Mukti Bahini                                                                                   Mukti Bahini
+JVP                                                                                                     JVP
+JSS/SB                                                                                               JSS/SB
+BLF                                                                                                     BLF
+BLA                                                                                                     BLA
+Baloch Ittehad                                                                               Baloch Ittehad
+BRA                                                                                                     BRA
+CNRT                                                                                                   CNRT
+PDPA                                                                                                   PDPA
+Jam&#39;iyyat-i Islami-yi Afghanistan                                         Jam&#39;iyyat-i Islami-yi Afghanistan
+Hizb-i Islami-yi Afghanistan                                                   Hizb-i Islami-yi Afghanistan
+Hizb-i Islami-yi Afghanistan - Khalis faction                 Hizb-i Islami-yi Afghanistan - Khalis faction
+Hizb-i Wahdat                                                                                 Hizb-i Wahdat
+Military faction (forces of Shahnawaz Tanay)                   Military faction (forces of Shahnawaz Tanay)
+Junbish-i Milli-yi Islami                                                         Junbish-i Milli-yi Islami
+Taleban                                                                                             Taleban
+UIFSA                                                                                                 UIFSA
+TNV                                                                                                     TNV
+ATTF                                                                                                   ATTF
+NLFT                                                                                                   NLFT
+UNLF                                                                                                   UNLF
+KCP                                                                                                     KCP
+PREPAK                                                                                               PREPAK
+Sikh insurgents                                                                             Sikh insurgents
+LTTE                                                                                                   LTTE
+TELO                                                                                                   TELO
+EPRLF                                                                                                 EPRLF
+Kashmir insurgents                                                                       Kashmir insurgents
+ULFA                                                                                                   ULFA
+GAM                                                                                                     GAM
+UTO                                                                                                     UTO
+Forces of Khudoberdiyev                                                             Forces of Khudoberdiyev
+MQM                                                                                                     MQM
+TTP                                                                                                     TTP
+JIG                                                                                                     JIG
+ABSU                                                                                                   ABSU
+NDFB                                                                                                   NDFB
+NDFB - RD                                                                                         NDFB - RD
+UWSA                                                                                                   UWSA
+Patani insurgents                                                                         Patani insurgents
+PULF                                                                                                   PULF
+MNDAA                                                                                                 MNDAA
+LNUP                                                                                                   LNUP
+Government of Hyderabad                                                             Government of Hyderabad
+Government of Uzbekistan                                                           Government of Uzbekistan
+Government of Laos                                                                       Government of Laos
+Government of Malaysia                                                               Government of Malaysia
+Government of Papua New Guinea                                               Government of Papua New Guinea
+Government of Tajikistan                                                           Government of Tajikistan
+Government of South Vietnam                                                     Government of South Vietnam
+Government of China                                                                     Government of China
+Government of Nepal                                                                     Government of Nepal
+Government of Cambodia (Kampuchea)                                       Government of Cambodia (Kampuchea)
+Government of Bangladesh                                                           Government of Bangladesh
+Government of Thailand                                                               Government of Thailand
+Government of Sri Lanka                                                             Government of Sri Lanka
+Government of Afghanistan                                                         Government of Afghanistan
+Government of Indonesia                                                             Government of Indonesia
+Government of Pakistan                                                               Government of Pakistan
+Government of Philippines                                                         Government of Philippines
+Government of India                                                                     Government of India
+Government of Myanmar (Burma)                                                 Government of Myanmar (Burma)
+                                                      degree indegree
+IMU                                                        4        4
+PBCP                                                       1        1
+NSCN-K                                                     7        7
+BIFM                                                       5        5
+NLFT-B                                                     1        1
+Lashkar-e-Islam                                            5        5
+ULA                                                        3        3
+TTP - TA                                                   1        1
+UBA                                                        1        1
+CPI-ML-J                                                   1        1
+GNLA                                                       2        2
+SSPP                                                       3        3
+ETIM                                                       1        1
+PBCP-J                                                     2        2
+Sultanate of Sulu                                          1        1
+Forces of Mullo Abdullo                                    2        2
+CPI                                                        6        6
+NDFB-S                                                     2        2
+Jamaat-ul-Ahrar                                            1        1
+PSLF                                                       6        6
+IS                                                        11       11
+UNLFW                                                      4        4
+Maute group                                                1        1
+ARSA                                                       2        2
+al-Harakat al-Islamiyah                                    1        1
+BIFM-K                                                     1        1
+Forces of Norodom Ranariddh                                2        2
+Military faction (Forces of Hun Sen)                       1        1
+BRAS                                                       2        2
+PLA                                                       17       17
+Huk                                                        9        9
+CPP                                                       50       50
+Military faction (forces of Honasan, Abenina &amp; Zumel)      3        3
+Taiwanese insurgents                                       1        1
+KNUP                                                      27       27
+KNU                                                       43       43
+God&#39;s Army                                                 1        1
+DKBA 5                                                     3        3
+CPB                                                       41       41
+CPB-RF                                                     4        4
+PVO - &quot;White Band&quot; faction                                 6        6
+ABSDF                                                      4        4
+APLP                                                      10       10
+Mujahid Party                                             14       14
+ANLP                                                       9        9
+CPA                                                       10       10
+RPF                                                        6        6
+ALP                                                        1        1
+RSO                                                        2        2
+MFL-MUF                                                    3        3
+MPF                                                        7        7
+NMSP                                                       6        6
+BMA                                                        1        1
+CPI-ML                                                     3        3
+PWG                                                       13       13
+MCC                                                        6        6
+CPI-Maoist                                                16       16
+PNDF                                                       2        2
+KIO                                                       41       41
+Tibet                                                      3        3
+Republic of South Moluccas                                 1        1
+Military faction (navy)                                    1        1
+CPT                                                        9        9
+Darul Islam                                                5        5
+Permesta Movement                                          4        4
+PRRI                                                       4        4
+FNL                                                        7        7
+NNC                                                       12       12
+NSCN-IM                                                    7        7
+KNPP                                                       5        5
+CPM                                                        3        3
+Pathet Lao                                                 1        1
+LRM                                                        2        2
+NSH                                                        1        1
+SSIA                                                       2        2
+SNUF                                                       2        2
+SSA                                                        9        9
+SSNLO                                                      2        2
+SURA                                                      10       10
+SSRA                                                       1        1
+TRC                                                        1        1
+MTA                                                        7        7
+RCSS                                                      15       15
+NC                                                         3        3
+CPN-M                                                     11       11
+CCO                                                        2        2
+OPM                                                       10       10
+MNF                                                        3        3
+KR                                                        12       12
+KPNLF                                                      2        2
+FUNCINPEC                                                  1        1
+MIM                                                        2        2
+MNLF                                                      20       20
+MILF                                                      17       17
+ASG                                                       25       25
+MNLF - NM                                                  3        3
+MNLF - HM                                                  1        1
+Mukti Bahini                                               1        1
+JVP                                                        3        3
+JSS/SB                                                    17       17
+BLF                                                        6        6
+BLA                                                       11       11
+Baloch Ittehad                                             1        1
+BRA                                                       11       11
+CNRT                                                      18       18
+PDPA                                                       1        1
+Jam&#39;iyyat-i Islami-yi Afghanistan                          5        5
+Hizb-i Islami-yi Afghanistan                               8        8
+Hizb-i Islami-yi Afghanistan - Khalis faction              2        2
+Hizb-i Wahdat                                              6        6
+Military faction (forces of Shahnawaz Tanay)               1        1
+Junbish-i Milli-yi Islami                                  3        3
+Taleban                                                    2        2
+UIFSA                                                      5        5
+TNV                                                       10       10
+ATTF                                                       2        2
+NLFT                                                       6        6
+UNLF                                                      10       10
+KCP                                                        2        2
+PREPAK                                                     2        2
+Sikh insurgents                                           11       11
+LTTE                                                      24       24
+TELO                                                       2        2
+EPRLF                                                      2        2
+Kashmir insurgents                                        31       31
+ULFA                                                      18       18
+GAM                                                        9        9
+UTO                                                        1        1
+Forces of Khudoberdiyev                                    2        2
+MQM                                                        4        4
+TTP                                                       10       10
+JIG                                                        1        1
+ABSU                                                       2        2
+NDFB                                                       9        9
+NDFB - RD                                                  2        2
+UWSA                                                       1        1
+Patani insurgents                                         18       18
+PULF                                                       1        1
+MNDAA                                                      4        4
+LNUP                                                      10       10
+Government of Hyderabad                                    2        0
+Government of Uzbekistan                                   2        0
+Government of Laos                                         3        0
+Government of Malaysia                                     6        0
+Government of Papua New Guinea                             6        0
+Government of Tajikistan                                   7        0
+Government of South Vietnam                                7        0
+Government of China                                        9        0
+Government of Nepal                                       14        0
+Government of Cambodia (Kampuchea)                        18        0
+Government of Bangladesh                                  22        0
+Government of Thailand                                    28        0
+Government of Sri Lanka                                   31        0
+Government of Afghanistan                                 33        0
+Government of Indonesia                                   51        0
+Government of Pakistan                                    53        0
+Government of Philippines                                143        0
+Government of India                                      193        0
+Government of Myanmar (Burma)                            332        0
+                                                      outdegree
+IMU                                                           0
+PBCP                                                          0
+NSCN-K                                                        0
+BIFM                                                          0
+NLFT-B                                                        0
+Lashkar-e-Islam                                               0
+ULA                                                           0
+TTP - TA                                                      0
+UBA                                                           0
+CPI-ML-J                                                      0
+GNLA                                                          0
+SSPP                                                          0
+ETIM                                                          0
+PBCP-J                                                        0
+Sultanate of Sulu                                             0
+Forces of Mullo Abdullo                                       0
+CPI                                                           0
+NDFB-S                                                        0
+Jamaat-ul-Ahrar                                               0
+PSLF                                                          0
+IS                                                            0
+UNLFW                                                         0
+Maute group                                                   0
+ARSA                                                          0
+al-Harakat al-Islamiyah                                       0
+BIFM-K                                                        0
+Forces of Norodom Ranariddh                                   0
+Military faction (Forces of Hun Sen)                          0
+BRAS                                                          0
+PLA                                                           0
+Huk                                                           0
+CPP                                                           0
+Military faction (forces of Honasan, Abenina &amp; Zumel)         0
+Taiwanese insurgents                                          0
+KNUP                                                          0
+KNU                                                           0
+God&#39;s Army                                                    0
+DKBA 5                                                        0
+CPB                                                           0
+CPB-RF                                                        0
+PVO - &quot;White Band&quot; faction                                    0
+ABSDF                                                         0
+APLP                                                          0
+Mujahid Party                                                 0
+ANLP                                                          0
+CPA                                                           0
+RPF                                                           0
+ALP                                                           0
+RSO                                                           0
+MFL-MUF                                                       0
+MPF                                                           0
+NMSP                                                          0
+BMA                                                           0
+CPI-ML                                                        0
+PWG                                                           0
+MCC                                                           0
+CPI-Maoist                                                    0
+PNDF                                                          0
+KIO                                                           0
+Tibet                                                         0
+Republic of South Moluccas                                    0
+Military faction (navy)                                       0
+CPT                                                           0
+Darul Islam                                                   0
+Permesta Movement                                             0
+PRRI                                                          0
+FNL                                                           0
+NNC                                                           0
+NSCN-IM                                                       0
+KNPP                                                          0
+CPM                                                           0
+Pathet Lao                                                    0
+LRM                                                           0
+NSH                                                           0
+SSIA                                                          0
+SNUF                                                          0
+SSA                                                           0
+SSNLO                                                         0
+SURA                                                          0
+SSRA                                                          0
+TRC                                                           0
+MTA                                                           0
+RCSS                                                          0
+NC                                                            0
+CPN-M                                                         0
+CCO                                                           0
+OPM                                                           0
+MNF                                                           0
+KR                                                            0
+KPNLF                                                         0
+FUNCINPEC                                                     0
+MIM                                                           0
+MNLF                                                          0
+MILF                                                          0
+ASG                                                           0
+MNLF - NM                                                     0
+MNLF - HM                                                     0
+Mukti Bahini                                                  0
+JVP                                                           0
+JSS/SB                                                        0
+BLF                                                           0
+BLA                                                           0
+Baloch Ittehad                                                0
+BRA                                                           0
+CNRT                                                          0
+PDPA                                                          0
+Jam&#39;iyyat-i Islami-yi Afghanistan                             0
+Hizb-i Islami-yi Afghanistan                                  0
+Hizb-i Islami-yi Afghanistan - Khalis faction                 0
+Hizb-i Wahdat                                                 0
+Military faction (forces of Shahnawaz Tanay)                  0
+Junbish-i Milli-yi Islami                                     0
+Taleban                                                       0
+UIFSA                                                         0
+TNV                                                           0
+ATTF                                                          0
+NLFT                                                          0
+UNLF                                                          0
+KCP                                                           0
+PREPAK                                                        0
+Sikh insurgents                                               0
+LTTE                                                          0
+TELO                                                          0
+EPRLF                                                         0
+Kashmir insurgents                                            0
+ULFA                                                          0
+GAM                                                           0
+UTO                                                           0
+Forces of Khudoberdiyev                                       0
+MQM                                                           0
+TTP                                                           0
+JIG                                                           0
+ABSU                                                          0
+NDFB                                                          0
+NDFB - RD                                                     0
+UWSA                                                          0
+Patani insurgents                                             0
+PULF                                                          0
+MNDAA                                                         0
+LNUP                                                          0
+Government of Hyderabad                                       2
+Government of Uzbekistan                                      2
+Government of Laos                                            3
+Government of Malaysia                                        6
+Government of Papua New Guinea                                6
+Government of Tajikistan                                      7
+Government of South Vietnam                                   7
+Government of China                                           9
+Government of Nepal                                          14
+Government of Cambodia (Kampuchea)                           18
+Government of Bangladesh                                     22
+Government of Thailand                                       28
+Government of Sri Lanka                                      31
+Government of Afghanistan                                    33
+Government of Indonesia                                      51
+Government of Pakistan                                       53
+Government of Philippines                                   143
+Government of India                                         193
+Government of Myanmar (Burma)                               332</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph.nodes</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>outdegree</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>                                                                                                       name
+Government of Myanmar (Burma)                                                 Government of Myanmar (Burma)
+Government of India                                                                     Government of India
+Government of Philippines                                                         Government of Philippines
+Government of Pakistan                                                               Government of Pakistan
+Government of Indonesia                                                             Government of Indonesia
+Government of Afghanistan                                                         Government of Afghanistan
+Government of Sri Lanka                                                             Government of Sri Lanka
+Government of Thailand                                                               Government of Thailand
+Government of Bangladesh                                                           Government of Bangladesh
+Government of Cambodia (Kampuchea)                                       Government of Cambodia (Kampuchea)
+Government of Nepal                                                                     Government of Nepal
+Government of China                                                                     Government of China
+Government of Tajikistan                                                           Government of Tajikistan
+Government of South Vietnam                                                     Government of South Vietnam
+Government of Malaysia                                                               Government of Malaysia
+Government of Papua New Guinea                                               Government of Papua New Guinea
+Government of Laos                                                                       Government of Laos
+Government of Hyderabad                                                             Government of Hyderabad
+Government of Uzbekistan                                                           Government of Uzbekistan
+IMU                                                                                                     IMU
+PBCP                                                                                                   PBCP
+NSCN-K                                                                                               NSCN-K
+BIFM                                                                                                   BIFM
+NLFT-B                                                                                               NLFT-B
+Lashkar-e-Islam                                                                             Lashkar-e-Islam
+ULA                                                                                                     ULA
+TTP - TA                                                                                           TTP - TA
+UBA                                                                                                     UBA
+CPI-ML-J                                                                                           CPI-ML-J
+GNLA                                                                                                   GNLA
+SSPP                                                                                                   SSPP
+ETIM                                                                                                   ETIM
+PBCP-J                                                                                               PBCP-J
+Sultanate of Sulu                                                                         Sultanate of Sulu
+Forces of Mullo Abdullo                                                             Forces of Mullo Abdullo
+CPI                                                                                                     CPI
+NDFB-S                                                                                               NDFB-S
+Jamaat-ul-Ahrar                                                                             Jamaat-ul-Ahrar
+PSLF                                                                                                   PSLF
+IS                                                                                                       IS
+UNLFW                                                                                                 UNLFW
+Maute group                                                                                     Maute group
+ARSA                                                                                                   ARSA
+al-Harakat al-Islamiyah                                                             al-Harakat al-Islamiyah
+BIFM-K                                                                                               BIFM-K
+Forces of Norodom Ranariddh                                                     Forces of Norodom Ranariddh
+Military faction (Forces of Hun Sen)                                   Military faction (Forces of Hun Sen)
+BRAS                                                                                                   BRAS
+PLA                                                                                                     PLA
+Huk                                                                                                     Huk
+CPP                                                                                                     CPP
+Military faction (forces of Honasan, Abenina &amp; Zumel) Military faction (forces of Honasan, Abenina &amp; Zumel)
+Taiwanese insurgents                                                                   Taiwanese insurgents
+KNUP                                                                                                   KNUP
+KNU                                                                                                     KNU
+God&#39;s Army                                                                                       God&#39;s Army
+DKBA 5                                                                                               DKBA 5
+CPB                                                                                                     CPB
+CPB-RF                                                                                               CPB-RF
+PVO - &quot;White Band&quot; faction                                                       PVO - &quot;White Band&quot; faction
+ABSDF                                                                                                 ABSDF
+APLP                                                                                                   APLP
+Mujahid Party                                                                                 Mujahid Party
+ANLP                                                                                                   ANLP
+CPA                                                                                                     CPA
+RPF                                                                                                     RPF
+ALP                                                                                                     ALP
+RSO                                                                                                     RSO
+MFL-MUF                                                                                             MFL-MUF
+MPF                                                                                                     MPF
+NMSP                                                                                                   NMSP
+BMA                                                                                                     BMA
+CPI-ML                                                                                               CPI-ML
+PWG                                                                                                     PWG
+MCC                                                                                                     MCC
+CPI-Maoist                                                                                       CPI-Maoist
+PNDF                                                                                                   PNDF
+KIO                                                                                                     KIO
+Tibet                                                                                                 Tibet
+Republic of South Moluccas                                                       Republic of South Moluccas
+Military faction (navy)                                                             Military faction (navy)
+CPT                                                                                                     CPT
+Darul Islam                                                                                     Darul Islam
+Permesta Movement                                                                         Permesta Movement
+PRRI                                                                                                   PRRI
+FNL                                                                                                     FNL
+NNC                                                                                                     NNC
+NSCN-IM                                                                                             NSCN-IM
+KNPP                                                                                                   KNPP
+CPM                                                                                                     CPM
+Pathet Lao                                                                                       Pathet Lao
+LRM                                                                                                     LRM
+NSH                                                                                                     NSH
+SSIA                                                                                                   SSIA
+SNUF                                                                                                   SNUF
+SSA                                                                                                     SSA
+SSNLO                                                                                                 SSNLO
+SURA                                                                                                   SURA
+SSRA                                                                                                   SSRA
+TRC                                                                                                     TRC
+MTA                                                                                                     MTA
+RCSS                                                                                                   RCSS
+NC                                                                                                       NC
+CPN-M                                                                                                 CPN-M
+CCO                                                                                                     CCO
+OPM                                                                                                     OPM
+MNF                                                                                                     MNF
+KR                                                                                                       KR
+KPNLF                                                                                                 KPNLF
+FUNCINPEC                                                                                         FUNCINPEC
+MIM                                                                                                     MIM
+MNLF                                                                                                   MNLF
+MILF                                                                                                   MILF
+ASG                                                                                                     ASG
+MNLF - NM                                                                                         MNLF - NM
+MNLF - HM                                                                                         MNLF - HM
+Mukti Bahini                                                                                   Mukti Bahini
+JVP                                                                                                     JVP
+JSS/SB                                                                                               JSS/SB
+BLF                                                                                                     BLF
+BLA                                                                                                     BLA
+Baloch Ittehad                                                                               Baloch Ittehad
+BRA                                                                                                     BRA
+CNRT                                                                                                   CNRT
+PDPA                                                                                                   PDPA
+Jam&#39;iyyat-i Islami-yi Afghanistan                                         Jam&#39;iyyat-i Islami-yi Afghanistan
+Hizb-i Islami-yi Afghanistan                                                   Hizb-i Islami-yi Afghanistan
+Hizb-i Islami-yi Afghanistan - Khalis faction                 Hizb-i Islami-yi Afghanistan - Khalis faction
+Hizb-i Wahdat                                                                                 Hizb-i Wahdat
+Military faction (forces of Shahnawaz Tanay)                   Military faction (forces of Shahnawaz Tanay)
+Junbish-i Milli-yi Islami                                                         Junbish-i Milli-yi Islami
+Taleban                                                                                             Taleban
+UIFSA                                                                                                 UIFSA
+TNV                                                                                                     TNV
+ATTF                                                                                                   ATTF
+NLFT                                                                                                   NLFT
+UNLF                                                                                                   UNLF
+KCP                                                                                                     KCP
+PREPAK                                                                                               PREPAK
+Sikh insurgents                                                                             Sikh insurgents
+LTTE                                                                                                   LTTE
+TELO                                                                                                   TELO
+EPRLF                                                                                                 EPRLF
+Kashmir insurgents                                                                       Kashmir insurgents
+ULFA                                                                                                   ULFA
+GAM                                                                                                     GAM
+UTO                                                                                                     UTO
+Forces of Khudoberdiyev                                                             Forces of Khudoberdiyev
+MQM                                                                                                     MQM
+TTP                                                                                                     TTP
+JIG                                                                                                     JIG
+ABSU                                                                                                   ABSU
+NDFB                                                                                                   NDFB
+NDFB - RD                                                                                         NDFB - RD
+UWSA                                                                                                   UWSA
+Patani insurgents                                                                         Patani insurgents
+PULF                                                                                                   PULF
+MNDAA                                                                                                 MNDAA
+LNUP                                                                                                   LNUP
+                                                      degree indegree
+Government of Myanmar (Burma)                            332        0
+Government of India                                      193        0
+Government of Philippines                                143        0
+Government of Pakistan                                    53        0
+Government of Indonesia                                   51        0
+Government of Afghanistan                                 33        0
+Government of Sri Lanka                                   31        0
+Government of Thailand                                    28        0
+Government of Bangladesh                                  22        0
+Government of Cambodia (Kampuchea)                        18        0
+Government of Nepal                                       14        0
+Government of China                                        9        0
+Government of Tajikistan                                   7        0
+Government of South Vietnam                                7        0
+Government of Malaysia                                     6        0
+Government of Papua New Guinea                             6        0
+Government of Laos                                         3        0
+Government of Hyderabad                                    2        0
+Government of Uzbekistan                                   2        0
+IMU                                                        4        4
+PBCP                                                       1        1
+NSCN-K                                                     7        7
+BIFM                                                       5        5
+NLFT-B                                                     1        1
+Lashkar-e-Islam                                            5        5
+ULA                                                        3        3
+TTP - TA                                                   1        1
+UBA                                                        1        1
+CPI-ML-J                                                   1        1
+GNLA                                                       2        2
+SSPP                                                       3        3
+ETIM                                                       1        1
+PBCP-J                                                     2        2
+Sultanate of Sulu                                          1        1
+Forces of Mullo Abdullo                                    2        2
+CPI                                                        6        6
+NDFB-S                                                     2        2
+Jamaat-ul-Ahrar                                            1        1
+PSLF                                                       6        6
+IS                                                        11       11
+UNLFW                                                      4        4
+Maute group                                                1        1
+ARSA                                                       2        2
+al-Harakat al-Islamiyah                                    1        1
+BIFM-K                                                     1        1
+Forces of Norodom Ranariddh                                2        2
+Military faction (Forces of Hun Sen)                       1        1
+BRAS                                                       2        2
+PLA                                                       17       17
+Huk                                                        9        9
+CPP                                                       50       50
+Military faction (forces of Honasan, Abenina &amp; Zumel)      3        3
+Taiwanese insurgents                                       1        1
+KNUP                                                      27       27
+KNU                                                       43       43
+God&#39;s Army                                                 1        1
+DKBA 5                                                     3        3
+CPB                                                       41       41
+CPB-RF                                                     4        4
+PVO - &quot;White Band&quot; faction                                 6        6
+ABSDF                                                      4        4
+APLP                                                      10       10
+Mujahid Party                                             14       14
+ANLP                                                       9        9
+CPA                                                       10       10
+RPF                                                        6        6
+ALP                                                        1        1
+RSO                                                        2        2
+MFL-MUF                                                    3        3
+MPF                                                        7        7
+NMSP                                                       6        6
+BMA                                                        1        1
+CPI-ML                                                     3        3
+PWG                                                       13       13
+MCC                                                        6        6
+CPI-Maoist                                                16       16
+PNDF                                                       2        2
+KIO                                                       41       41
+Tibet                                                      3        3
+Republic of South Moluccas                                 1        1
+Military faction (navy)                                    1        1
+CPT                                                        9        9
+Darul Islam                                                5        5
+Permesta Movement                                          4        4
+PRRI                                                       4        4
+FNL                                                        7        7
+NNC                                                       12       12
+NSCN-IM                                                    7        7
+KNPP                                                       5        5
+CPM                                                        3        3
+Pathet Lao                                                 1        1
+LRM                                                        2        2
+NSH                                                        1        1
+SSIA                                                       2        2
+SNUF                                                       2        2
+SSA                                                        9        9
+SSNLO                                                      2        2
+SURA                                                      10       10
+SSRA                                                       1        1
+TRC                                                        1        1
+MTA                                                        7        7
+RCSS                                                      15       15
+NC                                                         3        3
+CPN-M                                                     11       11
+CCO                                                        2        2
+OPM                                                       10       10
+MNF                                                        3        3
+KR                                                        12       12
+KPNLF                                                      2        2
+FUNCINPEC                                                  1        1
+MIM                                                        2        2
+MNLF                                                      20       20
+MILF                                                      17       17
+ASG                                                       25       25
+MNLF - NM                                                  3        3
+MNLF - HM                                                  1        1
+Mukti Bahini                                               1        1
+JVP                                                        3        3
+JSS/SB                                                    17       17
+BLF                                                        6        6
+BLA                                                       11       11
+Baloch Ittehad                                             1        1
+BRA                                                       11       11
+CNRT                                                      18       18
+PDPA                                                       1        1
+Jam&#39;iyyat-i Islami-yi Afghanistan                          5        5
+Hizb-i Islami-yi Afghanistan                               8        8
+Hizb-i Islami-yi Afghanistan - Khalis faction              2        2
+Hizb-i Wahdat                                              6        6
+Military faction (forces of Shahnawaz Tanay)               1        1
+Junbish-i Milli-yi Islami                                  3        3
+Taleban                                                    2        2
+UIFSA                                                      5        5
+TNV                                                       10       10
+ATTF                                                       2        2
+NLFT                                                       6        6
+UNLF                                                      10       10
+KCP                                                        2        2
+PREPAK                                                     2        2
+Sikh insurgents                                           11       11
+LTTE                                                      24       24
+TELO                                                       2        2
+EPRLF                                                      2        2
+Kashmir insurgents                                        31       31
+ULFA                                                      18       18
+GAM                                                        9        9
+UTO                                                        1        1
+Forces of Khudoberdiyev                                    2        2
+MQM                                                        4        4
+TTP                                                       10       10
+JIG                                                        1        1
+ABSU                                                       2        2
+NDFB                                                       9        9
+NDFB - RD                                                  2        2
+UWSA                                                       1        1
+Patani insurgents                                         18       18
+PULF                                                       1        1
+MNDAA                                                      4        4
+LNUP                                                      10       10
+                                                      outdegree
+Government of Myanmar (Burma)                               332
+Government of India                                         193
+Government of Philippines                                   143
+Government of Pakistan                                       53
+Government of Indonesia                                      51
+Government of Afghanistan                                    33
+Government of Sri Lanka                                      31
+Government of Thailand                                       28
+Government of Bangladesh                                     22
+Government of Cambodia (Kampuchea)                           18
+Government of Nepal                                          14
+Government of China                                           9
+Government of Tajikistan                                      7
+Government of South Vietnam                                   7
+Government of Malaysia                                        6
+Government of Papua New Guinea                                6
+Government of Laos                                            3
+Government of Hyderabad                                       2
+Government of Uzbekistan                                      2
+IMU                                                           0
+PBCP                                                          0
+NSCN-K                                                        0
+BIFM                                                          0
+NLFT-B                                                        0
+Lashkar-e-Islam                                               0
+ULA                                                           0
+TTP - TA                                                      0
+UBA                                                           0
+CPI-ML-J                                                      0
+GNLA                                                          0
+SSPP                                                          0
+ETIM                                                          0
+PBCP-J                                                        0
+Sultanate of Sulu                                             0
+Forces of Mullo Abdullo                                       0
+CPI                                                           0
+NDFB-S                                                        0
+Jamaat-ul-Ahrar                                               0
+PSLF                                                          0
+IS                                                            0
+UNLFW                                                         0
+Maute group                                                   0
+ARSA                                                          0
+al-Harakat al-Islamiyah                                       0
+BIFM-K                                                        0
+Forces of Norodom Ranariddh                                   0
+Military faction (Forces of Hun Sen)                          0
+BRAS                                                          0
+PLA                                                           0
+Huk                                                           0
+CPP                                                           0
+Military faction (forces of Honasan, Abenina &amp; Zumel)         0
+Taiwanese insurgents                                          0
+KNUP                                                          0
+KNU                                                           0
+God&#39;s Army                                                    0
+DKBA 5                                                        0
+CPB                                                           0
+CPB-RF                                                        0
+PVO - &quot;White Band&quot; faction                                    0
+ABSDF                                                         0
+APLP                                                          0
+Mujahid Party                                                 0
+ANLP                                                          0
+CPA                                                           0
+RPF                                                           0
+ALP                                                           0
+RSO                                                           0
+MFL-MUF                                                       0
+MPF                                                           0
+NMSP                                                          0
+BMA                                                           0
+CPI-ML                                                        0
+PWG                                                           0
+MCC                                                           0
+CPI-Maoist                                                    0
+PNDF                                                          0
+KIO                                                           0
+Tibet                                                         0
+Republic of South Moluccas                                    0
+Military faction (navy)                                       0
+CPT                                                           0
+Darul Islam                                                   0
+Permesta Movement                                             0
+PRRI                                                          0
+FNL                                                           0
+NNC                                                           0
+NSCN-IM                                                       0
+KNPP                                                          0
+CPM                                                           0
+Pathet Lao                                                    0
+LRM                                                           0
+NSH                                                           0
+SSIA                                                          0
+SNUF                                                          0
+SSA                                                           0
+SSNLO                                                         0
+SURA                                                          0
+SSRA                                                          0
+TRC                                                           0
+MTA                                                           0
+RCSS                                                          0
+NC                                                            0
+CPN-M                                                         0
+CCO                                                           0
+OPM                                                           0
+MNF                                                           0
+KR                                                            0
+KPNLF                                                         0
+FUNCINPEC                                                     0
+MIM                                                           0
+MNLF                                                          0
+MILF                                                          0
+ASG                                                           0
+MNLF - NM                                                     0
+MNLF - HM                                                     0
+Mukti Bahini                                                  0
+JVP                                                           0
+JSS/SB                                                        0
+BLF                                                           0
+BLA                                                           0
+Baloch Ittehad                                                0
+BRA                                                           0
+CNRT                                                          0
+PDPA                                                          0
+Jam&#39;iyyat-i Islami-yi Afghanistan                             0
+Hizb-i Islami-yi Afghanistan                                  0
+Hizb-i Islami-yi Afghanistan - Khalis faction                 0
+Hizb-i Wahdat                                                 0
+Military faction (forces of Shahnawaz Tanay)                  0
+Junbish-i Milli-yi Islami                                     0
+Taleban                                                       0
+UIFSA                                                         0
+TNV                                                           0
+ATTF                                                          0
+NLFT                                                          0
+UNLF                                                          0
+KCP                                                           0
+PREPAK                                                        0
+Sikh insurgents                                               0
+LTTE                                                          0
+TELO                                                          0
+EPRLF                                                         0
+Kashmir insurgents                                            0
+ULFA                                                          0
+GAM                                                           0
+UTO                                                           0
+Forces of Khudoberdiyev                                       0
+MQM                                                           0
+TTP                                                           0
+JIG                                                           0
+ABSU                                                          0
+NDFB                                                          0
+NDFB - RD                                                     0
+UWSA                                                          0
+Patani insurgents                                             0
+PULF                                                          0
+MNDAA                                                         0
+LNUP                                                          0</code></pre>
+</div>
+<p>Due to the structure of our directed network data, the rebel groups
+are shown at the ‘receiving’ end of conflicts (in-degree = # of
+conflicts, out-degree = 0), while Governments are at the ‘giving’ end
+(in-degree = 0, out-degree = # of conflicts). Hence, on arranging the
+data for indegree, we find out that the rebel group ‘CCP’ is involved in
+most conflicts, while ‘PBCP’ is involved in the least number of
+conflicts. On arranging the data for outdegree, we find out that the
+‘Government of Myanmar’ is involved in most conflicts (332), while
+‘Government of Hyderabad’ is involved in the least number of conflicts
+(2).</p>
 <h1 id="in-degree-and-out-degree-histograms">In-degree and out-degree
 histograms</h1>
 <div class="layout-chunk" data-layout="l-body">
@@ -2174,16 +4112,16 @@ histograms</h1>
 conflict have outgoing edges, while rebel groups involved in conflict
 with the Government have incoming edges. Hence, all the outdegree
 numbers are from the Government side, which signifies the number of
-different rebel groups the particular Government had to fight - while
-all the indegree numbers refer to rebel groups, which signifies the
-number of Governments fought by the rebel group. Since the number of
-rebel groups is much higher than number of Governments, the histograms
-values for indegree and outdegree are skewed towards that of the rebel
-groups. For example, out-degrees are concentrated around 0 since all
-rebel groups have values only for in-degrees, and hence have 0
-out-degree. The in-degree histogram shows more variation as it captures
-the in-degree of all rebel groups.</p>
-<div class="sourceCode" id="cb2"><pre
+different rebel groups the particular Government fought - while all the
+indegree numbers refer to rebel groups, which signifies the number of
+Governments fought by the rebel group. Since the number of rebel groups
+is much higher than number of Governments, the histograms values for
+indegree and outdegree are skewed towards that of the rebel groups. For
+example, out-degrees are concentrated around 0 since all rebel groups
+have values only for in-degrees, and hence have 0 out-degree. The
+in-degree histogram shows more variation as it captures the in-degree of
+all rebel groups.</p>
+<div class="sourceCode" id="cb6"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

@@ -23,7 +23,7 @@ library(tidyverse)
 library(network)
 library(ggplot2)
 library(visNetwork)
-
+library(tidyverse)
 ```
 
 # Assignment 2 tasks
@@ -44,7 +44,7 @@ The dataset is thus structured such that the first 2 columns are the 'from' node
 
 After carrying out basic pre-processing and subsetting of the data, I proceed to convert it into an edge list, to carry out my network based analysis.
 
-```{r setup, include=FALSE}
+```{r}
 knitr::opts_chunk$set(echo = TRUE)
 conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
