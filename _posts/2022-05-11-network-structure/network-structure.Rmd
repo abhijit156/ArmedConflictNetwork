@@ -11,6 +11,10 @@ output:
     self_contained: false
 draft: false
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 
 ```{r}
 library(igraph)

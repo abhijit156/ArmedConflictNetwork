@@ -1,0 +1,101 @@
+---
+title: "MRQAP"
+description: |
+  A short description of the post.
+author:
+  - name: Abhijit Mahishi
+    url: {https://abhijit156.github.io/}
+date: 2022-05-12
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(igraph)
+library(stringr)
+library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
+library(corrr)
+library(sna)
+library(asnipe)
+
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
+
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+
+conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+
+net<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
+
+vn <- toVisNetworkData(graph)
+
+```
+
+```{r}
+conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 5))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,24,1,2,3)]
+conflict_subset$region <- as.integer(conflict_subset$region)
+graph <- graph.data.frame(conflict_subset)
+
+net2<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
+
+```
+
+```{r}
+#generate 3 random adjacency matrices using the rgraph() function within sna
+set.seed(1)
+edgelist1 = get.adjacency(graph, sparse = FALSE, attr='year')
+edgelist2 = get.adjacency(graph, sparse = FALSE, attr='type_of_conflict')
+edgelist3 = get.adjacency(graph, sparse = FALSE, attr='intensity_level')
+edgelist4 = get.adjacency(graph, sparse = FALSE, attr='incompatibility')
+edgelist5 = get.adjacency(graph, sparse = FALSE, attr='region')
+
+#test the effect of m2 on m1 controlling for m3, and effect of m3 on m1, controlling for m2. asnipe package function.
+
+#mrqap.dsp(m1~m2+m3, directed="undirected")
+```
+
+```{r}
+#test the effect of m2 on m1, controlling for m3. sna package function.
+
+netlm(edgelist3,list(edgelist4,edgelist2,edgelist5) , mode="digraph", nullhyp="qap", test.statistic="t-value", reps = 1000)
+
+```
+
+```{r}
+vn <- toVisNetworkData(graph)
+
+visNetwork(nodes = vn$nodes, edges = vn$edges, height = "1000px", width = "100%") %>%
+  visOptions(highlightNearest = TRUE) %>% 
+  visLegend(enabled = TRUE,position = 'right') %>%
+  visInteraction(multiselect = TRUE, navigationButtons=TRUE,dragNodes=TRUE,dragView=TRUE,zoomView=TRUE, hideEdgesOnZoom = TRUE, hideEdgesOnDrag = TRUE,hoverConnectedEdges = TRUE) %>%
+  visEdges(label = vn$edges$title, physics = TRUE,labelHighlightBold = TRUE, color = vn$edges$color) %>%
+  visNodes(shape = 'dot', label = vn$nodes$label, title = vn$nodes$id, labelHighlightBold = TRUE, borderWidth = 1.25, borderWidthSelected = 1.75)
+  
+  
+```

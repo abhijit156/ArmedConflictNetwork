@@ -1,6 +1,6 @@
 ---
 title: "Network Status"
-description: 
+description: |
   Exploring network status of armed conflict dataset
 author:
   - name: Abhijit Mahishi
@@ -11,6 +11,9 @@ output:
     self_contained: false
 draft: false
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 
 ```{r}

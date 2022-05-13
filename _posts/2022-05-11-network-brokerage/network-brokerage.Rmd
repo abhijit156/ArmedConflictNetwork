@@ -11,6 +11,10 @@ output:
     self_contained: false
 draft: false
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
@@ -83,7 +87,7 @@ centr_clo(graph)$centralization
 Closeness centrality is the sum of geodesic distances between a node and all other nodes in the network. Since this network is a disconnected graph, the closeness centrality is not well-defined. Similarly, the network centralization is not well-defined due to the graph being disconnected. 
 
 ```{r}
-igraph::betweenness(graph, directed=TRUE)
+#print(igraph::betweenness(graph, directed=TRUE))
 
 centr_betw(graph,directed=T)$centralization
 

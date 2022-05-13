@@ -21,6 +21,9 @@ draft: false
 -   Provide statistics related to centrality and degree
 
 -   Interpret network density and centralization measures
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)

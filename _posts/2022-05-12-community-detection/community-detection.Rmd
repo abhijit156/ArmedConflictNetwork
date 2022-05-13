@@ -1,0 +1,135 @@
+---
+title: "Community detection"
+description: |
+  A short description of the post.
+author:
+  - name: Abhijit Mahishi
+    url: {}
+date: 2022-05-12
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at https://rstudio.github.io/distill.
+
+{r}
+knitr::opts_chunk$set(echo = FALSE)
+```{r}
+library(igraph)
+library(stringr)
+library(tidyverse)
+library(network)
+library(ggplot2)
+library(visNetwork)
+library(corrr)
+library(sna)
+library(asnipe)
+
+```
+
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at https://rstudio.github.io/distill.
+```{r}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
+
+conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 3))
+
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+
+graph <- graph.data.frame(conflict_subset)
+
+net<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
+
+vn <- toVisNetworkData(graph)
+
+```
+
+
+
+
+```{r}
+graph.nodes<-data.frame(name=V(graph)$name,
+degree=igraph::degree(graph))
+
+graph.nodes<-graph.nodes %>%
+mutate(indegree=igraph::degree(graph, mode="in",loops=FALSE),
+outdegree=igraph::degree(graph, mode="out",loops=FALSE))
+
+temp<-igraph::centr_eigen(graph,directed=T)
+graph.nodes$eigen = temp$vector
+
+head(power_centrality(graph))
+
+graph.nodes$bonpow<-power_centrality(graph)
+
+mat<-as.matrix(as_adjacency_matrix(graph))
+matsq <- t(mat) %*% mat
+graph.nodes$rc<-diag(matsq)/rowSums(matsq)
+graph.nodes$rc<-ifelse(is.nan(graph.nodes$rc),0,graph.nodes$rc)
+graph.nodes$eigen.rc<-graph.nodes$eigen*graph.nodes$rc
+
+#Calculate the proportion of derived centrality.
+graph.nodes$dc<-1-diag(matsq)/rowSums(matsq)
+#replace missing values with 0
+graph.nodes$dc<-ifelse(is.nan(graph.nodes$dc),1,graph.nodes$dc)
+#Calculate received eigenvalue centrality
+graph.nodes$eigen.dc<-graph.nodes$eigen*graph.nodes$dc
+
+
+```
+
+
+```{r}
+visNetwork(nodes = vn$nodes, edges = vn$edges, height = "1000px", width = "100%") %>%
+  visOptions(highlightNearest = TRUE) %>% 
+  visLegend(enabled = TRUE,position = 'right') %>%
+  visInteraction(multiselect = TRUE, navigationButtons=TRUE,dragNodes=TRUE,dragView=TRUE,zoomView=TRUE, hideEdgesOnZoom = TRUE, hideEdgesOnDrag = TRUE,hoverConnectedEdges = TRUE) %>%
+  visEdges(label = vn$edges$title, physics = TRUE,labelHighlightBold = TRUE, color = vn$edges$color) %>%
+  visNodes(shape = 'dot', label = vn$nodes$label, title = vn$nodes$id, labelHighlightBold = TRUE, borderWidth = 1.25, borderWidthSelected = 1.75)
+
+```
+
+
+```{r}
+comm.fg<-cluster_fast_greedy(as.undirected(graph))
+comm.fg
+igraph::groups(comm.fg)
+
+graph.nodes$comm.fg<-comm.fg$membership
+#summarize node statistics by community
+graph.nodes%>%
+select(-name)%>% group_by(comm.fg)%>%
+mutate(n=n())%>%
+summarise_all(mean, na.rm=TRUE)%>%
+as.matrix()%>%
+print(digits=2)
+```
+
+
+# Plot communities
+```{r}
+plot(comm.fg)
+```
+
+  
+  
+
+
