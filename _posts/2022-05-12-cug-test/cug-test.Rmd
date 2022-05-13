@@ -1,7 +1,7 @@
 ---
 title: "MRQAP"
 description: |
-  A short description of the post.
+  Carrying out MRQAP to analyze network effects for Asia and Africa
 author:
   - name: Abhijit Mahishi
     url: {https://abhijit156.github.io/}
@@ -14,10 +14,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
 
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
@@ -34,18 +30,16 @@ library(asnipe)
 
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
-
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
 conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 3))
+conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3 | region == 4 ))
 
-conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,24,1,2,3)]
+conflict_subset$region <- as.integer(conflict_subset$region)
+
 
 graph <- graph.data.frame(conflict_subset)
 
@@ -55,18 +49,12 @@ vn <- toVisNetworkData(graph)
 
 ```
 
-```{r}
-conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 5))
+# Generating adjacency matrices for MRQAP test
 
-conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,24,1,2,3)]
-conflict_subset$region <- as.integer(conflict_subset$region)
-graph <- graph.data.frame(conflict_subset)
-
-net2<- as.network(conflict_subset, matrix.type = "edgelist", multiple = T)
-
-```
+The hypothesis is that the intensity of a conflict is heavily influenced by the type of conflict (whether it is extrasystemic, interstate, intrastate, internationalized intrastate), the incompatibility of conflict (whether it is incompatibility with Government, territorial incompatibility or both), and the region of conflict.
 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
 #generate 3 random adjacency matrices using the rgraph() function within sna
 set.seed(1)
 edgelist1 = get.adjacency(graph, sparse = FALSE, attr='year')
@@ -80,22 +68,14 @@ edgelist5 = get.adjacency(graph, sparse = FALSE, attr='region')
 #mrqap.dsp(m1~m2+m3, directed="undirected")
 ```
 
+# Running a netlm model for 1000 repetitions to predict conflict intensity
+
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
 #test the effect of m2 on m1, controlling for m3. sna package function.
 
 netlm(edgelist3,list(edgelist4,edgelist2,edgelist5) , mode="digraph", nullhyp="qap", test.statistic="t-value", reps = 1000)
 
 ```
 
-```{r}
-vn <- toVisNetworkData(graph)
-
-visNetwork(nodes = vn$nodes, edges = vn$edges, height = "1000px", width = "100%") %>%
-  visOptions(highlightNearest = TRUE) %>% 
-  visLegend(enabled = TRUE,position = 'right') %>%
-  visInteraction(multiselect = TRUE, navigationButtons=TRUE,dragNodes=TRUE,dragView=TRUE,zoomView=TRUE, hideEdgesOnZoom = TRUE, hideEdgesOnDrag = TRUE,hoverConnectedEdges = TRUE) %>%
-  visEdges(label = vn$edges$title, physics = TRUE,labelHighlightBold = TRUE, color = vn$edges$color) %>%
-  visNodes(shape = 'dot', label = vn$nodes$label, title = vn$nodes$id, labelHighlightBold = TRUE, borderWidth = 1.25, borderWidthSelected = 1.75)
-  
-  
-```
+After analyzing the influence of multiple independent variables on conflict intensity, results of the MRQAP test reveal a low correlation with the variables type of conflict and incompatibility causing the conflict, while region of conflict does not seem to have an effect at all.

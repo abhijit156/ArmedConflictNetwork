@@ -15,6 +15,14 @@ draft: false
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+# Assignment tasks
+-   Measure aspects of network role equivalence
+
+-   Partition network into positions based on clustering results
+
+-   Understanding Blockmodel and plot positions
+
+
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -37,9 +45,12 @@ conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-
 conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
 
 conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+conflict_subset$side_a <- gsub("Government of ","",as.character(conflict_subset$side_a))
 
 graph <- graph.data.frame(conflict_subset)
 ```
+
+# Creating matrix to analyze structural equivalence
 
 ```{r}
 knitr::opts_chunk$set(echo = TRUE)
@@ -57,15 +68,16 @@ net <- intergraph::asNetwork(ig)
 net
 ```
 
-
+# Plotting structural equivalence graphs
 
 ```{r}
 matr<- as.matrix(as_adjacency_matrix(ig, attr = "weight"))
-transfer.se.exp<-equiv.clust(matr, equiv.fun="sedist", cluster.method="average", method="hamming",mode="graph")
-plot(transfer.se.exp,labels=transfer.se.exp$glabels)
-rect.hclust(transfer.se.exp$cluster, k = 3) 
+transfer.se<-equiv.clust(matr, equiv.fun="sedist", cluster.method="average", method="hamming",mode="digraph")
+plot(transfer.se,labels=transfer.se$glabels)
+rect.hclust(transfer.se$cluster, k = 3) 
 
-plot_dendrogram(cluster_leading_eigen(as.undirected(ig)), mode = igraph_opt("dend.plot.type"))
+plot_dendrogram(cluster_leading_eigen(as.undirected(ig)), mode = igraph_opt("dend.plot.type")) 
+
 
 ```
 

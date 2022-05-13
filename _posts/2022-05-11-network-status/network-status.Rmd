@@ -28,10 +28,14 @@ library(visNetwork)
 library(corrr)
 
 ```
+# Assignment tasks
 
-Distill is a publication format for scientific and technical writing, native to the web.
+-   Describe network data using Eigenvector centrality, Bonachic power centrality 
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+-   Plot histograms of the same
+
+-   Analyze correlations between various node level attributes
+
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -47,6 +51,8 @@ graph <- graph.data.frame(conflict_subset)
 # Calculating Eigen centrality and Bonacich Power centrality
 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 graph.nodes<-data.frame(name=V(graph)$name,
 degree=igraph::degree(graph))
 
@@ -65,8 +71,10 @@ graph.nodes$bonpow<-power_centrality(graph)
 ```
 Since the graph is directed and acyclic, the eigenvector values are always 0. Thus, calculating node-level Bonacich Power centrality. As expected, the Bonacich power centrality of countries like Myanmar, India, Philippines with high outdegree is the highest.
 
-Derived 
+# Calculating Derived centrality 
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 mat<-as.matrix(as_adjacency_matrix(graph))
 matsq <- t(mat) %*% mat
 graph.nodes$rc<-diag(matsq)/rowSums(matsq)
@@ -80,7 +88,7 @@ graph.nodes$dc<-ifelse(is.nan(graph.nodes$dc),1,graph.nodes$dc)
 #Calculate received eigenvalue centrality
 graph.nodes$eigen.dc<-graph.nodes$eigen*graph.nodes$dc
 ```
-Plotting
+# Plotting the results
 ```{r}
 graph.nodes%>%
 select(-name) %>%
@@ -92,7 +100,7 @@ facet_wrap(~key, scales = "free")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 ```
-Correlations
+# Analyzing correlations between node level measures
 ```{r}
 temp<-graph.nodes %>%
 select(degree,indegree,outdegree, starts_with("bon"))%>% correlate() %>% rearrange()

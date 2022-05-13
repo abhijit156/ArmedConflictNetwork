@@ -14,6 +14,12 @@ draft: false
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+# Assignment tasks
+-   Measure aspects of network brokerage
+
+-   Include node level measures like closeness and betweenness centrality
+
+-   Include network level measures like closeness and betweenness centralization and constraint
 
 
 ```{r}
@@ -30,22 +36,27 @@ library(sna)
 
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
 conflict <- read.csv("/Users/abhijit/Desktop/Spring22/Networks/Data/ucdp-dyadic-211.csv", header=TRUE)
 
-conflict_subset <- conflict %>% filter((type_of_conflict == 3) & (region == 3))
+conflict_subset <- conflict #%>% filter((type_of_conflict == 3) & (region == 3))
 
 conflict_subset <- conflict_subset[,c(4,7,10,11,12,13,14,15,16,17,18,1,2,3)]
+conflict_subset$side_a <- gsub("Government of ","",as.character(conflict_subset$side_a))
 
 graph <- graph.data.frame(conflict_subset)
 ```
+
 # Graph nodes dataset 
+
+
+Creating a dataframe where all node-level centrality scores and attributes are stored
+
 ```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
 graph.nodes<-data.frame(name=V(graph)$name,
 degree=igraph::degree(graph))
 
